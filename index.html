@@ -307,19 +307,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <i class="ti ti-calendar-plus"></i> Request a Visit
     </button>
     <div class="sec-title">Upcoming Visits</div>
-    <div class="card">
-      <div style="font-size:19px;font-weight:700;margin-bottom:10px">🏠 Home Helper Visit</div>
-      <div class="appt-detail"><i class="ti ti-calendar"></i> Thursday, June 26, 2026</div>
-      <div class="appt-detail"><i class="ti ti-clock"></i> 10:00 AM – approx. noon</div>
-      <div class="appt-detail"><i class="ti ti-list-check"></i> 3 tasks: toilet, smoke detector, lightbulb</div>
-      <div class="appt-confirmed">✅ Confirmed — see you then, Margaret!</div>
+    <div id="visits-upcoming">
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">📅</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No visits scheduled yet</div>
+        <div style="font-size:15px">Tap "Request a Visit" above and Pete will be in touch!</div>
+      </div>
     </div>
     <div class="sec-title" style="margin-top:1.5rem">Past Visits</div>
-    <div class="card done-card">
-      <div style="font-size:18px;font-weight:600;margin-bottom:8px">🏠 Home Helper Visit</div>
-      <div class="appt-detail"><i class="ti ti-calendar"></i> June 14, 2026</div>
-      <div class="appt-detail"><i class="ti ti-list-check"></i> Microwave clock, sticky window latch</div>
-      <div class="appt-detail"><i class="ti ti-check" style="color:var(--green)"></i> Completed</div>
+    <div id="visits-past">
+      <div style="text-align:center;padding:1.5rem 1rem;color:var(--muted)">
+        <div style="font-size:15px">No past visits yet</div>
+      </div>
     </div>
   </div>
 
@@ -361,18 +360,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
 
     <div class="sec-title">Family &amp; Loved Ones</div>
-    <p style="font-size:15px;color:var(--muted);margin-bottom:12px">These people can log in to view and add tasks for your home.</p>
-    <div class="fam-row">
-      <div class="avatar av-teal" style="width:44px;height:44px;font-size:15px">ST</div>
-      <div class="fam-info"><div class="fam-name">Sarah Thompson</div><div class="fam-role">Daughter · Family access</div></div>
-      <i class="ti ti-circle-check" style="color:var(--green);font-size:22px;margin-left:auto"></i>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:12px">Family members can log in to view and add tasks for your home.</p>
+    <div id="family-list">
+      <div style="text-align:center;padding:1rem;color:var(--muted);font-size:15px">No family members added yet</div>
     </div>
-    <div class="fam-row">
-      <div class="avatar av-amber" style="width:44px;height:44px;font-size:15px">JT</div>
-      <div class="fam-info"><div class="fam-name">James Thompson</div><div class="fam-role">Son · Family access</div></div>
-      <i class="ti ti-circle-check" style="color:var(--green);font-size:22px;margin-left:auto"></i>
-    </div>
-    <button class="add-fam-btn" onclick="showToast('Invite sent! ✉️')"><i class="ti ti-user-plus" style="font-size:20px"></i>Add a Family Member</button>
+    <button class="add-fam-btn" onclick="showToast('Contact Pete to add a family member ✉️')"><i class="ti ti-user-plus" style="font-size:20px"></i>Add a Family Member</button>
 
     <div class="sec-title" style="margin-top:1.5rem">Plan</div>
     <div class="card" style="background:var(--blue-lt);border:1.5px solid var(--blue)">
@@ -433,39 +425,22 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div style="font-size:13px;color:var(--muted)">Super Admin · Home Helper</div>
       </div>
     </div>
-    <div class="stats-row">
-      <div class="card admin-stat"><div class="admin-stat-num">4</div><div class="admin-stat-label">Active Clients</div></div>
-      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--red)">3</div><div class="admin-stat-label">Urgent Tasks</div></div>
-      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--green)">2</div><div class="admin-stat-label">Visits This Week</div></div>
+    <div class="stats-row" id="admin-stats">
+      <div class="card admin-stat"><div class="admin-stat-num" id="stat-clients">0</div><div class="admin-stat-label">Active Clients</div></div>
+      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--red)" id="stat-urgent">0</div><div class="admin-stat-label">Urgent Tasks</div></div>
+      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--green)" id="stat-visits">0</div><div class="admin-stat-label">Visits This Week</div></div>
     </div>
     <div class="sec-title">Your Clients</div>
-    <div class="admin-client-row" onclick="openClient('margaret')">
-      <div class="avatar av-blue" style="width:48px;height:48px;font-size:16px">MT</div>
-      <div class="client-info">
-        <div class="client-name">Margaret Thompson</div>
-        <div class="client-addr">2214 Oak Creek Lane</div>
-        <div class="client-tasks">3 active tasks · Visit June 26</div>
+    <div id="admin-client-list">
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">👥</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No clients yet</div>
+        <div style="font-size:15px">Clients will appear here once they sign up</div>
       </div>
-      <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>
     </div>
-    <div class="admin-client-row" onclick="openClient('robert')">
-      <div class="avatar av-teal" style="width:48px;height:48px;font-size:16px">RB</div>
-      <div class="client-info">
-        <div class="client-name">Robert Baker</div>
-        <div class="client-addr">518 Maple Drive</div>
-        <div class="client-tasks">1 urgent task · No visit scheduled</div>
-      </div>
-      <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>
-    </div>
-    <div class="admin-client-row" onclick="openClient('dorothy')">
-      <div class="avatar av-amber" style="width:48px;height:48px;font-size:16px">DH</div>
-      <div class="client-info">
-        <div class="client-name">Dorothy Hayes</div>
-        <div class="client-addr">77 Birchwood Ct</div>
-        <div class="client-tasks">2 active tasks · Visit June 28</div>
-      </div>
-      <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>
-    </div>
+    <button class="add-btn" style="font-size:17px;padding:14px;margin-top:8px" onclick="openModal('add-client')">
+      <i class="ti ti-user-plus"></i> Add a Client Manually
+    </button>
   </div>
 
   <!-- CLIENT DETAIL -->
@@ -559,164 +534,47 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </button>
   </div>
 
-  <!-- SCHEDULE TAB -->
+    <!-- SCHEDULE TAB -->
   <div class="content" id="atab-schedule" style="display:none">
+    <button class="req-btn" style="font-size:17px;padding:14px;margin-bottom:16px" onclick="showToast('Visit scheduled! Client will be notified 📅')">
+      <i class="ti ti-calendar-plus"></i> Schedule a Visit
+    </button>
     <div class="sec-title">This Week</div>
-    <div class="card">
-      <div style="font-size:18px;font-weight:700;margin-bottom:10px">📅 Thursday, June 26</div>
-      <div class="appt-detail"><i class="ti ti-user"></i> Margaret Thompson</div>
-      <div class="appt-detail"><i class="ti ti-clock"></i> 10:00 AM – noon</div>
-      <div class="appt-detail"><i class="ti ti-list-check"></i> Toilet, lightbulb, smoke detector</div>
-      <div class="appt-detail"><i class="ti ti-tool"></i> Tools: plunger kit, bulb 60W, 9V battery</div>
-    </div>
-    <div class="card">
-      <div style="font-size:18px;font-weight:700;margin-bottom:10px">📅 Saturday, June 28</div>
-      <div class="appt-detail"><i class="ti ti-user"></i> Dorothy Hayes</div>
-      <div class="appt-detail"><i class="ti ti-clock"></i> 9:00 AM – 11:00 AM</div>
-      <div class="appt-detail"><i class="ti ti-list-check"></i> Gutter cleaning, porch light</div>
-      <div class="appt-detail"><i class="ti ti-tool"></i> Tools: ladder, leaf blower</div>
-    </div>
-    <div class="sec-title" style="margin-top:1.5rem">Unscheduled Urgent Tasks</div>
-    <div class="card" style="border-left:4px solid var(--red)">
-      <div class="task-title">⚠️ Robert Baker — Porch railing loose</div>
-      <div class="task-note">He says it wobbles when he uses it. Safety concern.</div>
-      <div class="task-meta"><span class="chip chip-urgent">Urgent</span><span class="task-date">Reported June 20</span></div>
-      <button class="big-btn btn-blue btn-sm" style="margin-top:12px" onclick="showToast('Visit scheduled for Robert! 📅')">Schedule Visit</button>
-    </div>
-  </div>
-
-  <!-- TEAM TAB -->
-  <div class="content" id="atab-team" style="display:none">
-    <div class="stats-row">
-      <div class="card admin-stat"><div class="admin-stat-num">3</div><div class="admin-stat-label">Team Members</div></div>
-      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--green)">2</div><div class="admin-stat-label">On Visits Today</div></div>
-      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--amber)">1</div><div class="admin-stat-label">Unassigned</div></div>
-    </div>
-
-    <div class="sec-title">Team Members</div>
-    <div id="team-list">
-
-      <div class="card" style="margin-bottom:12px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-          <div class="avatar av-blue" style="width:46px;height:46px;font-size:15px">JR</div>
-          <div style="flex:1">
-            <div style="font-size:18px;font-weight:700">Jake Reynolds</div>
-            <div style="font-size:13px;color:var(--muted)">Team Member · Active</div>
-          </div>
-          <span class="chip chip-routine">Active</span>
-        </div>
-        <div style="font-size:14px;color:var(--muted);margin-bottom:10px">📞 (704) 555-0211 &nbsp;·&nbsp; jake@homehelper.com</div>
-        <div class="sec-title" style="font-size:15px;margin-bottom:8px">Assigned Clients</div>
-        <div class="fam-row" style="margin-bottom:6px">
-          <div class="avatar av-blue" style="width:36px;height:36px;font-size:12px">MT</div>
-          <div class="fam-info"><div class="fam-name" style="font-size:15px">Margaret Thompson</div><div class="fam-role">2214 Oak Creek Lane · Visit June 26</div></div>
-          <button onclick="showToast('Margaret unassigned from Jake')" style="background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;padding:4px">×</button>
-        </div>
-        <div class="fam-row" style="margin-bottom:10px">
-          <div class="avatar av-teal" style="width:36px;height:36px;font-size:12px">DH</div>
-          <div class="fam-info"><div class="fam-name" style="font-size:15px">Dorothy Hayes</div><div class="fam-role">77 Birchwood Ct · Visit June 28</div></div>
-          <button onclick="showToast('Dorothy unassigned from Jake')" style="background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;padding:4px">×</button>
-        </div>
-        <button class="add-fam-btn" onclick="openModal('assign-client')" style="font-size:15px;padding:10px">
-          <i class="ti ti-user-plus" style="font-size:18px"></i> Assign a Client
-        </button>
+    <div id="schedule-list">
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">📅</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No visits scheduled</div>
+        <div style="font-size:15px">Schedule a visit above to get started</div>
       </div>
-
-      <div class="card" style="margin-bottom:12px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-          <div class="avatar av-amber" style="width:46px;height:46px;font-size:15px">PL</div>
-          <div style="flex:1">
-            <div style="font-size:18px;font-weight:700">Priya Lewis</div>
-            <div style="font-size:13px;color:var(--muted)">Team Member · Active</div>
-          </div>
-          <span class="chip chip-routine">Active</span>
-        </div>
-        <div style="font-size:14px;color:var(--muted);margin-bottom:10px">📞 (704) 555-0344 &nbsp;·&nbsp; priya@homehelper.com</div>
-        <div class="sec-title" style="font-size:15px;margin-bottom:8px">Assigned Clients</div>
-        <div class="fam-row" style="margin-bottom:10px">
-          <div class="avatar av-teal" style="width:36px;height:36px;font-size:12px">RB</div>
-          <div class="fam-info"><div class="fam-name" style="font-size:15px">Robert Baker</div><div class="fam-role">518 Maple Drive · 1 urgent task</div></div>
-          <button onclick="showToast('Robert unassigned from Priya')" style="background:none;border:none;color:var(--red);font-size:20px;cursor:pointer;padding:4px">×</button>
-        </div>
-        <button class="add-fam-btn" onclick="openModal('assign-client')" style="font-size:15px;padding:10px">
-          <i class="ti ti-user-plus" style="font-size:18px"></i> Assign a Client
-        </button>
-      </div>
-
-      <div class="card" style="margin-bottom:12px;border:1.5px dashed var(--border)">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-          <div class="avatar" style="width:46px;height:46px;font-size:15px;background:var(--bg);border:1.5px dashed var(--border);color:var(--muted)">?</div>
-          <div style="flex:1">
-            <div style="font-size:18px;font-weight:700;color:var(--muted)">New Team Member</div>
-            <div style="font-size:13px;color:var(--muted)">Not yet invited</div>
-          </div>
-          <span class="chip" style="background:var(--bg);color:var(--muted)">Pending</span>
-        </div>
-        <button class="big-btn btn-blue btn-sm" onclick="openModal('invite-employee')">
-          <i class="ti ti-send" style="font-size:17px;vertical-align:-2px;margin-right:6px"></i> Invite Team Member
-        </button>
-      </div>
-
-    </div>
-
-    <!-- EMPLOYEE VIEW NOTE -->
-    <div style="background:var(--blue-lt);border-radius:10px;padding:14px;margin-top:4px">
-      <div style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:4px">ℹ️ What team members can see</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.6">Team members only see clients assigned to them. They can view tasks, schedule visits, message their clients, and add notes. They <strong>cannot</strong> see your private admin notes, other team members' clients, billing info, or super admin settings.</div>
     </div>
   </div>
 
   <!-- TEAM LIST TAB -->
   <div class="content" id="atab-team" style="display:none">
     <div class="stats-row">
-      <div class="card admin-stat"><div class="admin-stat-num">3</div><div class="admin-stat-label">Team Members</div></div>
-      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--green)">2</div><div class="admin-stat-label">On Visits Today</div></div>
-      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--amber)">1</div><div class="admin-stat-label">Unassigned Client</div></div>
+      <div class="card admin-stat"><div class="admin-stat-num" id="stat-team">0</div><div class="admin-stat-label">Team Members</div></div>
+      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--green)" id="stat-on-visits">0</div><div class="admin-stat-label">On Visits Today</div></div>
+      <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--amber)" id="stat-unassigned">0</div><div class="admin-stat-label">Unassigned</div></div>
     </div>
     <div class="sec-title">Team Members</div>
     <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Tap a team member to see their client load and reassign.</p>
-
-    <div class="admin-client-row" onclick="openTeamMember('jake')">
-      <div class="avatar av-blue" style="width:48px;height:48px;font-size:15px">JR</div>
-      <div class="client-info">
-        <div class="client-name">Jake Reynolds</div>
-        <div class="client-addr">📞 (704) 555-0211</div>
-        <div class="client-tasks">2 clients assigned · Visit today</div>
+    <div id="team-list">
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">🪪</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No team members yet</div>
+        <div style="font-size:15px">Invite your first team member below</div>
       </div>
-      <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>
     </div>
-
-    <div class="admin-client-row" onclick="openTeamMember('priya')">
-      <div class="avatar av-amber" style="width:48px;height:48px;font-size:15px">PL</div>
-      <div class="client-info">
-        <div class="client-name">Priya Lewis</div>
-        <div class="client-addr">📞 (704) 555-0344</div>
-        <div class="client-tasks">1 client assigned · 1 urgent task</div>
-      </div>
-      <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>
-    </div>
-
-    <div class="admin-client-row" style="opacity:0.6" onclick="showToast('Chris just joined — no clients assigned yet')">
-      <div class="avatar av-teal" style="width:48px;height:48px;font-size:15px">CW</div>
-      <div class="client-info">
-        <div class="client-name">Chris Wade</div>
-        <div class="client-addr">📞 (704) 555-0477</div>
-        <div class="client-tasks" style="color:var(--amber)">No clients assigned yet</div>
-      </div>
-      <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>
-    </div>
-
-    <button class="big-btn btn-blue btn-sm" style="margin-top:8px" onclick="showToast('Invite sent! ✉️')">
-      <i class="ti ti-user-plus" style="font-size:17px;vertical-align:-2px;margin-right:6px"></i> Invite a Team Member
+    <button class="big-btn btn-blue btn-sm" style="margin-top:8px" onclick="openModal('invite-employee')">
+      <i class="ti ti-send" style="font-size:17px;vertical-align:-2px;margin-right:6px"></i> Invite a Team Member
     </button>
-
     <div style="background:var(--blue-lt);border-radius:10px;padding:14px;margin-top:14px">
       <div style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:4px">ℹ️ What team members can see</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.6">Team members only see their assigned clients — tasks, visits, and messages. They <strong>cannot</strong> see private admin notes, other members' clients, billing, or super admin settings.</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6">Team members only see their assigned clients — tasks, visits, and messages. They <strong>cannot</strong> see your private admin notes, other members' clients, billing, or super admin settings.</div>
     </div>
   </div>
 
-  <!-- TEAM MEMBER DETAIL VIEW -->
+    <!-- TEAM MEMBER DETAIL VIEW -->
   <div class="content" id="atab-team-detail" style="display:none">
     <button class="back-btn" onclick="closeTeamMember()"><i class="ti ti-arrow-left"></i> Back to Team</button>
 
@@ -775,63 +633,20 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
 
     <div class="sec-title">Recent Invoices</div>
-
-    <!-- INVOICE CARD - UNPAID -->
-    <div class="card" style="margin-bottom:12px" onclick="openInvoiceDetail('margaret-june26')">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
-        <div>
-          <div style="font-size:17px;font-weight:700">Margaret Thompson</div>
-          <div style="font-size:13px;color:var(--muted)">Visit · June 26, 2026</div>
-        </div>
-        <span class="chip chip-urgent">Unpaid</span>
-      </div>
-      <div style="font-size:14px;color:var(--muted);margin-bottom:4px">🕐 1.5 hrs &nbsp;·&nbsp; 🔧 3 tasks &nbsp;·&nbsp; 🛒 $26 materials</div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
-        <div style="font-size:20px;font-weight:700">$249.00</div>
-        <button onclick="event.stopPropagation();showToast('Invoice sent to Margaret! 📧')" style="background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;font-weight:600">Send Invoice</button>
+    <div id="invoice-list">
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">🧾</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No invoices yet</div>
+        <div style="font-size:15px">Create your first invoice after completing a visit</div>
       </div>
     </div>
-
-    <!-- INVOICE CARD - PAID -->
-    <div class="card done-card" style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
-        <div>
-          <div style="font-size:17px;font-weight:700">Margaret Thompson</div>
-          <div style="font-size:13px;color:var(--muted)">Visit · June 14, 2026</div>
-        </div>
-        <span class="chip badge-done">✓ Paid</span>
-      </div>
-      <div style="font-size:14px;color:var(--muted);margin-bottom:4px">🕐 1 hr &nbsp;·&nbsp; 🔧 2 tasks &nbsp;·&nbsp; 🛒 $0 materials</div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
-        <div style="font-size:20px;font-weight:700">$124.00</div>
-        <div style="font-size:13px;color:var(--muted)">Paid June 15</div>
-      </div>
-    </div>
-
-    <!-- INVOICE CARD - UNPAID -->
-    <div class="card" style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
-        <div>
-          <div style="font-size:17px;font-weight:700">Robert Baker</div>
-          <div style="font-size:13px;color:var(--muted)">Visit · June 21, 2026</div>
-        </div>
-        <span class="chip chip-urgent">Unpaid</span>
-      </div>
-      <div style="font-size:14px;color:var(--muted);margin-bottom:4px">🕐 2 hrs &nbsp;·&nbsp; 🔧 1 task &nbsp;·&nbsp; 🛒 $44 materials</div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
-        <div style="font-size:20px;font-weight:700">$267.00</div>
-        <button onclick="showToast('Invoice sent to Robert! 📧')" style="background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;font-weight:600">Send Invoice</button>
-      </div>
-    </div>
-
-    <!-- MONTHLY SUMMARY -->
-    <div class="sec-title" style="margin-top:1rem">June Summary</div>
+    <div class="sec-title" style="margin-top:1rem">This Month</div>
     <div class="card">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div class="admin-stat"><div class="admin-stat-num" style="font-size:24px">$640</div><div class="admin-stat-label">Invoiced</div></div>
-        <div class="admin-stat"><div class="admin-stat-num" style="font-size:24px;color:var(--green)">$124</div><div class="admin-stat-label">Collected</div></div>
-        <div class="admin-stat"><div class="admin-stat-num" style="font-size:24px;color:var(--amber)">$516</div><div class="admin-stat-label">Outstanding</div></div>
-        <div class="admin-stat"><div class="admin-stat-num" style="font-size:24px">$57</div><div class="admin-stat-label">Memberships</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" style="font-size:24px" id="stat-invoiced">$0</div><div class="admin-stat-label">Invoiced</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" style="font-size:24px;color:var(--green)" id="stat-collected">$0</div><div class="admin-stat-label">Collected</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" style="font-size:24px;color:var(--amber)" id="stat-outstanding">$0</div><div class="admin-stat-label">Outstanding</div></div>
+        <div class="admin-stat"><div class="admin-stat-num" style="font-size:24px" id="stat-memberships">$0</div><div class="admin-stat-label">Memberships</div></div>
       </div>
     </div>
   </div>
@@ -901,38 +716,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <!-- ADMIN MESSAGES -->
   <div class="content" id="atab-messages" style="display:none">
     <div class="sec-title">All Conversations</div>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Each thread is private between you and that person.</p>
-    <div class="thread-row" onclick="openAdminThread('margaret')">
-      <div class="avatar av-blue" style="width:44px;height:44px;font-size:14px">MT</div>
-      <div class="thread-info">
-        <div class="thread-name">Margaret Thompson</div>
-        <div class="thread-preview">Yes that works perfectly, thank you!</div>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:14px">One shared thread per household — you see all of them here.</p>
+    <div id="admin-messages-list">
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">💬</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No messages yet</div>
+        <div style="font-size:15px">Messages from clients will appear here</div>
       </div>
-      <div class="thread-right"><div class="thread-time">9:32 AM</div></div>
-    </div>
-    <div class="thread-row" onclick="openAdminThread('sarah')">
-      <div class="avatar av-teal" style="width:44px;height:44px;font-size:14px">ST</div>
-      <div class="thread-info">
-        <div class="thread-name">Sarah Thompson <span style="font-size:12px;color:var(--muted)">(Margaret's daughter)</span></div>
-        <div class="thread-preview">Can you check on Mom's back steps?</div>
-      </div>
-      <div class="thread-right"><div class="thread-time">Yesterday</div><div class="udot"></div></div>
-    </div>
-    <div class="thread-row" onclick="openAdminThread('james')">
-      <div class="avatar av-amber" style="width:44px;height:44px;font-size:14px">JT</div>
-      <div class="thread-info">
-        <div class="thread-name">James Thompson <span style="font-size:12px;color:var(--muted)">(Margaret's son)</span></div>
-        <div class="thread-preview">Wanted to mention something privately…</div>
-      </div>
-      <div class="thread-right"><div class="thread-time">June 19</div><div class="udot"></div></div>
-    </div>
-    <div class="thread-row" onclick="showToast('Robert Baker\'s thread opened')">
-      <div class="avatar av-teal" style="width:44px;height:44px;font-size:14px">RB</div>
-      <div class="thread-info">
-        <div class="thread-name">Robert Baker</div>
-        <div class="thread-preview">The railing is really wobbly now…</div>
-      </div>
-      <div class="thread-right"><div class="thread-time">June 20</div><div class="udot"></div></div>
     </div>
   </div>
 
@@ -1086,8 +876,163 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
+<!-- Invite Team Member Modal -->
+<div class="modal-bg" id="modal-invite-employee">
+  <div class="modal">
+    <div class="modal-title">🪪 Add Team Member</div>
+
+    <!-- Photo Upload -->
+    <label class="modal-label">Profile Photo</label>
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <div id="tm-photo-preview" style="width:72px;height:72px;border-radius:50%;background:var(--blue-lt);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;overflow:hidden">
+        👤
+      </div>
+      <div style="flex:1">
+        <input type="file" id="tm-photo-input" accept="image/*" style="display:none" onchange="previewTMPhoto(this)"/>
+        <button onclick="document.getElementById('tm-photo-input').click()" style="width:100%;padding:10px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;color:var(--blue)">
+          <i class="ti ti-camera" style="font-size:18px;vertical-align:-2px;margin-right:6px"></i> Upload Photo
+        </button>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px">Square photo works best for the avatar</div>
+      </div>
+    </div>
+
+    <label class="modal-label">Full Name</label>
+    <input class="modal-input" type="text" placeholder="e.g. Jake Reynolds" id="tm-name-input"/>
+    <label class="modal-label">Phone Number</label>
+    <input class="modal-input" type="tel" placeholder="e.g. 5405550142" id="tm-phone-input"/>
+    <label class="modal-label">Email (optional)</label>
+    <input class="modal-input" type="email" placeholder="e.g. jake@email.com" id="tm-email-input"/>
+    <label class="modal-label">Temporary Password</label>
+    <input class="modal-input" type="text" placeholder="They can change this after first login" id="tm-pass-input"/>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal('invite-employee')">Cancel</button>
+      <button class="modal-save" onclick="saveTeamMember()">Add Team Member ✅</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Client Modal -->
+<div class="modal-bg" id="modal-add-client">
+  <div class="modal">
+    <div class="modal-title">👤 Add a Client</div>
+    <label class="modal-label">Full Name</label>
+    <input class="modal-input" type="text" placeholder="e.g. Margaret Thompson" id="ac-name"/>
+    <label class="modal-label">Phone Number</label>
+    <input class="modal-input" type="tel" placeholder="e.g. 5405550142" id="ac-phone"/>
+    <label class="modal-label">Address</label>
+    <input class="modal-input" type="text" placeholder="e.g. 2214 Oak Creek Lane, Harrisonburg VA" id="ac-address"/>
+    <label class="modal-label">Plan</label>
+    <select class="select-input" id="ac-plan">
+      <option value="basic">Basic (Free)</option>
+      <option value="member">Member ($19/mo)</option>
+      <option value="waived">Member (Fee Waived)</option>
+    </select>
+    <label class="modal-label">Temporary Password</label>
+    <input class="modal-input" type="text" placeholder="They can change this after first login" id="ac-pass"/>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal('add-client')">Cancel</button>
+      <button class="modal-save" onclick="saveNewClient()">Add Client ✅</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── STATE ──
+let tmPhotoBase64 = null;
+
+function previewTMPhoto(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    tmPhotoBase64 = e.target.result;
+    const preview = document.getElementById('tm-photo-preview');
+    preview.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveTeamMember() {
+  const name = document.getElementById('tm-name-input').value.trim();
+  const phone = document.getElementById('tm-phone-input').value.trim();
+  if (!name || !phone) { showToast('Please enter name and phone number'); return; }
+
+  // Add to team list UI
+  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2);
+  const colors = ['av-blue','av-teal','av-amber','av-red'];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  const list = document.getElementById('team-list');
+
+  // Remove empty state if present
+  const empty = list.querySelector('[style*="text-align:center"]');
+  if (empty) empty.remove();
+
+  const row = document.createElement('div');
+  row.className = 'admin-client-row';
+  row.innerHTML = `
+    ${tmPhotoBase64
+      ? `<img src="${tmPhotoBase64}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0"/>`
+      : `<div class="avatar ${color}" style="width:48px;height:48px;font-size:15px">${initials}</div>`}
+    <div class="client-info">
+      <div class="client-name">${name}</div>
+      <div class="client-addr">📞 ${phone}</div>
+      <div class="client-tasks" style="color:var(--muted)">No clients assigned yet</div>
+    </div>
+    <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>`;
+  list.appendChild(row);
+
+  // Reset form
+  document.getElementById('tm-name-input').value = '';
+  document.getElementById('tm-phone-input').value = '';
+  document.getElementById('tm-email-input').value = '';
+  document.getElementById('tm-pass-input').value = '';
+  document.getElementById('tm-photo-preview').innerHTML = '👤';
+  tmPhotoBase64 = null;
+  closeModal('invite-employee');
+  showToast(`${name} added to your team! 🎉`);
+}
+
+function saveNewClient() {
+  const name = document.getElementById('ac-name').value.trim();
+  const phone = document.getElementById('ac-phone').value.trim();
+  const address = document.getElementById('ac-address').value.trim();
+  const plan = document.getElementById('ac-plan').value;
+  if (!name || !phone) { showToast('Please enter name and phone number'); return; }
+
+  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2);
+  const colors = ['av-blue','av-teal','av-amber'];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  const list = document.getElementById('admin-client-list');
+
+  // Remove empty state
+  const empty = list.querySelector('[style*="text-align:center"]');
+  if (empty) empty.remove();
+
+  const planLabel = plan === 'basic' ? 'Basic · Free' : plan === 'waived' ? 'Member · Fee Waived' : 'Member · $19/mo';
+  const row = document.createElement('div');
+  row.className = 'admin-client-row';
+  row.innerHTML = `
+    <div class="avatar ${color}" style="width:48px;height:48px;font-size:15px">${initials}</div>
+    <div class="client-info">
+      <div class="client-name">${name}</div>
+      <div class="client-addr">${address || 'No address yet'}</div>
+      <div class="client-tasks">${planLabel} · No tasks yet</div>
+    </div>
+    <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>`;
+  list.appendChild(row);
+
+  document.getElementById('ac-name').value = '';
+  document.getElementById('ac-phone').value = '';
+  document.getElementById('ac-address').value = '';
+  document.getElementById('ac-pass').value = '';
+  closeModal('add-client');
+
+  // Update client count
+  const countEl = document.getElementById('stat-clients');
+  if (countEl) countEl.textContent = parseInt(countEl.textContent||0) + 1;
+
+  showToast(`${name} added as a client! 🎉`);
+}
 let role = 'client', urg = 'r', selRoomVal = 'general', activeThread = null;
 
 const threads = {
@@ -1161,6 +1106,7 @@ function doLogin() {
 
 function showAdminScreen() {
   document.getElementById('screen-login').classList.remove('active');
+  document.getElementById('screen-loading').classList.remove('active');
   document.getElementById('screen-admin').classList.add('active');
   switchAdminTab('clients');
 }
@@ -1450,8 +1396,14 @@ function saveAdminNote() {
 }
 
 // ── MODALS ──
-function openModal(type) { document.getElementById('modal-'+type).classList.add('open'); }
-function closeModal(type) { document.getElementById('modal-'+type).classList.remove('open'); }
+function openModal(type) { 
+  const el = document.getElementById('modal-'+type);
+  if(el) el.classList.add('open');
+}
+function closeModal(type) { 
+  const el = document.getElementById('modal-'+type);
+  if(el) el.classList.remove('open');
+}
 
 // ── INVOICES ──
 function calcInvoice() {
@@ -1587,14 +1539,25 @@ async function loadProfileAndRoute(user) {
   showScreen('screen-loading');
   currentUser = user;
 
+  // Try to load profile — may fail if RLS policy not yet in place
   const { data: profile, error } = await sb
     .from('profiles')
     .select('*, households(*)')
     .eq('id', user.id)
     .single();
 
+  // If we can't read the profile, check if this is Pete's admin account
+  // by matching the email format we use for phone logins
+  const userEmail = user.email || '';
+  const isAdminPhone = userEmail.startsWith('5404217447@');
+
   if (error || !profile) {
-    // New user — no profile yet, show client app as guest
+    if (isAdminPhone) {
+      // Pete logging in before RLS policy is fully set — go to admin
+      showAdminScreen();
+      return;
+    }
+    // New user — no profile yet, show client screen
     showScreen('screen-main');
     switchTab('tasks');
     return;
@@ -1613,13 +1576,12 @@ async function loadProfileAndRoute(user) {
   // Set Pete's photo in message header
   const petePhotos = document.querySelectorAll('img[alt="Pete"]');
   petePhotos.forEach(el => {
-    // photo is already embedded as base64 in helper banner — reuse same src
     const bannerPhoto = document.querySelector('#helper-banner img');
     if (bannerPhoto) el.src = bannerPhoto.src;
   });
 
   // Route based on role
-  if (profile.role === 'admin') {
+  if (profile.role === 'admin' || isAdminPhone) {
     showAdminScreen();
   } else if (profile.role === 'team') {
     showScreen('screen-main');
