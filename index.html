@@ -172,10 +172,46 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 /* ── BACK BTN ── */
 .back-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--blue); font-size: 17px; cursor: pointer; margin-bottom: 14px; padding: 0; }
 .back-btn i { font-size: 20px; }
+
+/* ── AUTH SCREENS ── */
+.auth-loading { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; gap:16px; }
+.spinner { width:40px; height:40px; border:3px solid var(--border); border-top-color:var(--blue); border-radius:50%; animation:spin 0.8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.reset-link { font-size:16px; color:var(--blue); text-align:center; display:block; margin-top:8px; cursor:pointer; }
+.error-msg { background:var(--red-lt); color:var(--red); padding:12px; border-radius:8px; font-size:15px; margin-bottom:12px; display:none; }
 </style>
+
+<!-- SUPABASE SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="toast" id="toast"></div>
+
+<!-- LOADING SCREEN -->
+<div class="screen active" id="screen-loading">
+  <div class="auth-loading">
+    <div style="font-size:48px">🏡</div>
+    <div class="spinner"></div>
+    <div style="font-size:16px;color:var(--muted)">Loading…</div>
+  </div>
+</div>
+
+<!-- PASSWORD RESET SCREEN -->
+<div class="screen" id="screen-reset">
+  <div class="login-wrap">
+    <div style="font-size:60px;margin-bottom:8px">🔑</div>
+    <div class="app-logo">Reset <span>Password</span></div>
+    <div class="app-tagline">Enter your new password below</div>
+    <div class="login-card">
+      <div class="error-msg" id="reset-error"></div>
+      <label class="field-label">New Password</label>
+      <input class="big-input" type="password" placeholder="New password" id="reset-password"/>
+      <label class="field-label">Confirm Password</label>
+      <input class="big-input" type="password" placeholder="Confirm password" id="reset-confirm"/>
+      <button class="big-btn btn-blue" onclick="doPasswordReset()">Set New Password</button>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════
      LOGIN SCREEN
@@ -198,13 +234,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div id="admin-mode-banner" style="display:none;background:var(--amber-lt);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:14px;color:var(--amber);font-weight:600;">
         🔐 Admin mode active
       </div>
-      <label class="field-label">Phone or Email</label>
-      <input class="big-input" type="text" placeholder="Enter your info…" />
+      <div class="error-msg" id="login-error"></div>
+      <label class="field-label">Phone Number</label>
+      <input class="big-input" type="tel" placeholder="e.g. 5405550142" id="login-email"/>
       <label class="field-label">Password</label>
-      <input class="big-input" type="password" placeholder="••••••••" />
+      <input class="big-input" type="password" placeholder="••••••••" id="login-password"/>
       <button class="big-btn btn-blue" onclick="doLogin()">Sign In</button>
-      <button class="big-btn btn-outline" onclick="doLogin()">👁 Preview as Guest</button>
-      <a class="forgot" onclick="showToast('Password reset link sent to your phone! 📱')">Forgot password?</a>
+      <a class="forgot" onclick="doForgotPassword()">Forgot password?</a>
     </div>
     <p style="margin-top:1.5rem;font-size:16px;color:var(--muted)">Need help? Call <strong style="color:var(--blue)">555-HOME-HELP</strong></p>
     <div style="margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center">
@@ -256,50 +292,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
 
     <div id="task-list">
-      <div class="card" data-status="scheduled" data-room="bathroom">
-        <div class="task-title">🚽 Running toilet</div>
-        <div class="task-note">Master bathroom keeps running after flush. Water bill going up.</div>
-        <div class="task-meta">
-          <span class="chip chip-scheduled">📅 Scheduled June 26</span>
-          <span class="task-room">🚿 Bathroom</span>
-        </div>
-      </div>
-      <div class="card" data-status="active" data-room="general">
-        <div class="task-title">🔋 Smoke detector battery</div>
-        <div class="task-note">Hallway one has been beeping. Not urgent but annoying!</div>
-        <div class="task-meta">
-          <span class="chip chip-routine">Routine</span>
-          <span class="task-room">🏠 General</span>
-          <span class="task-date">Added June 18</span>
-        </div>
-      </div>
-      <div class="card" data-status="scheduled" data-room="kitchen">
-        <div class="task-title">💡 Burnt out lightbulb</div>
-        <div class="task-note">Kitchen ceiling — I can't reach it.</div>
-        <div class="task-meta">
-          <span class="chip chip-scheduled">📅 Scheduled June 26</span>
-          <span class="task-room">🍳 Kitchen</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-top:10px">
-          <div class="photo-thumb"><i class="ti ti-photo"></i></div>
-          <span style="font-size:13px;color:var(--muted)">Photo attached</span>
-        </div>
-      </div>
-      <div class="card done-card" data-status="done" data-room="kitchen">
-        <div class="task-title">🕐 Reset microwave clock</div>
-        <div class="task-note">After the power outage.</div>
-        <div class="task-meta">
-          <span class="chip chip-done">✓ Completed June 14</span>
-          <span class="task-room">🍳 Kitchen</span>
-        </div>
-      </div>
-      <div class="card done-card" data-status="done" data-room="general">
-        <div class="task-title">🪟 Sticky window latch</div>
-        <div class="task-note">Living room window hard to open.</div>
-        <div class="task-meta">
-          <span class="chip chip-done">✓ Completed June 14</span>
-          <span class="task-room">🏠 General</span>
-        </div>
+      <!-- Tasks load from database for real users -->
+      <div id="task-empty" style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">📋</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No tasks yet</div>
+        <div style="font-size:15px">Tap the button above to add your first task!</div>
       </div>
     </div>
   </div>
@@ -326,49 +323,22 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 
-  <!-- MESSAGES INBOX -->
-  <div class="content" id="tab-messages" style="display:none">
-    <div class="sec-title">Messages</div>
-    <p style="font-size:15px;color:var(--muted);margin-bottom:14px">🔒 Each conversation is private — only you and your helper can see it.</p>
-    <div id="inbox-list">
-      <div class="thread-row" onclick="openThread('margaret')">
-        <div class="avatar av-blue" style="width:48px;height:48px;font-size:16px">MT</div>
-        <div class="thread-info">
-          <div class="thread-name">Margaret Thompson <span style="font-size:12px;color:var(--muted);font-weight:400">(You)</span></div>
-          <div class="thread-preview">I'll bring the right bulb, no worries! 💡</div>
-        </div>
-        <div class="thread-right"><div class="thread-time">9:35 AM</div></div>
-      </div>
-      <div class="thread-row" onclick="openThread('sarah')">
-        <div class="avatar av-teal" style="width:48px;height:48px;font-size:16px">ST</div>
-        <div class="thread-info">
-          <div class="thread-name">Sarah Thompson <span style="font-size:12px;color:var(--muted);font-weight:400">(Daughter)</span></div>
-          <div class="thread-preview">Can you check on Mom's back steps?</div>
-        </div>
-        <div class="thread-right"><div class="thread-time">Yesterday</div><div class="udot"></div></div>
-      </div>
-      <div class="thread-row" onclick="openThread('james')">
-        <div class="avatar av-amber" style="width:48px;height:48px;font-size:16px">JT</div>
-        <div class="thread-info">
-          <div class="thread-name">James Thompson <span style="font-size:12px;color:var(--muted);font-weight:400">(Son)</span></div>
-          <div class="thread-preview">Hey, wanted to mention something privately…</div>
-        </div>
-        <div class="thread-right"><div class="thread-time">June 19</div><div class="udot"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- THREAD VIEW -->
-  <div class="content" id="tab-thread" style="display:none;padding-bottom:130px">
-    <button class="back-btn" onclick="closeThread()"><i class="ti ti-arrow-left"></i> Back to Messages</button>
+  <!-- MESSAGES — single household thread -->
+  <div class="content" id="tab-messages" style="display:none;padding-bottom:130px">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
-      <div class="avatar" id="thread-av" style="width:50px;height:50px;font-size:17px"></div>
+      <img id="msg-pete-photo" style="width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--blue);flex-shrink:0" alt="Pete"/>
       <div>
-        <div style="font-size:19px;font-weight:700" id="thread-hdr"></div>
-        <div style="font-size:13px;color:var(--muted)">🔒 Private — only you and your helper can see this</div>
+        <div style="font-size:18px;font-weight:700">Pete — Home Helper</div>
+        <div style="font-size:13px;color:var(--muted)">Everyone in your household can see this conversation</div>
       </div>
     </div>
-    <div id="msg-thread"></div>
+    <div id="msg-thread">
+      <div id="msg-empty" style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">💬</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No messages yet</div>
+        <div style="font-size:15px">Send Pete a message below!</div>
+      </div>
+    </div>
     <div class="msg-bar">
       <input class="msg-input" type="text" placeholder="Type a message…" id="msg-input" />
       <button class="msg-send" onclick="sendMsg()"><i class="ti ti-send"></i></button>
@@ -1321,7 +1291,7 @@ function logout() {
 
 // ── CLIENT TABS ──
 function switchTab(tab) {
-  ['tasks','appointments','messages','thread','profile'].forEach(t => {
+  ['tasks','appointments','messages','profile'].forEach(t => {
     const el = document.getElementById('tab-'+t);
     if(el) el.style.display = 'none';
     const b = document.getElementById('btn-'+t);
@@ -1332,6 +1302,8 @@ function switchTab(tab) {
   if(b) b.classList.add('active');
   const titles = {tasks:'My Tasks',appointments:'Visits',messages:'Messages',profile:'My Profile'};
   document.getElementById('nav-title').textContent = titles[tab]||'Messages';
+  if(tab === 'messages') loadMessages();
+  if(tab === 'tasks') loadTasks();
 }
 
 // ── ADMIN TABS ──
@@ -1556,6 +1528,358 @@ function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'), 3000);
+}
+
+// ═══════════════════════════════════════
+// SUPABASE AUTH & DATABASE
+// ═══════════════════════════════════════
+
+const SUPABASE_URL = 'https://amhphshkfvqepvxlenps.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtaHBoc2hrZnZxZXB2eGxlbnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxODkzMDMsImV4cCI6MjA5Nzc2NTMwM30.v1w6n1O71uSooQb85_BHiHARSn_wLj-EtmOgOsFXoaI';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let currentUser = null;
+let currentProfile = null;
+
+// ── SHOW / HIDE SCREENS ──
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function showError(elId, msg) {
+  const el = document.getElementById(elId);
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function hideError(elId) {
+  const el = document.getElementById(elId);
+  if(el) el.style.display = 'none';
+}
+
+// ── BOOT: CHECK SESSION ON LOAD ──
+window.addEventListener('load', async () => {
+  // Check if this is a password reset redirect
+  const hash = window.location.hash;
+  if (hash.includes('type=recovery')) {
+    showScreen('screen-reset');
+    return;
+  }
+
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) {
+    await loadProfileAndRoute(session.user);
+  } else {
+    showScreen('screen-login');
+  }
+});
+
+// ── AUTH STATE LISTENER ──
+sb.auth.onAuthStateChange(async (event, session) => {
+  if (event === 'PASSWORD_RECOVERY') {
+    showScreen('screen-reset');
+  }
+});
+
+// ── LOAD PROFILE & ROUTE TO RIGHT SCREEN ──
+async function loadProfileAndRoute(user) {
+  showScreen('screen-loading');
+  currentUser = user;
+
+  const { data: profile, error } = await sb
+    .from('profiles')
+    .select('*, households(*)')
+    .eq('id', user.id)
+    .single();
+
+  if (error || !profile) {
+    // New user — no profile yet, show client app as guest
+    showScreen('screen-main');
+    switchTab('tasks');
+    return;
+  }
+
+  currentProfile = profile;
+
+  // Update UI with real name
+  if (profile.full_name) {
+    const navUser = document.getElementById('nav-user');
+    if(navUser) navUser.textContent = profile.full_name;
+    const profileName = document.getElementById('profile-name');
+    if(profileName) profileName.textContent = profile.full_name;
+  }
+
+  // Set Pete's photo in message header
+  const petePhotos = document.querySelectorAll('img[alt="Pete"]');
+  petePhotos.forEach(el => {
+    // photo is already embedded as base64 in helper banner — reuse same src
+    const bannerPhoto = document.querySelector('#helper-banner img');
+    if (bannerPhoto) el.src = bannerPhoto.src;
+  });
+
+  // Route based on role
+  if (profile.role === 'admin') {
+    showAdminScreen();
+  } else if (profile.role === 'team') {
+    showScreen('screen-main');
+    document.getElementById('nav-user').textContent = profile.full_name + ' (Team)';
+    switchTab('tasks');
+  } else {
+    showScreen('screen-main');
+    switchTab('tasks');
+    loadTasks();
+    loadMessages();
+  }
+}
+
+// ── REAL LOGIN ──
+async function doLogin() {
+  hideError('login-error');
+  let identifier = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+
+  if (!identifier || !password) {
+    showError('login-error', 'Please enter your phone/email and password.');
+    return;
+  }
+
+  // If phone number entered, format as email for Supabase
+  // We store phone logins as phone@homehelper.app
+  if (/^[\d\s\(\)\-\+]+$/.test(identifier.replace(/\s/g,''))) {
+    const digits = identifier.replace(/\D/g,'');
+    identifier = digits + '@homehelper.app';
+  }
+
+  showScreen('screen-loading');
+
+  const { data, error } = await sb.auth.signInWithPassword({
+    email: identifier,
+    password: password
+  });
+
+  if (error) {
+    showScreen('screen-login');
+    showError('login-error', 'Incorrect phone/email or password. Please try again.');
+    return;
+  }
+
+  await loadProfileAndRoute(data.user);
+}
+
+// ── GUEST PREVIEW ──
+function doGuestLogin() {
+  showScreen('screen-main');
+  switchTab('tasks');
+  showToast('Previewing as guest — data is not saved');
+}
+
+// ── FORGOT PASSWORD ──
+async function doForgotPassword() {
+  const identifier = document.getElementById('login-email').value.trim();
+  if (!identifier) {
+    showError('login-error', 'Enter your phone number or email above first.');
+    return;
+  }
+
+  let email = identifier;
+  if (/^[\d\s\(\)\-\+]+$/.test(identifier.replace(/\s/g,''))) {
+    const digits = identifier.replace(/\D/g,'');
+    email = digits + '@homehelper.app';
+  }
+
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + window.location.pathname
+  });
+
+  if (error) {
+    showError('login-error', 'Could not send reset link. Please check your info.');
+  } else {
+    showToast('Password reset link sent! Check your phone or email 📱');
+  }
+}
+
+// ── PASSWORD RESET ──
+async function doPasswordReset() {
+  const password = document.getElementById('reset-password').value;
+  const confirm = document.getElementById('reset-confirm').value;
+
+  if (!password || password.length < 6) {
+    showError('reset-error', 'Password must be at least 6 characters.');
+    return;
+  }
+  if (password !== confirm) {
+    showError('reset-error', 'Passwords do not match.');
+    return;
+  }
+
+  const { error } = await sb.auth.updateUser({ password });
+  if (error) {
+    showError('reset-error', 'Could not reset password. Please try again.');
+  } else {
+    showToast('Password updated! Please sign in. ✅');
+    showScreen('screen-login');
+    window.location.hash = '';
+  }
+}
+
+// ── REAL LOGOUT ──
+async function logout() {
+  await sb.auth.signOut();
+  currentUser = null;
+  currentProfile = null;
+  ['screen-main','screen-admin'].forEach(s => document.getElementById(s).classList.remove('active'));
+  document.getElementById('admin-mode-banner').style.display = 'none';
+  document.getElementById('screen-login').classList.add('active');
+  role = 'client';
+  document.getElementById('role-client').classList.add('sel');
+  document.getElementById('role-family').classList.remove('sel');
+}
+
+// ── LOAD TASKS FROM DATABASE ──
+async function loadTasks() {
+  if (!currentProfile?.household_id) return;
+
+  const { data: tasks, error } = await sb
+    .from('tasks')
+    .select('*')
+    .eq('household_id', currentProfile.household_id)
+    .order('created_at', { ascending: false });
+
+  if (error || !tasks) return;
+
+  const list = document.getElementById('task-list');
+  list.innerHTML = '';
+
+  tasks.forEach(task => {
+    const card = document.createElement('div');
+    card.className = 'card' + (task.status === 'done' ? ' done-card' : '');
+    card.dataset.status = task.status;
+    card.dataset.room = task.room || 'general';
+
+    const rooms = {kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
+    const chip = task.status === 'done'
+      ? `<span class="chip chip-done">✓ Completed</span>`
+      : task.urgency === 'urgent'
+        ? `<span class="chip chip-urgent">Needs attention</span>`
+        : task.status === 'scheduled'
+          ? `<span class="chip chip-scheduled">📅 Scheduled</span>`
+          : `<span class="chip chip-routine">Routine</span>`;
+
+    card.innerHTML = `
+      <div class="task-title">${task.title}</div>
+      ${task.notes ? `<div class="task-note">${task.notes}</div>` : ''}
+      <div class="task-meta">${chip}<span class="task-room">${rooms[task.room]||'🏠 General'}</span><span class="task-date">${new Date(task.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</span></div>`;
+    list.appendChild(card);
+  });
+}
+
+// ── SAVE TASK TO DATABASE ──
+const _origSaveTask = saveTask;
+async function saveTask() {
+  const title = document.getElementById('new-title').value.trim();
+  const note = document.getElementById('new-note').value.trim();
+  if(!title){ showToast('Please describe what you need help with'); return; }
+
+  // If real user, save to database
+  if (currentProfile?.household_id) {
+    const { error } = await sb.from('tasks').insert({
+      household_id: currentProfile.household_id,
+      created_by: currentUser.id,
+      title,
+      notes: note || null,
+      room: selRoomVal || 'general',
+      urgency: urg === 'u' ? 'urgent' : 'routine',
+      status: 'active'
+    });
+
+    if (error) {
+      showToast('Could not save task. Please try again.');
+      return;
+    }
+    closeModal('task');
+    document.getElementById('new-title').value = '';
+    document.getElementById('new-note').value = '';
+    showToast('Task added! ✅');
+    loadTasks(); // reload from DB
+  } else {
+    // Guest mode — just add to UI
+    const rooms = {kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
+    const card = document.createElement('div');
+    card.className = 'card'; card.dataset.status = 'active'; card.dataset.room = selRoomVal;
+    const badge = urg==='u' ? '<span class="chip chip-urgent">Needs attention</span>' : '<span class="chip chip-routine">Routine</span>';
+    card.innerHTML = `<div class="task-title">📝 ${title}</div>${note?`<div class="task-note">${note}</div>`:''}<div class="task-meta">${badge}<span class="task-room">${rooms[selRoomVal]||'🏠 General'}</span><span class="task-date">Just added</span></div>`;
+    document.getElementById('task-list').prepend(card);
+    closeModal('task');
+    document.getElementById('new-title').value = '';
+    document.getElementById('new-note').value = '';
+    showToast('Task added! ✅');
+  }
+}
+
+// ── LOAD MESSAGES FROM DATABASE ──
+async function loadMessages() {
+  if (!currentProfile?.household_id) return;
+
+  const { data: msgs } = await sb
+    .from('messages')
+    .select('*, profiles(full_name, role)')
+    .eq('household_id', currentProfile.household_id)
+    .order('created_at', { ascending: true });
+
+  if (!msgs || msgs.length === 0) return;
+
+  const thread = document.getElementById('msg-thread');
+  if (!thread) return;
+  thread.innerHTML = '';
+
+  msgs.forEach(m => {
+    const isMe = m.sender_id === currentUser?.id;
+    const isHelper = m.profiles?.role === 'admin' || m.profiles?.role === 'team';
+    const wrap = document.createElement('div');
+    wrap.className = 'msg-wrap' + (isMe ? ' mine' : '');
+    const time = new Date(m.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' · ' + new Date(m.created_at).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+    wrap.innerHTML = !isMe
+      ? `<div><div class="msg-sender">${m.sender_name || 'Home Helper'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`
+      : `<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`;
+    thread.appendChild(wrap);
+  });
+  thread.scrollTop = thread.scrollHeight;
+}
+
+// ── SEND MESSAGE TO DATABASE ──
+const _origSendMsg = sendMsg;
+async function sendMsg() {
+  const input = document.getElementById('msg-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  if (currentProfile?.household_id) {
+    const { error } = await sb.from('messages').insert({
+      household_id: currentProfile.household_id,
+      sender_id: currentUser.id,
+      sender_name: currentProfile.full_name,
+      body: text
+    });
+    input.value = '';
+    if (!error) loadMessages();
+  } else {
+    // Guest mode
+    const thread = document.getElementById('msg-thread');
+    const wrap = document.createElement('div');
+    wrap.className = 'msg-wrap mine';
+    wrap.innerHTML = `<div><div class="msg-bubble bubble-mine">${text}</div><div class="msg-time">Just now</div></div>`;
+    thread.appendChild(wrap);
+    input.value = '';
+    thread.scrollTop = thread.scrollHeight;
+    setTimeout(() => {
+      const r = document.createElement('div');
+      r.className = 'msg-wrap';
+      r.innerHTML = `<div><div class="msg-sender">Home Helper</div><div class="msg-bubble bubble-them">Thanks! I'll get back to you shortly. 😊</div><div class="msg-time">Just now</div></div>`;
+      thread.appendChild(r);
+      thread.scrollTop = thread.scrollHeight;
+    }, 1200);
+  }
 }
 </script>
 </body>
