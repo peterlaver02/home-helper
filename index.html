@@ -261,7 +261,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="top-nav">
     <div>
       <div class="nav-title" id="nav-title">My Tasks</div>
-      <div class="nav-sub" id="nav-user"></div>
+      <div class="nav-sub" id="nav-user">Loading…</div>
     </div>
     <button class="nav-logout" onclick="logout()"><i class="ti ti-logout"></i></button>
   </div>
@@ -270,8 +270,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div id="helper-banner" style="background:var(--blue-lt);padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)">
     <img src="data:image/jpeg;base64,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" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--blue)" alt="Pete"/>
     <div>
-      <div style="font-size:15px;font-weight:700;color:var(--blue)">Your helper is Pete</div>
-      <div style="font-size:13px;color:var(--muted)">Next visit: Thursday, June 26 · 10:00 AM 👋</div>
+      <div style="font-size:15px;font-weight:700;color:var(--blue)" id="banner-helper-name">Your helper is Pete</div>
+      <div style="font-size:13px;color:var(--muted)" id="banner-next-visit">No visit scheduled yet</div>
     </div>
   </div>
 
@@ -379,12 +379,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <button class="add-fam-btn" onclick="showToast('Contact Pete to add a family member ✉️')"><i class="ti ti-user-plus" style="font-size:20px"></i>Add a Family Member</button>
 
     <div class="sec-title" style="margin-top:1.5rem">Plan</div>
-    <div class="card" style="background:var(--blue-lt);border:1.5px solid var(--blue)">
+    <div class="card" id="profile-plan-card" style="background:var(--bg);border:1.5px solid var(--border)">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div style="font-size:18px;font-weight:700;color:var(--blue)">⭐ Monthly Plan</div>
-        <div style="font-size:22px;font-weight:700;color:var(--blue)">$19<span style="font-size:14px;font-weight:400">/mo</span></div>
+        <div style="font-size:18px;font-weight:700;" id="profile-plan-name">Basic</div>
+        <div style="font-size:22px;font-weight:700;" id="profile-plan-price">Free</div>
       </div>
-      <div style="font-size:14px;color:var(--muted)">✓ Priority scheduling &nbsp;✓ Family access &nbsp;✓ Photo uploads &nbsp;✓ Visit history</div>
+      <div style="font-size:14px;color:var(--muted)" id="profile-plan-perks">✓ Add tasks &nbsp;✓ Message Pete &nbsp;✓ View visit history</div>
     </div>
 
     <div class="sec-title" style="margin-top:1.5rem">Notifications</div>
@@ -464,7 +464,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
     <div class="card" style="margin-bottom:14px">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-        <div class="avatar av-blue" style="width:54px;height:54px;font-size:18px" id="detail-av">MT</div>
+        <div class="avatar av-blue" style="width:54px;height:54px;font-size:18px" id="detail-av"></div>
         <div>
           <div style="font-size:21px;font-weight:700" id="detail-name"></div>
           <div style="font-size:14px;color:var(--muted)" id="detail-addr"></div>
@@ -1070,23 +1070,56 @@ function uploadProfilePhoto(input) {
 
 function populateClientProfile(profile) {
   if (!profile) return;
+
+  // Nav + name
   const nameEl = document.getElementById('profile-name');
   if (nameEl) nameEl.textContent = profile.full_name || '';
+  const navUser = document.getElementById('nav-user');
+  if (navUser) navUser.textContent = profile.full_name || '';
+
+  // Initials in avatar
+  const initials = (profile.full_name || '?').split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
   const initialsEl = document.getElementById('profile-av-initials');
-  if (initialsEl) initialsEl.textContent = (profile.full_name || '?').split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+  if (initialsEl) initialsEl.textContent = initials;
+
+  // Contact info
   const phoneEl = document.getElementById('profile-phone');
   if (phoneEl) phoneEl.textContent = profile.phone ? profile.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3') : '—';
   const emailEl = document.getElementById('profile-email');
   if (emailEl) emailEl.textContent = profile.email || '—';
   const addrEl = document.getElementById('profile-address');
   if (addrEl) addrEl.textContent = profile.households?.address || '—';
+
+  // Role label
   const roleEl = document.getElementById('profile-role');
   if (roleEl) {
     const labels = { client:'Client account', spouse:'Spouse account', family:'Family access', team:'Team member', admin:'Super Admin' };
     roleEl.textContent = labels[profile.role] || 'Account';
   }
-  const navUser = document.getElementById('nav-user');
-  if (navUser) navUser.textContent = profile.full_name || '';
+
+  // Plan card
+  const plan = profile.households?.plan || 'basic';
+  const waived = profile.households?.plan_waived || false;
+  const planCard = document.getElementById('profile-plan-card');
+  const planName = document.getElementById('profile-plan-name');
+  const planPrice = document.getElementById('profile-plan-price');
+  const planPerks = document.getElementById('profile-plan-perks');
+
+  if (plan === 'member' || waived) {
+    if (planCard) { planCard.style.background = 'var(--blue-lt)'; planCard.style.borderColor = 'var(--blue)'; }
+    if (planName) { planName.textContent = '⭐ Member Plan'; planName.style.color = 'var(--blue)'; }
+    if (planPrice) { planPrice.innerHTML = waived ? '<span style="font-size:16px;color:var(--green)">Fee Waived</span>' : '$19<span style="font-size:14px;font-weight:400">/mo</span>'; planPrice.style.color = 'var(--blue)'; }
+    if (planPerks) planPerks.textContent = '✓ Priority scheduling  ✓ Request visits  ✓ Family access  ✓ Photo uploads';
+  } else {
+    if (planCard) { planCard.style.background = 'var(--bg)'; planCard.style.borderColor = 'var(--border)'; }
+    if (planName) { planName.textContent = 'Basic Plan'; planName.style.color = 'var(--text)'; }
+    if (planPrice) { planPrice.textContent = 'Free'; planPrice.style.color = 'var(--text)'; }
+    if (planPerks) planPerks.textContent = '✓ Add tasks  ✓ Message Pete  ✓ View visit history';
+  }
+
+  // Banner next visit — clear hardcoded date
+  const bannerVisit = document.getElementById('banner-next-visit');
+  if (bannerVisit) bannerVisit.textContent = 'No visit scheduled yet';
 }
 
 function previewTMPhoto(input) {
@@ -1245,24 +1278,6 @@ function activateEmployee() {
   document.getElementById('admin-mode-banner').innerHTML = '🪪 Team Member mode active';
 }
 
-function doLogin() {
-  if (role === 'admin') {
-    showAdminScreen();
-  } else if (role === 'employee') {
-    showEmployeeScreen();
-  } else {
-    document.getElementById('screen-login').classList.remove('active');
-    document.getElementById('screen-main').classList.add('active');
-    if (role === 'family') {
-      document.getElementById('nav-user').textContent = currentProfile?.full_name + ' (Family)' || 'Family Member';
-      document.getElementById('profile-name').textContent = currentProfile?.full_name || 'Family Member';
-      document.getElementById('profile-role').textContent = 'Family access account';
-      document.getElementById('profile-av').textContent = 'ST';
-      document.getElementById('profile-av').className = 'avatar av-teal';
-    }
-    switchTab('tasks');
-  }
-}
 
 function showAdminScreen() {
   document.getElementById('screen-login').classList.remove('active');
@@ -1390,14 +1405,6 @@ function showEmployeeScreen() {
   switchTab('tasks');
 }
 
-function logout() {
-  ['screen-main','screen-admin'].forEach(s => document.getElementById(s).classList.remove('active'));
-  document.getElementById('screen-login').classList.add('active');
-  document.getElementById('admin-mode-banner').style.display = 'none';
-  role = 'client';
-  document.getElementById('role-client').classList.add('sel');
-  document.getElementById('role-family').classList.remove('sel');
-}
 
 // ── CLIENT TABS ──
 function switchTab(tab) {
@@ -1879,6 +1886,8 @@ async function logout() {
   ['screen-main','screen-admin'].forEach(s => document.getElementById(s).classList.remove('active'));
   document.getElementById('admin-mode-banner').style.display = 'none';
   document.getElementById('screen-login').classList.add('active');
+  document.getElementById('nav-user').textContent = 'Loading…';
+  document.getElementById('profile-name').textContent = '';
   role = 'client';
   document.getElementById('role-client').classList.add('sel');
   document.getElementById('role-family').classList.remove('sel');
