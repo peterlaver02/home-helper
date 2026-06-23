@@ -261,7 +261,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="top-nav">
     <div>
       <div class="nav-title" id="nav-title">My Tasks</div>
-      <div class="nav-sub" id="nav-user">Margaret Thompson</div>
+      <div class="nav-sub" id="nav-user"></div>
     </div>
     <button class="nav-logout" onclick="logout()"><i class="ti ti-logout"></i></button>
   </div>
@@ -325,7 +325,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <!-- MESSAGES — single household thread -->
   <div class="content" id="tab-messages" style="display:none;padding-bottom:130px">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
-      <img id="msg-pete-photo" style="width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--blue);flex-shrink:0" alt="Pete"/>
+      <img id="msg-pete-photo" src="data:image/jpeg;base64,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" style="width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--blue);flex-shrink:0" alt="Pete"/>
       <div>
         <div style="font-size:18px;font-weight:700">Pete — Home Helper</div>
         <div style="font-size:13px;color:var(--muted)">Everyone in your household can see this conversation</div>
@@ -348,15 +348,27 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="content" id="tab-profile" style="display:none">
     <div class="card">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
-        <div class="avatar av-blue" style="width:58px;height:58px;font-size:20px" id="profile-av">MT</div>
+        <!-- Tappable profile photo -->
+        <div style="position:relative;flex-shrink:0" onclick="document.getElementById('profile-photo-input').click()">
+          <div class="avatar av-blue" style="width:72px;height:72px;font-size:22px;overflow:hidden" id="profile-av">
+            <span id="profile-av-initials">?</span>
+          </div>
+          <div style="position:absolute;bottom:0;right:0;width:24px;height:24px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--card)">
+            <i class="ti ti-camera" style="font-size:12px;color:#fff"></i>
+          </div>
+          <input type="file" id="profile-photo-input" accept="image/*" style="display:none" onchange="uploadProfilePhoto(this)"/>
+        </div>
         <div>
-          <div style="font-size:24px;font-weight:700" id="profile-name">Margaret Thompson</div>
+          <div style="font-size:24px;font-weight:700" id="profile-name"></div>
           <div style="font-size:15px;color:var(--muted)" id="profile-role">Client account</div>
+          <div style="font-size:13px;color:var(--blue);margin-top:4px;cursor:pointer" onclick="document.getElementById('profile-photo-input').click()">
+            Tap photo to update
+          </div>
         </div>
       </div>
-      <div class="prow"><i class="ti ti-phone"></i>(704) 555-0142</div>
-      <div class="prow"><i class="ti ti-map-pin"></i>2214 Oak Creek Lane, Charlotte NC</div>
-      <div class="prow"><i class="ti ti-mail"></i>m.thompson@email.com</div>
+      <div class="prow"><i class="ti ti-phone"></i><span id="profile-phone">—</span></div>
+      <div class="prow"><i class="ti ti-map-pin"></i><span id="profile-address">—</span></div>
+      <div class="prow"><i class="ti ti-mail"></i><span id="profile-email">—</span></div>
     </div>
 
     <div class="sec-title">Family &amp; Loved Ones</div>
@@ -454,8 +466,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
         <div class="avatar av-blue" style="width:54px;height:54px;font-size:18px" id="detail-av">MT</div>
         <div>
-          <div style="font-size:21px;font-weight:700" id="detail-name">Margaret Thompson</div>
-          <div style="font-size:14px;color:var(--muted)" id="detail-addr">2214 Oak Creek Lane</div>
+          <div style="font-size:21px;font-weight:700" id="detail-name"></div>
+          <div style="font-size:14px;color:var(--muted)" id="detail-addr"></div>
         </div>
       </div>
       <div class="prow"><i class="ti ti-phone"></i><span id="detail-phone">(704) 555-0142</span></div>
@@ -472,28 +484,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <!-- FAMILY CONTACTS -->
     <div class="sec-title">Family & Loved Ones</div>
     <div id="detail-family-list">
-      <div class="card" style="margin-bottom:10px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <div class="avatar av-teal" style="width:42px;height:42px;font-size:13px">ST</div>
-          <div style="flex:1">
-            <div style="font-size:16px;font-weight:700">Sarah Thompson</div>
-            <div style="font-size:13px;color:var(--muted)">Daughter · Primary contact</div>
-          </div>
-        </div>
-        <div class="prow" style="padding:8px 0"><i class="ti ti-phone"></i><a href="tel:7045550187" style="color:var(--blue);text-decoration:none">(704) 555-0187</a></div>
-        <div class="prow" style="padding:8px 0;border-bottom:none"><i class="ti ti-mail"></i><a href="mailto:sarah.thompson@email.com" style="color:var(--blue);text-decoration:none">sarah.thompson@email.com</a></div>
-      </div>
-      <div class="card" style="margin-bottom:10px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <div class="avatar av-amber" style="width:42px;height:42px;font-size:13px">JT</div>
-          <div style="flex:1">
-            <div style="font-size:16px;font-weight:700">James Thompson</div>
-            <div style="font-size:13px;color:var(--muted)">Son</div>
-          </div>
-        </div>
-        <div class="prow" style="padding:8px 0"><i class="ti ti-phone"></i><a href="tel:7045550263" style="color:var(--blue);text-decoration:none">(704) 555-0263</a></div>
-        <div class="prow" style="padding:8px 0;border-bottom:none"><i class="ti ti-mail"></i><a href="mailto:james.thompson@email.com" style="color:var(--blue);text-decoration:none">james.thompson@email.com</a></div>
-      </div>
+      <p style="font-size:14px;color:var(--muted);padding:8px 0">No family members added yet</p>
     </div>
 
     <!-- PRIVATE ADMIN NOTES -->
@@ -502,15 +493,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
     <div class="note-card">
       <div class="note-card-title">🔧 Tools & Materials</div>
-      <div class="note-card-text" id="note-tools">Furnace filter: 16x25x1 · Fridge water filter: LT700P · Exterior faucet leaks — needs 3/4" washer kit</div>
+      <div class="note-card-text" id="note-tools">No notes yet</div>
     </div>
     <div class="note-card">
       <div class="note-card-title">🏠 House Notes</div>
-      <div class="note-card-text" id="note-house">Gate code: 4821 · Spare key under back porch mat · Small dog (Biscuit) — friendly · Attic pull-down in hallway closet</div>
+      <div class="note-card-text" id="note-house">No notes yet</div>
     </div>
     <div class="note-card">
       <div class="note-card-title">👤 Client Notes</div>
-      <div class="note-card-text" id="note-client">Prefers morning visits before noon · Hard of hearing in left ear — speak clearly · Daughter Sarah is primary contact for health matters</div>
+      <div class="note-card-text" id="note-client">No notes yet</div>
     </div>
 
     <button class="big-btn btn-blue btn-sm" style="margin-top:4px" onclick="openModal('admin-note')">
@@ -676,7 +667,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
         <div>
           <div style="font-size:20px;font-weight:700">Invoice #1003</div>
-          <div style="font-size:14px;color:var(--muted)">Margaret Thompson · June 26, 2026</div>
+          <div style="font-size:14px;color:var(--muted)" id="invoice-detail-sub"></div>
         </div>
         <span class="chip chip-urgent">Unpaid</span>
       </div>
@@ -719,7 +710,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       👤 Helper: Pete
     </div>
 
-    <button class="add-btn" style="font-size:17px;padding:14px" onclick="showToast('Invoice sent to Margaret & family! 📧')">
+    <button class="add-btn" style="font-size:17px;padding:14px" onclick="showToast('Invoice sent to client & family! 📧')">
       <i class="ti ti-send"></i> Send to Client & Family
     </button>
     <button class="req-btn" style="margin-top:10px;font-size:16px;padding:14px" onclick="showToast('Payment marked as received ✅')">
@@ -804,20 +795,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="modal-title">Assign a Client</div>
     <p style="font-size:15px;color:var(--muted);margin-bottom:16px">Choose a client to assign to <strong id="assign-to-name"></strong>.</p>
     <div id="assign-client-options">
-      <div class="fam-row" style="margin-bottom:8px;cursor:pointer" onclick="doAssign('Margaret Thompson','MT','av-blue')">
-        <div class="avatar av-blue" style="width:40px;height:40px;font-size:13px">MT</div>
-        <div class="fam-info"><div class="fam-name">Margaret Thompson</div><div class="fam-role">2214 Oak Creek Lane · Assigned: Jake</div></div>
-        <i class="ti ti-chevron-right" style="color:var(--muted);font-size:18px"></i>
-      </div>
-      <div class="fam-row" style="margin-bottom:8px;cursor:pointer" onclick="doAssign('Robert Baker','RB','av-teal')">
-        <div class="avatar av-teal" style="width:40px;height:40px;font-size:13px">RB</div>
-        <div class="fam-info"><div class="fam-name">Robert Baker</div><div class="fam-role">518 Maple Drive · Assigned: Priya</div></div>
-        <i class="ti ti-chevron-right" style="color:var(--muted);font-size:18px"></i>
-      </div>
-      <div class="fam-row" style="margin-bottom:8px;cursor:pointer" onclick="doAssign('Dorothy Hayes','DH','av-amber')">
-        <div class="avatar av-amber" style="width:40px;height:40px;font-size:13px">DH</div>
-        <div class="fam-info"><div class="fam-name">Dorothy Hayes</div><div class="fam-role">77 Birchwood Ct · Assigned: Jake</div></div>
-        <i class="ti ti-chevron-right" style="color:var(--muted);font-size:18px"></i>
+      <div id="assign-client-options-list">
+        <div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:15px">Loading clients…</div>
       </div>
     </div>
     <button class="modal-cancel" style="width:100%;margin-top:8px" onclick="closeModal('assign')">Cancel</button>
@@ -830,9 +809,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="modal-title">🧾 Create Invoice</div>
     <label class="modal-label">Client</label>
     <select class="select-input" id="inv-client">
-      <option>Margaret Thompson</option>
-      <option>Robert Baker</option>
-      <option>Dorothy Hayes</option>
+      <option>Select a client…</option>
     </select>
     <label class="modal-label">Visit date</label>
     <input class="modal-input" type="date" id="inv-date"/>
@@ -959,11 +936,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="modal">
     <div class="modal-title">👤 Add a Client</div>
     <label class="modal-label">Full Name</label>
-    <input class="modal-input" type="text" placeholder="e.g. Margaret Thompson" id="ac-name"/>
+    <input class="modal-input" type="text" placeholder="e.g. John Smith" id="ac-name"/>
     <label class="modal-label">Phone Number</label>
     <input class="modal-input" type="tel" placeholder="e.g. 5405550142" id="ac-phone"/>
     <label class="modal-label">Address</label>
-    <input class="modal-input" type="text" placeholder="e.g. 2214 Oak Creek Lane, Harrisonburg VA" id="ac-address"/>
+    <input class="modal-input" type="text" placeholder="e.g. 123 Main St, Harrisonburg VA 22801" id="ac-address"/>
     <label class="modal-label">Plan</label>
     <select class="select-input" id="ac-plan">
       <option value="basic">Basic (Free)</option>
@@ -1073,6 +1050,43 @@ function restoreClient(idx) {
   if (countEl) countEl.textContent = activeClients.length;
   renderClientList();
   showToast(`${client.name} restored! ✅`);
+}
+
+// ── CLIENT PROFILE PHOTO ──
+let clientPhotoBase64 = null;
+
+function uploadProfilePhoto(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    clientPhotoBase64 = e.target.result;
+    const av = document.getElementById('profile-av');
+    if (av) av.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
+    showToast('Profile photo updated! ✅');
+  };
+  reader.readAsDataURL(file);
+}
+
+function populateClientProfile(profile) {
+  if (!profile) return;
+  const nameEl = document.getElementById('profile-name');
+  if (nameEl) nameEl.textContent = profile.full_name || '';
+  const initialsEl = document.getElementById('profile-av-initials');
+  if (initialsEl) initialsEl.textContent = (profile.full_name || '?').split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+  const phoneEl = document.getElementById('profile-phone');
+  if (phoneEl) phoneEl.textContent = profile.phone ? profile.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3') : '—';
+  const emailEl = document.getElementById('profile-email');
+  if (emailEl) emailEl.textContent = profile.email || '—';
+  const addrEl = document.getElementById('profile-address');
+  if (addrEl) addrEl.textContent = profile.households?.address || '—';
+  const roleEl = document.getElementById('profile-role');
+  if (roleEl) {
+    const labels = { client:'Client account', spouse:'Spouse account', family:'Family access', team:'Team member', admin:'Super Admin' };
+    roleEl.textContent = labels[profile.role] || 'Account';
+  }
+  const navUser = document.getElementById('nav-user');
+  if (navUser) navUser.textContent = profile.full_name || '';
 }
 
 function previewTMPhoto(input) {
@@ -1197,25 +1211,9 @@ async function saveNewClient() {
 }
 let role = 'client', urg = 'r', selRoomVal = 'general', activeThread = null;
 
-const threads = {
-  margaret: { name:'Margaret Thompson', av:'MT', avClass:'av-blue',
-    msgs:[
-      {from:'helper', text:'Hi Margaret! Confirming our visit June 26th — toilet, lightbulb, and smoke detector. Around 10am. Work for you? 😊', time:'June 21 · 9:15 AM'},
-      {from:'me', text:'Yes that works perfectly! Thank you so much.', time:'June 21 · 9:32 AM'},
-      {from:'helper', text:'Wonderful! I saw the photo of the kitchen light — I\'ll bring the right bulb. No worries! 💡', time:'June 21 · 9:35 AM'},
-    ]},
-  sarah: { name:'Sarah Thompson (Daughter)', av:'ST', avClass:'av-teal',
-    msgs:[
-      {from:'me', text:'Hi! Just checking in — how is Mom doing overall?', time:'June 20 · 2:10 PM'},
-      {from:'helper', text:'She\'s doing really well! Great spirits. I noticed the back steps looked slippery — I\'ll add non-slip strips on my next visit.', time:'June 20 · 3:45 PM'},
-      {from:'me', text:'Can you check on Mom\'s back steps? They look uneven to me too.', time:'Yesterday · 11:02 AM'},
-    ]},
-  james: { name:'James Thompson (Son)', av:'JT', avClass:'av-amber',
-    msgs:[
-      {from:'me', text:'Hey, wanted to mention something privately — Mom has been a little confused about her medications lately. Just a heads up, no need to bring it up with her.', time:'June 19 · 8:30 AM'},
-      {from:'helper', text:'Thank you for letting me know James, I really appreciate you sharing that. I\'ll keep a gentle eye out and will reach out to you directly if I notice anything. 🙏', time:'June 19 · 9:15 AM'},
-    ]},
-};
+// Threads loaded from Supabase — no demo data
+const threads = {};
+
 
 // ── LOGIN ──
 function selectRole(r) {
@@ -1256,8 +1254,8 @@ function doLogin() {
     document.getElementById('screen-login').classList.remove('active');
     document.getElementById('screen-main').classList.add('active');
     if (role === 'family') {
-      document.getElementById('nav-user').textContent = 'Sarah Thompson (Family)';
-      document.getElementById('profile-name').textContent = 'Sarah Thompson';
+      document.getElementById('nav-user').textContent = currentProfile?.full_name + ' (Family)' || 'Family Member';
+      document.getElementById('profile-name').textContent = currentProfile?.full_name || 'Family Member';
       document.getElementById('profile-role').textContent = 'Family access account';
       document.getElementById('profile-av').textContent = 'ST';
       document.getElementById('profile-av').className = 'avatar av-teal';
@@ -1304,29 +1302,7 @@ async function loadAdminClients() {
 }
 
 // ── TEAM MEMBER DETAIL ──
-const teamData = {
-  jake: {
-    name: 'Jake Reynolds', av: 'JR', avClass: 'av-blue',
-    contact: '📞 (704) 555-0211 · jake@homehelper.com',
-    clientCount: '2 clients assigned',
-    visits: 'Visit today (Margaret, 10am) · Visit Sat (Dorothy, 9am)',
-    tasks: '4 active tasks across clients',
-    clients: [
-      { name: 'Margaret Thompson', av: 'MT', avClass: 'av-blue',  detail: '2214 Oak Creek Lane · Visit June 26 · 3 tasks' },
-      { name: 'Dorothy Hayes',     av: 'DH', avClass: 'av-amber', detail: '77 Birchwood Ct · Visit June 28 · 2 tasks' },
-    ]
-  },
-  priya: {
-    name: 'Priya Lewis', av: 'PL', avClass: 'av-amber',
-    contact: '📞 (704) 555-0344 · priya@homehelper.com',
-    clientCount: '1 client assigned',
-    visits: 'No visit scheduled this week',
-    tasks: '1 urgent task (Robert Baker)',
-    clients: [
-      { name: 'Robert Baker', av: 'RB', avClass: 'av-teal', detail: '518 Maple Drive · No visit scheduled · ⚠️ 1 urgent task' },
-    ]
-  }
-};
+const teamData = {};
 let activeTeamMember = null;
 
 function openTeamMember(id) {
@@ -1409,13 +1385,9 @@ function assignFromPool(clientName) {
 }
 
 function showEmployeeScreen() {
-  // Employee sees same app as client but with their assigned clients listed
   document.getElementById('screen-login').classList.remove('active');
   document.getElementById('screen-main').classList.add('active');
-  document.getElementById('nav-user').textContent = 'Jake Reynolds (Team)';
-  document.getElementById('nav-title').textContent = 'My Clients';
   switchTab('tasks');
-  showToast('Logged in as Jake Reynolds 👋');
 }
 
 function logout() {
@@ -1783,20 +1755,8 @@ async function loadProfileAndRoute(user) {
 
   currentProfile = profile;
 
-  // Update UI with real name
-  if (profile.full_name) {
-    const navUser = document.getElementById('nav-user');
-    if(navUser) navUser.textContent = profile.full_name;
-    const profileName = document.getElementById('profile-name');
-    if(profileName) profileName.textContent = profile.full_name;
-  }
-
-  // Set Pete's photo in message header
-  const petePhotos = document.querySelectorAll('img[alt="Pete"]');
-  petePhotos.forEach(el => {
-    const bannerPhoto = document.querySelector('#helper-banner img');
-    if (bannerPhoto) el.src = bannerPhoto.src;
-  });
+  // Populate profile UI with real data
+  populateClientProfile(profile);
 
   // Route based on role
   if (profile.role === 'admin' || isAdminPhone) {
