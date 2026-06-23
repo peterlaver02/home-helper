@@ -1127,20 +1127,61 @@ function saveTeamMember() {
   showToast(`${name} added to your team! 🎉`);
 }
 
-function saveNewClient() {
+async function saveNewClient() {
   const name = document.getElementById('ac-name').value.trim();
   const phone = document.getElementById('ac-phone').value.trim();
   const address = document.getElementById('ac-address').value.trim();
   const plan = document.getElementById('ac-plan').value;
+  const password = document.getElementById('ac-pass').value.trim();
   if (!name || !phone) { showToast('Please enter name and phone number'); return; }
+  if (!password || password.length < 6) { showToast('Password must be at least 6 characters'); return; }
+
+  showToast('Creating account…');
 
   const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2);
   const colors = ['av-blue','av-teal','av-amber'];
   const color = colors[Math.floor(Math.random() * colors.length)];
   const planLabel = plan === 'basic' ? 'Basic · Free' : plan === 'waived' ? 'Member · Fee Waived' : 'Member · $19/mo';
+  const planWaived = plan === 'waived';
+  const email = phone.replace(/\D/g,'') + '@homehelper.app';
 
-  // Store in memory array
-  activeClients.push({ name, phone, address, plan, planLabel, initials, color });
+  // Step 1 — create auth user in Supabase
+  const { data: authData, error: authError } = await sb.auth.admin
+    ? await sb.auth.signUp({ email, password })
+    : await sb.auth.signUp({ email, password });
+
+  if (authError) {
+    showToast('Error creating account: ' + authError.message);
+    return;
+  }
+
+  const userId = authData.user?.id;
+  if (!userId) { showToast('Could not create user — try again'); return; }
+
+  // Step 2 — create household
+  const { data: household, error: hhError } = await sb
+    .from('households')
+    .insert({ address: address || 'Unknown', plan: plan === 'waived' ? 'member' : plan, plan_waived: planWaived })
+    .select()
+    .single();
+
+  if (hhError) { showToast('Error creating household: ' + hhError.message); return; }
+
+  // Step 3 — create profile
+  const { error: profError } = await sb.from('profiles').insert({
+    id: userId,
+    full_name: name,
+    phone: phone.replace(/\D/g,''),
+    role: 'client',
+    household_id: household.id,
+    avatar_initials: initials,
+    is_primary: true
+  });
+
+  if (profError) { showToast('Error creating profile: ' + profError.message); return; }
+
+  // Step 4 — add to local list and re-render
+  activeClients.push({ id: userId, name, phone, address, plan, planLabel, planWaived, initials, color, householdId: household.id });
   renderClientList();
 
   document.getElementById('ac-name').value = '';
@@ -1152,7 +1193,7 @@ function saveNewClient() {
   const countEl = document.getElementById('stat-clients');
   if (countEl) countEl.textContent = activeClients.length;
 
-  showToast(`${name} added as a client! 🎉`);
+  showToast(`${name} added and account created! 🎉`);
 }
 let role = 'client', urg = 'r', selRoomVal = 'general', activeThread = null;
 
@@ -1230,6 +1271,36 @@ function showAdminScreen() {
   document.getElementById('screen-loading').classList.remove('active');
   document.getElementById('screen-admin').classList.add('active');
   switchAdminTab('clients');
+  loadAdminClients();
+}
+
+async function loadAdminClients() {
+  const { data, error } = await sb
+    .from('profiles')
+    .select('*, households(*)')
+    .eq('role', 'client')
+    .order('created_at', { ascending: false });
+
+  if (error || !data) return;
+
+  const colors = ['av-blue','av-teal','av-amber'];
+  activeClients = data.map((p, i) => ({
+    id: p.id,
+    name: p.full_name,
+    phone: p.phone || '',
+    address: p.households?.address || 'No address',
+    plan: p.households?.plan || 'basic',
+    planWaived: p.households?.plan_waived || false,
+    planLabel: p.households?.plan_waived ? 'Member · Fee Waived' : p.households?.plan === 'member' ? 'Member · $19/mo' : 'Basic · Free',
+    initials: p.avatar_initials || p.full_name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2),
+    color: colors[i % colors.length],
+    householdId: p.household_id
+  }));
+
+  const countEl = document.getElementById('stat-clients');
+  if (countEl) countEl.textContent = activeClients.length;
+
+  renderClientList();
 }
 
 // ── TEAM MEMBER DETAIL ──
@@ -1389,23 +1460,49 @@ function switchAdminTab(tab) {
 }
 
 // ── CLIENT DETAIL ──
-const clientData = {
-  margaret:{ av:'MT', avClass:'av-blue', name:'Margaret Thompson', addr:'2214 Oak Creek Lane', phone:'(704) 555-0142', family:'Sarah (daughter), James (son)', plan:'Monthly Plan · $19/mo' },
-  robert:  { av:'RB', avClass:'av-teal', name:'Robert Baker',       addr:'518 Maple Drive',    phone:'(704) 555-0198', family:'Linda (daughter)',               plan:'Pay-per-visit' },
-  dorothy: { av:'DH', avClass:'av-amber',name:'Dorothy Hayes',      addr:'77 Birchwood Ct',    phone:'(704) 555-0321', family:'Tom (son)',                     plan:'Monthly Plan · $19/mo' },
-};
-function openClient(id) {
-  const d = clientData[id];
+function openClient(identifier) {
+  // Find client from our activeClients array by name or index
+  const client = typeof identifier === 'string'
+    ? activeClients.find(c => c.name === identifier || c.id === identifier)
+    : activeClients[identifier];
+
+  if (!client) { showToast('Client not found'); return; }
+
   document.getElementById('atab-clients').style.display = 'none';
   document.getElementById('atab-client-detail').style.display = 'block';
-  document.getElementById('detail-av').textContent = d.av;
-  document.getElementById('detail-av').className = 'avatar '+d.avClass;
-  document.getElementById('detail-av').style.cssText = 'width:54px;height:54px;font-size:18px';
-  document.getElementById('detail-name').textContent = d.name;
-  document.getElementById('detail-addr').textContent = d.addr;
-  document.getElementById('detail-phone').textContent = d.phone;
-  document.getElementById('detail-family').textContent = d.family;
-  document.getElementById('detail-plan').textContent = d.plan;
+
+  // Avatar
+  const av = document.getElementById('detail-av');
+  av.textContent = client.initials || client.name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+  av.className = 'avatar ' + (client.color || 'av-blue');
+  av.style.cssText = 'width:54px;height:54px;font-size:18px';
+
+  // Details
+  document.getElementById('detail-name').textContent = client.name;
+  document.getElementById('detail-addr').textContent = client.address || 'No address on file';
+  document.getElementById('detail-phone').textContent = client.phone || 'No phone on file';
+  document.getElementById('detail-plan').textContent = client.planLabel || 'Basic · Free';
+  document.getElementById('detail-plan').style.color = '';
+
+  // Clear family list for now — will load from DB when connected
+  const famList = document.getElementById('detail-family-list');
+  if (famList) famList.innerHTML = '<p style="font-size:14px;color:var(--muted);padding:8px 0">No family members added yet</p>';
+
+  // Clear notes to blank for new clients
+  const noteTools = document.getElementById('note-tools');
+  const noteHouse = document.getElementById('note-house');
+  const noteClient = document.getElementById('note-client');
+  if (noteTools) noteTools.textContent = 'No notes yet';
+  if (noteHouse) noteHouse.textContent = 'No notes yet';
+  if (noteClient) noteClient.textContent = 'No notes yet';
+
+  // Clear task list
+  const taskList = document.getElementById('detail-task-list');
+  if (taskList) taskList.innerHTML = '<div style="text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:15px">No active tasks</div>';
+
+  // Reset waive toggle
+  const waive = document.getElementById('waive-toggle');
+  if (waive) waive.checked = client.planWaived || false;
 }
 function closeClient() {
   document.getElementById('atab-client-detail').style.display = 'none';
