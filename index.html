@@ -430,7 +430,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--red)" id="stat-urgent">0</div><div class="admin-stat-label">Urgent Tasks</div></div>
       <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--green)" id="stat-visits">0</div><div class="admin-stat-label">Visits This Week</div></div>
     </div>
-    <div class="sec-title">Your Clients</div>
+    <div class="sec-title" style="display:flex;align-items:center;justify-content:space-between">
+      Your Clients
+      <button onclick="toggleArchived()" id="archived-toggle" style="font-size:13px;color:var(--muted);background:none;border:1px solid var(--border);border-radius:99px;padding:4px 12px;cursor:pointer">Show Archived</button>
+    </div>
     <div id="admin-client-list">
       <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
         <div style="font-size:48px;margin-bottom:12px">👥</div>
@@ -516,22 +519,36 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
     <!-- CLIENT TASKS (admin view) -->
     <div class="sec-title" style="margin-top:1.5rem">Active Tasks</div>
-    <div class="card">
-      <div class="task-title">🚽 Running toilet</div>
-      <div class="task-meta"><span class="chip chip-scheduled">📅 Scheduled June 26</span><span class="task-room">🚿 Bathroom</span></div>
-    </div>
-    <div class="card">
-      <div class="task-title">🔋 Smoke detector battery</div>
-      <div class="task-meta"><span class="chip chip-routine">Routine</span><span class="task-room">🏠 General</span></div>
-    </div>
-    <div class="card">
-      <div class="task-title">💡 Kitchen lightbulb</div>
-      <div class="task-meta"><span class="chip chip-scheduled">📅 Scheduled June 26</span><span class="task-room">🍳 Kitchen</span></div>
+    <div id="detail-task-list">
+      <div style="text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:15px">No active tasks</div>
     </div>
 
     <button class="req-btn" style="margin-top:8px" onclick="showToast('Visit scheduled! Client will be notified 📅')">
       <i class="ti ti-calendar-plus"></i> Schedule a Visit
     </button>
+
+    <!-- ARCHIVE SECTION -->
+    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+      <div class="sec-title">Manage Account</div>
+
+      <!-- DOWNGRADE -->
+      <div style="background:var(--amber-lt);border-radius:10px;padding:14px;margin-bottom:12px">
+        <div style="font-size:14px;font-weight:700;color:var(--amber);margin-bottom:4px">⬇️ Downgrade to Basic (Free)</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:12px">They keep their account and can still log in, view tasks, and message you. They lose the ability to request visits and family member access until they resubscribe.</div>
+        <button onclick="downgradeToBasic()" style="width:100%;padding:12px;font-size:16px;font-weight:600;background:transparent;border:1.5px solid var(--amber);color:var(--amber);border-radius:8px;cursor:pointer">
+          Downgrade to Basic
+        </button>
+      </div>
+
+      <!-- ARCHIVE -->
+      <div style="background:var(--red-lt);border-radius:10px;padding:14px;margin-bottom:12px">
+        <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:4px">📦 Archive this client</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:12px">They will no longer be able to log in. All their data — tasks, messages, visits, invoices — is preserved and can be restored at any time.</div>
+        <button id="archive-btn" onclick="confirmArchive()" style="width:100%;padding:12px;font-size:16px;font-weight:600;background:transparent;border:1.5px solid var(--red);color:var(--red);border-radius:8px;cursor:pointer">
+          Archive Client
+        </button>
+      </div>
+    </div>
   </div>
 
     <!-- SCHEDULE TAB -->
@@ -876,6 +893,32 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
+<!-- Archive Client Modal -->
+<div class="modal-bg" id="modal-archive">
+  <div class="modal">
+    <div style="text-align:center;padding:1rem 0 0.5rem">
+      <div style="font-size:48px;margin-bottom:8px">📦</div>
+      <div class="modal-title" style="text-align:center">Archive this client?</div>
+    </div>
+    <div style="background:var(--bg);border-radius:10px;padding:14px;margin-bottom:20px">
+      <div style="font-size:15px;color:var(--text);line-height:1.6;margin-bottom:10px">
+        <strong id="archive-client-name"></strong> will be archived. Here's what happens:
+      </div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8">
+        ✅ All their data is kept forever<br/>
+        ✅ Tasks, messages, visits, invoices preserved<br/>
+        ✅ You can restore them any time<br/>
+        🚫 They won't be able to log in<br/>
+        🚫 They won't receive notifications
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal('archive')">Cancel</button>
+      <button style="flex:2;padding:16px;font-size:19px;font-weight:600;background:var(--red);color:#fff;border:none;border-radius:10px;cursor:pointer" onclick="doArchive()">Archive Client</button>
+    </div>
+  </div>
+</div>
+
 <!-- Invite Team Member Modal -->
 <div class="modal-bg" id="modal-invite-employee">
   <div class="modal">
@@ -939,6 +982,85 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 <script>
 // ── STATE ──
 let tmPhotoBase64 = null;
+let showingArchived = false;
+let archivedClients = [];
+let activeClientName = '';
+
+function downgradeToBasic() {
+  const name = document.getElementById('detail-name').textContent;
+  const plan = document.getElementById('detail-plan');
+  plan.textContent = 'Basic · Free';
+  plan.style.color = 'var(--muted)';
+  document.getElementById('waive-toggle').checked = false;
+  closeClient();
+  showToast(`${name} downgraded to Basic ✓`);
+}
+
+// ── ARCHIVE CLIENT ──
+function confirmArchive() {
+  const name = document.getElementById('detail-name').textContent;
+  activeClientName = name;
+  document.getElementById('archive-client-name').textContent = name;
+  openModal('archive');
+}
+
+function doArchive() {
+  const list = document.getElementById('admin-client-list');
+  const rows = list.querySelectorAll('.admin-client-row');
+  rows.forEach(row => {
+    if (row.querySelector('.client-name')?.textContent === activeClientName) {
+      archivedClients.push({ name: activeClientName, html: row.outerHTML });
+      row.remove();
+    }
+  });
+  const countEl = document.getElementById('stat-clients');
+  if (countEl) countEl.textContent = Math.max(0, parseInt(countEl.textContent||0) - 1);
+  closeModal('archive');
+  closeClient();
+  showToast(`${activeClientName} archived. Data preserved. 📦`);
+}
+
+function toggleArchived() {
+  showingArchived = !showingArchived;
+  const btn = document.getElementById('archived-toggle');
+  const list = document.getElementById('admin-client-list');
+  if (showingArchived) {
+    btn.textContent = 'Show Active';
+    btn.style.color = 'var(--blue)';
+    btn.style.borderColor = 'var(--blue)';
+    list.innerHTML = '';
+    if (archivedClients.length === 0) {
+      list.innerHTML = '<div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📦</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No archived clients</div></div>';
+    } else {
+      archivedClients.forEach(c => {
+        const div = document.createElement('div');
+        div.innerHTML = c.html;
+        const row = div.firstElementChild;
+        row.style.opacity = '0.6';
+        const restore = document.createElement('button');
+        restore.textContent = 'Restore';
+        restore.style.cssText = 'background:var(--green);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;font-weight:600;margin-left:8px;flex-shrink:0';
+        restore.onclick = (e) => { e.stopPropagation(); restoreClient(c.name); };
+        row.appendChild(restore);
+        list.appendChild(row);
+      });
+    }
+  } else {
+    btn.textContent = 'Show Archived';
+    btn.style.color = 'var(--muted)';
+    btn.style.borderColor = 'var(--border)';
+    location.reload();
+  }
+}
+
+function restoreClient(name) {
+  const idx = archivedClients.findIndex(c => c.name === name);
+  if (idx > -1) {
+    archivedClients.splice(idx, 1);
+    showToast(`${name} restored! ✅`);
+    toggleArchived();
+  }
+}
 
 function previewTMPhoto(input) {
   const file = input.files[0];
