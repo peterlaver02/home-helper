@@ -183,6 +183,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 <!-- SUPABASE SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- STRIPE JS -->
+<script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 <div class="toast" id="toast"></div>
@@ -214,6 +216,43 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 </div>
 
 <!-- ═══════════════════════════════════════
+     SIGNUP SCREEN
+═══════════════════════════════════════ -->
+<div class="screen" id="screen-signup">
+  <div class="login-wrap">
+    <div style="font-size:60px;margin-bottom:8px">🏡</div>
+    <div class="app-logo">Home <span>Helper</span></div>
+    <div class="app-tagline">Create your account</div>
+    <div class="login-card">
+      <div class="error-msg" id="signup-error"></div>
+
+      <label class="field-label">Your Full Name</label>
+      <input class="big-input" type="text" placeholder="e.g. John Smith" id="signup-name"/>
+
+      <label class="field-label">Phone Number</label>
+      <input class="big-input" type="tel" placeholder="e.g. 5405550142" id="signup-phone"/>
+
+      <label class="field-label">Home Address</label>
+      <input class="big-input" type="text" placeholder="e.g. 123 Main St, Harrisonburg VA" id="signup-address"/>
+
+      <label class="field-label">Create a Password</label>
+      <input class="big-input" type="password" placeholder="At least 6 characters" id="signup-password"/>
+
+      <label class="field-label">Confirm Password</label>
+      <input class="big-input" type="password" placeholder="Same password again" id="signup-confirm"/>
+
+      <button class="big-btn btn-blue" onclick="doSignup()">Create My Account</button>
+
+      <div style="text-align:center;margin-top:14px">
+        <span style="font-size:17px;color:var(--muted)">Already have an account? </span>
+        <a onclick="showScreen('screen-login')" style="font-size:17px;color:var(--blue);cursor:pointer;font-weight:600">Sign In</a>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:16px;color:var(--muted)">Need help? Call <strong style="color:var(--blue)">555-HOME-HELP</strong></p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
      LOGIN SCREEN
 ═══════════════════════════════════════ -->
 <div class="screen active" id="screen-login">
@@ -241,6 +280,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <input class="big-input" type="password" placeholder="••••••••" id="login-password"/>
       <button class="big-btn btn-blue" onclick="doLogin()">Sign In</button>
       <a class="forgot" onclick="doForgotPassword()">Forgot password?</a>
+      <div style="text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+        <span style="font-size:17px;color:var(--muted)">New here? </span>
+        <a onclick="showScreen('screen-signup')" style="font-size:17px;color:var(--blue);cursor:pointer;font-weight:600">Create an account</a>
+      </div>
     </div>
     <p style="margin-top:1.5rem;font-size:16px;color:var(--muted)">Need help? Call <strong style="color:var(--blue)">555-HOME-HELP</strong></p>
     <div style="margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center">
@@ -385,6 +428,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div style="font-size:22px;font-weight:700;" id="profile-plan-price">Free</div>
       </div>
       <div style="font-size:14px;color:var(--muted)" id="profile-plan-perks">✓ Add tasks &nbsp;✓ Message Pete &nbsp;✓ View visit history</div>
+      <div id="upgrade-btn-wrap" style="margin-top:12px;display:none">
+        <button onclick="openModal('upgrade')" style="width:100%;padding:14px;font-size:17px;font-weight:600;background:var(--blue);color:#fff;border:none;border-radius:10px;cursor:pointer">
+          ⭐ Upgrade to Member — $19/mo
+        </button>
+      </div>
     </div>
 
     <div class="sec-title" style="margin-top:1.5rem">Notifications</div>
@@ -710,7 +758,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       👤 Helper: Pete
     </div>
 
-    <button class="add-btn" style="font-size:17px;padding:14px" onclick="showToast('Invoice sent to client & family! 📧')">
+    <button class="add-btn" style="font-size:17px;padding:14px" onclick="sendAdminInvoice()">
       <i class="ti ti-send"></i> Send to Client & Family
     </button>
     <button class="req-btn" style="margin-top:10px;font-size:16px;padding:14px" onclick="showToast('Payment marked as received ✅')">
@@ -722,15 +770,35 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 
   <!-- ADMIN MESSAGES -->
+  <!-- ADMIN MESSAGES INBOX -->
   <div class="content" id="atab-messages" style="display:none;padding-bottom:80px">
     <div class="sec-title">All Conversations</div>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:14px">One shared thread per household — you see all of them here.</p>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:14px">One thread per household — tap to open and reply.</p>
     <div id="admin-messages-list">
       <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
         <div style="font-size:48px;margin-bottom:12px">💬</div>
         <div style="font-size:18px;font-weight:600;margin-bottom:8px">No messages yet</div>
         <div style="font-size:15px">Messages from clients will appear here</div>
       </div>
+    </div>
+  </div>
+
+  <!-- ADMIN MESSAGE THREAD VIEW -->
+  <div class="content" id="atab-admin-thread" style="display:none;padding-bottom:130px">
+    <button class="back-btn" onclick="closeAdminThread()">
+      <i class="ti ti-arrow-left"></i> Back to Messages
+    </button>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
+      <div class="avatar av-blue" style="width:46px;height:46px;font-size:15px" id="admin-thread-av"></div>
+      <div>
+        <div style="font-size:19px;font-weight:700" id="admin-thread-name"></div>
+        <div style="font-size:13px;color:var(--muted)" id="admin-thread-addr"></div>
+      </div>
+    </div>
+    <div id="admin-msg-thread"></div>
+    <div class="msg-bar">
+      <input class="msg-input" type="text" placeholder="Reply to this household…" id="admin-msg-input"/>
+      <button class="msg-send" onclick="sendAdminMsg()"><i class="ti ti-send"></i></button>
     </div>
   </div>
 
@@ -956,7 +1024,353 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
+<!-- Upgrade to Member Modal -->
+<div class="modal-bg" id="modal-upgrade">
+  <div class="modal">
+    <div style="text-align:center;padding:1rem 0 0.5rem">
+      <div style="font-size:48px;margin-bottom:8px">⭐</div>
+      <div class="modal-title" style="text-align:center">Upgrade to Member</div>
+    </div>
+    <div style="background:var(--blue-lt);border-radius:10px;padding:14px;margin-bottom:16px">
+      <div style="font-size:22px;font-weight:700;color:var(--blue);text-align:center;margin-bottom:8px">$19 / month</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8;text-align:center">
+        ✓ Request visits &nbsp;✓ Priority scheduling<br/>
+        ✓ Up to 2 family logins &nbsp;✓ Visit history<br/>
+        ✓ Cancel anytime
+      </div>
+    </div>
+    <div class="error-msg" id="stripe-error"></div>
+    <label class="modal-label">Card Number</label>
+    <div id="card-element" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;margin-bottom:12px;background:var(--bg);font-size:18px"></div>
+    <div style="display:flex;gap:10px;margin-bottom:12px">
+      <div style="flex:1">
+        <label class="modal-label">Expiry</label>
+        <div id="card-expiry" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg)"></div>
+      </div>
+      <div style="flex:1">
+        <label class="modal-label">CVC</label>
+        <div id="card-cvc" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg)"></div>
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal('upgrade')">Cancel</button>
+      <button class="modal-save" id="subscribe-btn" onclick="doSubscribe()">Subscribe — $19/mo</button>
+    </div>
+    <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px">🔒 Secured by Stripe. Cancel anytime.</p>
+  </div>
+</div>
+
 <script>
+// ═══════════════════════════════════════
+// ADMIN MESSAGES
+// ═══════════════════════════════════════
+let activeAdminHousehold = null;
+let adminMsgSubscription = null;
+
+async function loadAdminInbox() {
+  const list = document.getElementById('admin-messages-list');
+  list.innerHTML = '<div style="text-align:center;padding:1.5rem;color:var(--muted)"><div class="spinner" style="margin:0 auto"></div></div>';
+
+  // Get all households that have messages
+  const { data: messages, error } = await sb
+    .from('messages')
+    .select('household_id, sender_name, body, created_at, read, households(address), profiles!messages_household_id_fkey(full_name)')
+    .order('created_at', { ascending: false });
+
+  if (error || !messages) {
+    list.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted)">Could not load messages</div>';
+    return;
+  }
+
+  // Group by household — latest message per household
+  const seen = new Set();
+  const threads = [];
+  messages.forEach(m => {
+    if (!seen.has(m.household_id)) {
+      seen.add(m.household_id);
+      threads.push(m);
+    }
+  });
+
+  if (threads.length === 0) {
+    list.innerHTML = `
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:48px;margin-bottom:12px">💬</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No messages yet</div>
+        <div style="font-size:15px">Messages from clients will appear here</div>
+      </div>`;
+    return;
+  }
+
+  // Also get unread counts
+  const { data: unread } = await sb
+    .from('messages')
+    .select('household_id')
+    .eq('read', false)
+    .neq('sender_name', 'Pete');
+
+  const unreadCounts = {};
+  (unread || []).forEach(m => {
+    unreadCounts[m.household_id] = (unreadCounts[m.household_id] || 0) + 1;
+  });
+
+  list.innerHTML = '';
+  threads.forEach(thread => {
+    const householdId = thread.household_id;
+    const address = thread.households?.address || 'Unknown address';
+    const unreadCount = unreadCounts[householdId] || 0;
+    const preview = thread.body?.length > 50 ? thread.body.substring(0, 50) + '…' : thread.body;
+    const time = new Date(thread.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const initials = address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+
+    const row = document.createElement('div');
+    row.className = 'thread-row';
+    row.style.cursor = 'pointer';
+    row.innerHTML = `
+      <div class="avatar av-blue" style="width:48px;height:48px;font-size:15px;flex-shrink:0">${initials}</div>
+      <div class="thread-info">
+        <div class="thread-name" style="${unreadCount > 0 ? 'font-weight:700' : ''}">${address}</div>
+        <div class="thread-preview" style="${unreadCount > 0 ? 'color:var(--text);font-weight:600' : ''}">${thread.sender_name !== 'Pete' ? thread.sender_name + ': ' : 'You: '}${preview}</div>
+      </div>
+      <div class="thread-right">
+        <div class="thread-time">${time}</div>
+        ${unreadCount > 0 ? `<div style="background:var(--blue);color:#fff;border-radius:99px;font-size:12px;padding:2px 8px;font-weight:700">${unreadCount}</div>` : ''}
+      </div>`;
+    row.onclick = () => openAdminThread(householdId, address);
+    list.appendChild(row);
+  });
+
+  // Update badge count
+  const totalUnread = Object.values(unreadCounts).reduce((a,b) => a+b, 0);
+  const badge = document.querySelector('#abtn-messages .nbadge');
+  if (badge) badge.textContent = totalUnread > 0 ? totalUnread : '';
+  if (badge) badge.style.display = totalUnread > 0 ? 'block' : 'none';
+}
+
+async function openAdminThread(householdId, address) {
+  activeAdminHousehold = householdId;
+
+  // Show thread view
+  document.getElementById('atab-messages').style.display = 'none';
+  document.getElementById('atab-admin-thread').style.display = 'block';
+
+  // Set header
+  const initials = address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  document.getElementById('admin-thread-av').textContent = initials;
+  document.getElementById('admin-thread-name').textContent = address;
+  document.getElementById('admin-thread-addr').textContent = 'Household conversation';
+
+  // Load messages
+  await renderAdminThread(householdId);
+
+  // Mark as read
+  await sb.from('messages')
+    .update({ read: true })
+    .eq('household_id', householdId)
+    .neq('sender_name', 'Pete');
+
+  // Subscribe to real-time new messages
+  if (adminMsgSubscription) adminMsgSubscription.unsubscribe();
+  adminMsgSubscription = sb
+    .channel('admin-thread-' + householdId)
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'messages',
+      filter: `household_id=eq.${householdId}`
+    }, () => renderAdminThread(householdId))
+    .subscribe();
+}
+
+async function renderAdminThread(householdId) {
+  const { data: msgs, error } = await sb
+    .from('messages')
+    .select('*')
+    .eq('household_id', householdId)
+    .order('created_at', { ascending: true });
+
+  const thread = document.getElementById('admin-msg-thread');
+  if (error || !msgs) {
+    thread.innerHTML = '<div style="text-align:center;padding:1rem;color:var(--muted)">Could not load messages</div>';
+    return;
+  }
+
+  if (msgs.length === 0) {
+    thread.innerHTML = `
+      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
+        <div style="font-size:40px;margin-bottom:8px">💬</div>
+        <div style="font-size:16px">No messages yet — send the first one!</div>
+      </div>`;
+    return;
+  }
+
+  thread.innerHTML = '';
+  msgs.forEach(m => {
+    const isMe = m.sender_name === 'Pete';
+    const wrap = document.createElement('div');
+    wrap.className = 'msg-wrap' + (isMe ? ' mine' : '');
+    const time = new Date(m.created_at).toLocaleString('en-US', {
+      month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+    });
+    wrap.innerHTML = isMe
+      ? `<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`
+      : `<div><div class="msg-sender">${m.sender_name || 'Client'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`;
+    thread.appendChild(wrap);
+  });
+  thread.scrollTop = thread.scrollHeight;
+}
+
+async function sendAdminMsg() {
+  const input = document.getElementById('admin-msg-input');
+  const text = input.value.trim();
+  if (!text || !activeAdminHousehold) return;
+  input.value = '';
+
+  const { error } = await sb.from('messages').insert({
+    household_id: activeAdminHousehold,
+    sender_id: currentUser.id,
+    sender_name: 'Pete',
+    body: text,
+    read: false
+  });
+
+  if (error) { showToast('Could not send message'); input.value = text; return; }
+  await renderAdminThread(activeAdminHousehold);
+}
+
+function closeAdminThread() {
+  if (adminMsgSubscription) { adminMsgSubscription.unsubscribe(); adminMsgSubscription = null; }
+  activeAdminHousehold = null;
+  document.getElementById('atab-admin-thread').style.display = 'none';
+  document.getElementById('atab-messages').style.display = 'block';
+  loadAdminInbox(); // refresh unread counts
+}
+
+// ═══════════════════════════════════════
+// STRIPE PAYMENTS
+// ═══════════════════════════════════════
+const STRIPE_PK = 'pk_test_51TlaxlE3fogAtaxo0vVNvDE0LnNWrtcU9QSEqelzWZuPkDpQjcC5Sf9QAGSssWnGAaS9pewE6WJVDCvOhHeBJ1qf009usudPyv';
+const EDGE_URL = 'https://amhphshkfvqepvxlenps.supabase.co/functions/v1/stripe-handler';
+let stripeInstance = null;
+let cardElement = null;
+let cardExpiry = null;
+let cardCvc = null;
+
+function initStripe() {
+  if (stripeInstance) return;
+  stripeInstance = Stripe(STRIPE_PK);
+  const elements = stripeInstance.elements();
+  const style = {
+    base: { fontSize: '18px', color: '#1a1a1a', '::placeholder': { color: '#aaa' } }
+  };
+  cardElement = elements.create('cardNumber', { style });
+  cardExpiry = elements.create('cardExpiry', { style });
+  cardCvc = elements.create('cardCvc', { style });
+  cardElement.mount('#card-element');
+  cardExpiry.mount('#card-expiry');
+  cardCvc.mount('#card-cvc');
+}
+
+// Show upgrade button for basic plan clients
+function showUpgradeIfBasic(plan, waived) {
+  const wrap = document.getElementById('upgrade-btn-wrap');
+  if (wrap) wrap.style.display = (!plan || plan === 'basic') && !waived ? 'block' : 'none';
+}
+
+async function doSubscribe() {
+  if (!currentProfile) return;
+  hideError('stripe-error');
+  const btn = document.getElementById('subscribe-btn');
+  btn.textContent = 'Processing…';
+  btn.disabled = true;
+
+  try {
+    // Create payment method
+    const { paymentMethod, error } = await stripeInstance.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+      billing_details: { name: currentProfile.full_name }
+    });
+
+    if (error) {
+      showError('stripe-error', error.message);
+      btn.textContent = 'Subscribe — $19/mo';
+      btn.disabled = false;
+      return;
+    }
+
+    // Call edge function
+    const res = await fetch(EDGE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'create_subscription',
+        customer_name: currentProfile.full_name,
+        customer_phone: currentProfile.phone,
+        payment_method_id: paymentMethod.id
+      })
+    });
+
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+
+    // Update household plan in Supabase
+    await sb.from('households')
+      .update({ plan: 'member' })
+      .eq('id', currentProfile.household_id);
+
+    // Update UI
+    closeModal('upgrade');
+    showToast('Welcome to Member! ⭐');
+    const planCard = document.getElementById('profile-plan-card');
+    const planName = document.getElementById('profile-plan-name');
+    const planPrice = document.getElementById('profile-plan-price');
+    const planPerks = document.getElementById('profile-plan-perks');
+    if (planCard) { planCard.style.background = 'var(--blue-lt)'; planCard.style.borderColor = 'var(--blue)'; }
+    if (planName) { planName.textContent = '⭐ Member Plan'; planName.style.color = 'var(--blue)'; }
+    if (planPrice) { planPrice.innerHTML = '$19<span style="font-size:14px;font-weight:400">/mo</span>'; planPrice.style.color = 'var(--blue)'; }
+    if (planPerks) planPerks.textContent = '✓ Priority scheduling  ✓ Request visits  ✓ Family access';
+    document.getElementById('upgrade-btn-wrap').style.display = 'none';
+
+  } catch (err) {
+    showError('stripe-error', err.message || 'Payment failed. Please try again.');
+  }
+
+  btn.textContent = 'Subscribe — $19/mo';
+  btn.disabled = false;
+}
+
+// Open upgrade modal and init Stripe elements
+const _origOpenModal = openModal;
+function openModal(type) {
+  _origOpenModal(type);
+  if (type === 'upgrade') {
+    setTimeout(initStripe, 100);
+  }
+}
+
+// Send invoice via Stripe from admin
+async function sendStripeInvoice(clientName, clientPhone, lineItems) {
+  try {
+    const res = await fetch(EDGE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'create_invoice_payment',
+        customer_name: clientName,
+        customer_phone: clientPhone,
+        line_items: lineItems
+      })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    return data;
+  } catch (err) {
+    showToast('Invoice error: ' + err.message);
+    return null;
+  }
+}
+
 // ── STATE ──
 let tmPhotoBase64 = null;
 let showingArchived = false;
@@ -1003,6 +1417,34 @@ function downgradeToBasic() {
   if (client) { client.plan = 'basic'; client.planLabel = 'Basic · Free'; }
   closeClient();
   showToast(`${name} downgraded to Basic ✓`);
+}
+
+async function sendAdminInvoice() {
+  const client = activeClients.find(c => c.name === document.getElementById('detail-name').textContent);
+  if (!client) { showToast('No client selected'); return; }
+
+  showToast('Sending invoice via Stripe…');
+
+  const hours = parseFloat(document.getElementById('inv-hours')?.value) || 1;
+  const materials = parseFloat(document.getElementById('inv-materials')?.value) || 0;
+  const matNotes = document.getElementById('inv-mat-notes')?.value || '';
+
+  const firstHour = 124;
+  const extraCost = hours > 1 ? (hours - 1) * 99 : 0;
+  const labor = firstHour + extraCost;
+
+  const lineItems = [
+    { description: hours <= 1 ? 'First hour (incl. drive time & supply run)' : `Labor — ${hours} hrs (first hr $124 + ${hours-1} additional @ $99/hr)`, amount: labor }
+  ];
+  if (materials > 0) {
+    lineItems.push({ description: matNotes || 'Materials & supplies', amount: materials });
+  }
+
+  const result = await sendStripeInvoice(client.name, client.phone, lineItems);
+  if (result) {
+    showToast('Invoice sent to ' + client.name + '! 📧');
+    if (result.invoiceUrl) window.open(result.invoiceUrl, '_blank');
+  }
 }
 
 // ── ARCHIVE CLIENT ──
@@ -1116,6 +1558,9 @@ function populateClientProfile(profile) {
     if (planPrice) { planPrice.textContent = 'Free'; planPrice.style.color = 'var(--text)'; }
     if (planPerks) planPerks.textContent = '✓ Add tasks  ✓ Message Pete  ✓ View visit history';
   }
+
+  // Show upgrade button for basic plan clients
+  showUpgradeIfBasic(plan, waived);
 
   // Banner next visit — clear hardcoded date
   const bannerVisit = document.getElementById('banner-next-visit');
@@ -1425,7 +1870,7 @@ function switchTab(tab) {
 
 // ── ADMIN TABS ──
 function switchAdminTab(tab) {
-  ['clients','client-detail','schedule','invoices','invoice-detail','team','team-detail','messages'].forEach(t => {
+  ['clients','client-detail','schedule','invoices','invoice-detail','team','team-detail','messages','admin-thread'].forEach(t => {
     const c = document.getElementById('atab-'+t);
     if(c) c.style.display = 'none';
     const b = document.getElementById('abtn-'+t);
@@ -1436,6 +1881,7 @@ function switchAdminTab(tab) {
   if(b) b.classList.add('active');
   const titles = {clients:'My Clients', schedule:'Schedule', invoices:'Invoices', team:'Team', messages:'Messages'};
   document.getElementById('admin-nav-title').textContent = titles[tab]||'';
+  if(tab === 'messages') loadAdminInbox();
 }
 
 // ── CLIENT DETAIL ──
@@ -1788,6 +2234,86 @@ async function loadProfileAndRoute(user) {
   }
 }
 
+// ── SIGN UP ──
+async function doSignup() {
+  hideError('signup-error');
+
+  const name     = document.getElementById('signup-name').value.trim();
+  const phone    = document.getElementById('signup-phone').value.trim();
+  const address  = document.getElementById('signup-address').value.trim();
+  const password = document.getElementById('signup-password').value;
+  const confirm  = document.getElementById('signup-confirm').value;
+
+  if (!name)     { showError('signup-error', 'Please enter your full name.'); return; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) { showError('signup-error', 'Please enter a valid 10-digit phone number.'); return; }
+  if (!address)  { showError('signup-error', 'Please enter your home address.'); return; }
+  if (!password || password.length < 6) { showError('signup-error', 'Password must be at least 6 characters.'); return; }
+  if (password !== confirm) { showError('signup-error', 'Passwords do not match.'); return; }
+
+  showScreen('screen-loading');
+
+  const email = phone.replace(/\D/g,'') + '@homehelper.app';
+
+  // Step 1 — create auth account
+  const { data: authData, error: authError } = await sb.auth.signUp({ email, password });
+  if (authError) {
+    showScreen('screen-signup');
+    showError('signup-error', authError.message.includes('already registered')
+      ? 'That phone number already has an account. Try signing in.'
+      : 'Could not create account: ' + authError.message);
+    return;
+  }
+
+  const userId = authData.user?.id;
+  if (!userId) {
+    showScreen('screen-signup');
+    showError('signup-error', 'Something went wrong. Please try again.');
+    return;
+  }
+
+  // Step 2 — create household
+  const { data: household, error: hhError } = await sb
+    .from('households')
+    .insert({ address, city: 'Harrisonburg', state: 'VA', plan: 'basic' })
+    .select()
+    .single();
+
+  if (hhError) {
+    showScreen('screen-signup');
+    showError('signup-error', 'Could not create account. Please try again.');
+    return;
+  }
+
+  // Step 3 — create profile
+  const initials = name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+  const { error: profError } = await sb.from('profiles').insert({
+    id: userId,
+    full_name: name,
+    phone: phone.replace(/\D/g,''),
+    role: 'client',
+    household_id: household.id,
+    avatar_initials: initials,
+    is_primary: true
+  });
+
+  if (profError) {
+    showScreen('screen-signup');
+    showError('signup-error', 'Account created but profile setup failed. Please contact Pete.');
+    return;
+  }
+
+  // Step 4 — clear form and go to app
+  document.getElementById('signup-name').value = '';
+  document.getElementById('signup-phone').value = '';
+  document.getElementById('signup-address').value = '';
+  document.getElementById('signup-password').value = '';
+  document.getElementById('signup-confirm').value = '';
+
+  // Load their profile and show app
+  await loadProfileAndRoute(authData.user);
+  showToast('Welcome to Home Helper, ' + name.split(' ')[0] + '! 🎉');
+}
+
 // ── REAL LOGIN ──
 async function doLogin() {
   hideError('login-error');
@@ -1975,28 +2501,61 @@ async function saveTask() {
 }
 
 // ── LOAD MESSAGES FROM DATABASE ──
+let clientMsgSubscription = null;
+
 async function loadMessages() {
   if (!currentProfile?.household_id) return;
 
   const { data: msgs } = await sb
     .from('messages')
-    .select('*, profiles(full_name, role)')
+    .select('*')
     .eq('household_id', currentProfile.household_id)
     .order('created_at', { ascending: true });
 
-  if (!msgs || msgs.length === 0) return;
+  renderClientMessages(msgs || []);
 
+  // Subscribe to real-time updates
+  if (clientMsgSubscription) clientMsgSubscription.unsubscribe();
+  clientMsgSubscription = sb
+    .channel('client-msgs-' + currentProfile.household_id)
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'messages',
+      filter: `household_id=eq.${currentProfile.household_id}`
+    }, async () => {
+      const { data: newMsgs } = await sb
+        .from('messages')
+        .select('*')
+        .eq('household_id', currentProfile.household_id)
+        .order('created_at', { ascending: true });
+      renderClientMessages(newMsgs || []);
+    })
+    .subscribe();
+}
+
+function renderClientMessages(msgs) {
   const thread = document.getElementById('msg-thread');
+  const empty = document.getElementById('msg-empty');
   if (!thread) return;
-  thread.innerHTML = '';
 
+  if (msgs.length === 0) {
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  // Only re-render if content changed
+  thread.innerHTML = '';
   msgs.forEach(m => {
     const isMe = m.sender_id === currentUser?.id;
-    const isHelper = m.profiles?.role === 'admin' || m.profiles?.role === 'team';
+    const isPete = m.sender_name === 'Pete';
     const wrap = document.createElement('div');
     wrap.className = 'msg-wrap' + (isMe ? ' mine' : '');
-    const time = new Date(m.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'}) + ' · ' + new Date(m.created_at).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
-    wrap.innerHTML = !isMe
+    const time = new Date(m.created_at).toLocaleString('en-US', {
+      month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+    });
+    wrap.innerHTML = (!isMe)
       ? `<div><div class="msg-sender">${m.sender_name || 'Home Helper'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`
       : `<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`;
     thread.appendChild(wrap);
