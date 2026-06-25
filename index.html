@@ -248,7 +248,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <a onclick="showScreen('screen-login')" style="font-size:17px;color:var(--blue);cursor:pointer;font-weight:600">Sign In</a>
       </div>
     </div>
-    <p style="margin-top:1.5rem;font-size:16px;color:var(--muted)">Need help? Call <strong style="color:var(--blue)">555-HOME-HELP</strong></p>
+    
   </div>
 </div>
 
@@ -285,7 +285,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <a onclick="showScreen('screen-signup')" style="font-size:17px;color:var(--blue);cursor:pointer;font-weight:600">Create an account</a>
       </div>
     </div>
-    <p style="margin-top:1.5rem;font-size:16px;color:var(--muted)">Need help? Call <strong style="color:var(--blue)">555-HOME-HELP</strong></p>
+    
     <div style="margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center">
       <div style="font-size:11px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">Staff Access</div>
       <div style="display:flex;justify-content:center;gap:12px">
@@ -304,7 +304,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="top-nav">
     <div>
       <div class="nav-title" id="nav-title">My Tasks</div>
-      <div class="nav-sub" id="nav-user">Loading…</div>
+      <div class="nav-sub" id="nav-user" style="color:var(--blue);font-weight:600"></div>
     </div>
     <button class="nav-logout" onclick="logout()"><i class="ti ti-logout"></i></button>
   </div>
@@ -1513,18 +1513,19 @@ function uploadProfilePhoto(input) {
 function populateClientProfile(profile) {
   if (!profile) return;
 
-  // Nav + name
+  const firstName = (profile.full_name || '').split(' ')[0];
+
+  // Welcome greeting in nav
+  const navUser = document.getElementById('nav-user');
+  if (navUser) navUser.textContent = 'Welcome, ' + firstName + '! 👋';
+
+  // Profile tab name + initials
   const nameEl = document.getElementById('profile-name');
   if (nameEl) nameEl.textContent = profile.full_name || '';
-  const navUser = document.getElementById('nav-user');
-  if (navUser) navUser.textContent = profile.full_name || '';
-
-  // Initials in avatar
-  const initials = (profile.full_name || '?').split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
   const initialsEl = document.getElementById('profile-av-initials');
-  if (initialsEl) initialsEl.textContent = initials;
+  if (initialsEl) initialsEl.textContent = (profile.full_name || '?').split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
 
-  // Contact info
+  // Contact info — auto-populated from signup
   const phoneEl = document.getElementById('profile-phone');
   if (phoneEl) phoneEl.textContent = profile.phone ? profile.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3') : '—';
   const emailEl = document.getElementById('profile-email');
@@ -1546,23 +1547,23 @@ function populateClientProfile(profile) {
   const planName = document.getElementById('profile-plan-name');
   const planPrice = document.getElementById('profile-plan-price');
   const planPerks = document.getElementById('profile-plan-perks');
+  const upgradeWrap = document.getElementById('upgrade-btn-wrap');
 
   if (plan === 'member' || waived) {
     if (planCard) { planCard.style.background = 'var(--blue-lt)'; planCard.style.borderColor = 'var(--blue)'; }
     if (planName) { planName.textContent = '⭐ Member Plan'; planName.style.color = 'var(--blue)'; }
-    if (planPrice) { planPrice.innerHTML = waived ? '<span style="font-size:16px;color:var(--green)">Fee Waived</span>' : '$19<span style="font-size:14px;font-weight:400">/mo</span>'; planPrice.style.color = 'var(--blue)'; }
+    if (planPrice) { planPrice.innerHTML = waived ? '<span style="font-size:16px;color:var(--green)">Fee Waived ✓</span>' : '$19<span style="font-size:14px;font-weight:400">/mo</span>'; planPrice.style.color = 'var(--blue)'; }
     if (planPerks) planPerks.textContent = '✓ Priority scheduling  ✓ Request visits  ✓ Family access  ✓ Photo uploads';
+    if (upgradeWrap) upgradeWrap.style.display = 'none';
   } else {
     if (planCard) { planCard.style.background = 'var(--bg)'; planCard.style.borderColor = 'var(--border)'; }
     if (planName) { planName.textContent = 'Basic Plan'; planName.style.color = 'var(--text)'; }
     if (planPrice) { planPrice.textContent = 'Free'; planPrice.style.color = 'var(--text)'; }
     if (planPerks) planPerks.textContent = '✓ Add tasks  ✓ Message Pete  ✓ View visit history';
+    if (upgradeWrap) upgradeWrap.style.display = 'block';
   }
 
-  // Show upgrade button for basic plan clients
-  showUpgradeIfBasic(plan, waived);
-
-  // Banner next visit — clear hardcoded date
+  // Clear hardcoded next visit
   const bannerVisit = document.getElementById('banner-next-visit');
   if (bannerVisit) bannerVisit.textContent = 'No visit scheduled yet';
 }
@@ -2190,33 +2191,39 @@ async function loadProfileAndRoute(user) {
   showScreen('screen-loading');
   currentUser = user;
 
-  // Try to load profile — may fail if RLS policy not yet in place
+  const userEmail = user.email || '';
+  const isAdminPhone = userEmail.startsWith('5404217447@');
+
+  // Load profile with household data
   const { data: profile, error } = await sb
     .from('profiles')
     .select('*, households(*)')
     .eq('id', user.id)
     .single();
 
-  // If we can't read the profile, check if this is Pete's admin account
-  // by matching the email format we use for phone logins
-  const userEmail = user.email || '';
-  const isAdminPhone = userEmail.startsWith('5404217447@');
+  if (error) {
+    console.log('Profile load error:', error.message);
+    // If Pete can't load profile due to RLS, go to admin anyway
+    if (isAdminPhone) { showAdminScreen(); return; }
+    // For other users show basic client screen
+    showScreen('screen-main');
+    const navUser = document.getElementById('nav-user');
+    if (navUser) navUser.textContent = 'Welcome! 👋';
+    switchTab('tasks');
+    return;
+  }
 
-  if (error || !profile) {
-    if (isAdminPhone) {
-      // Pete logging in before RLS policy is fully set — go to admin
-      showAdminScreen();
-      return;
-    }
-    // New user — no profile yet, show client screen
+  if (!profile) {
+    if (isAdminPhone) { showAdminScreen(); return; }
     showScreen('screen-main');
     switchTab('tasks');
     return;
   }
 
   currentProfile = profile;
+  console.log('Profile loaded:', profile.full_name, 'role:', profile.role, 'household:', profile.households?.address);
 
-  // Populate profile UI with real data
+  // Always populate UI with real profile data
   populateClientProfile(profile);
 
   // Route based on role
@@ -2224,7 +2231,7 @@ async function loadProfileAndRoute(user) {
     showAdminScreen();
   } else if (profile.role === 'team') {
     showScreen('screen-main');
-    document.getElementById('nav-user').textContent = profile.full_name + ' (Team)';
+    document.getElementById('nav-user').textContent = 'Welcome, ' + profile.full_name.split(' ')[0] + '! 👋';
     switchTab('tasks');
   } else {
     showScreen('screen-main');
@@ -2252,7 +2259,8 @@ async function doSignup() {
 
   showScreen('screen-loading');
 
-  const email = phone.replace(/\D/g,'') + '@homehelper.app';
+  const digits = phone.replace(/\D/g,'');
+  const email = digits + '@homehelper.app';
 
   // Step 1 — create auth account
   const { data: authData, error: authError } = await sb.auth.signUp({ email, password });
@@ -2271,7 +2279,15 @@ async function doSignup() {
     return;
   }
 
-  // Step 2 — create household
+  // Step 2 — sign in immediately to get active session for RLS
+  const { data: signInData, error: signInError } = await sb.auth.signInWithPassword({ email, password });
+  if (signInError) {
+    showScreen('screen-signup');
+    showError('signup-error', 'Account created but could not sign in. Please try logging in.');
+    return;
+  }
+
+  // Step 3 — create household (now authenticated)
   const { data: household, error: hhError } = await sb
     .from('households')
     .insert({ address, city: 'Harrisonburg', state: 'VA', plan: 'basic' })
@@ -2279,17 +2295,18 @@ async function doSignup() {
     .single();
 
   if (hhError) {
+    console.log('Household error:', hhError.message);
     showScreen('screen-signup');
-    showError('signup-error', 'Could not create account. Please try again.');
+    showError('signup-error', 'Could not finish setup: ' + hhError.message);
     return;
   }
 
-  // Step 3 — create profile
+  // Step 4 — create profile (now authenticated)
   const initials = name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
   const { error: profError } = await sb.from('profiles').insert({
     id: userId,
     full_name: name,
-    phone: phone.replace(/\D/g,''),
+    phone: digits,
     role: 'client',
     household_id: household.id,
     avatar_initials: initials,
@@ -2297,20 +2314,21 @@ async function doSignup() {
   });
 
   if (profError) {
+    console.log('Profile error:', profError.message);
     showScreen('screen-signup');
-    showError('signup-error', 'Account created but profile setup failed. Please contact Pete.');
+    showError('signup-error', 'Setup failed: ' + profError.message);
     return;
   }
 
-  // Step 4 — clear form and go to app
+  // Step 5 — clear form and go to app
   document.getElementById('signup-name').value = '';
   document.getElementById('signup-phone').value = '';
   document.getElementById('signup-address').value = '';
   document.getElementById('signup-password').value = '';
   document.getElementById('signup-confirm').value = '';
 
-  // Load their profile and show app
-  await loadProfileAndRoute(authData.user);
+  // Load profile and route to app
+  await loadProfileAndRoute(signInData.user);
   showToast('Welcome to Home Helper, ' + name.split(' ')[0] + '! 🎉');
 }
 
