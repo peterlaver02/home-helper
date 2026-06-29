@@ -143,8 +143,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 </head>
 <body>
 <div class="toast" id="toast"></div>
-
-<!-- LOADING -->
 <div class="screen active" id="screen-loading">
   <div class="auth-loading">
     <div style="font-size:48px">🏡</div>
@@ -152,8 +150,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div style="font-size:16px;color:var(--muted)">Loading…</div>
   </div>
 </div>
-
-<!-- PASSWORD RESET -->
 <div class="screen" id="screen-reset">
   <div class="login-wrap">
     <div style="font-size:60px;margin-bottom:8px">🔑</div>
@@ -169,8 +165,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
-<!-- SIGNUP -->
 <div class="screen" id="screen-signup">
   <div class="login-wrap">
     <div style="font-size:60px;margin-bottom:8px">🏡</div>
@@ -196,8 +190,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
-<!-- LOGIN -->
 <div class="screen active" id="screen-login">
   <div class="login-wrap">
     <div style="font-size:60px;margin-bottom:8px">🏡</div>
@@ -231,8 +223,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
-<!-- CLIENT APP -->
 <div class="screen" id="screen-main">
   <div class="top-nav">
     <div>
@@ -248,7 +238,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div style="font-size:13px;color:var(--muted)" id="banner-next-visit">No visit scheduled yet</div>
     </div>
   </div>
-
   <div class="content" id="tab-tasks">
     <button class="add-btn" onclick="openModal('task')"><i class="ti ti-plus-circle"></i> Add Something I Need Help With</button>
     <div class="filter-row">
@@ -268,13 +257,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       </div>
     </div>
   </div>
-
   <div class="content" id="tab-appointments" style="display:none">
     <button class="req-btn" onclick="showToast('Visit request sent! You\'ll hear back within 24 hours ✅')"><i class="ti ti-calendar-plus"></i> Request a Visit</button>
     <div class="sec-title">Upcoming Visits</div>
     <div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📅</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No visits scheduled yet</div></div>
   </div>
-
   <div class="content" id="tab-messages" style="display:none;padding-bottom:130px">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
       <div style="width:46px;height:46px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex-shrink:0">P</div>
@@ -295,7 +282,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <button class="msg-send" onclick="sendMsg()"><i class="ti ti-send"></i></button>
     </div>
   </div>
-
   <div class="content" id="tab-profile" style="display:none">
     <div class="card">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
@@ -335,7 +321,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
     <button style="width:100%;padding:16px;font-size:17px;background:transparent;border:1.5px solid var(--red-lt);color:var(--red);border-radius:12px;cursor:pointer;margin-top:8px" onclick="logout()">Sign Out</button>
   </div>
-
   <div class="bottom-nav">
     <button class="nav-tab active" id="btn-tasks" onclick="switchTab('tasks')"><i class="ti ti-tool"></i><span>Tasks</span></button>
     <button class="nav-tab" id="btn-appointments" onclick="switchTab('appointments')" style="position:relative"><i class="ti ti-calendar"></i><span class="nbadge">1</span><span>Visits</span></button>
@@ -343,8 +328,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <button class="nav-tab" id="btn-profile" onclick="switchTab('profile')"><i class="ti ti-user"></i><span>Profile</span></button>
   </div>
 </div>
-
-<!-- ADMIN DASHBOARD -->
 <div class="screen" id="screen-admin">
   <div class="top-nav">
     <div>
@@ -356,7 +339,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <button class="nav-logout" onclick="logout()"><i class="ti ti-logout"></i></button>
     </div>
   </div>
-
   <div class="content" id="atab-clients" style="padding-bottom:80px">
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding:14px;background:var(--card);border-radius:var(--radius);box-shadow:0 1px 6px rgba(0,0,0,0.06)">
       <div style="width:52px;height:52px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0">P</div>
@@ -374,7 +356,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div id="admin-client-list"><div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">👥</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No clients yet</div><div style="font-size:15px">Clients will appear here once they sign up</div></div></div>
     <button class="add-btn" style="font-size:17px;padding:14px;margin-top:8px" onclick="openModal('add-client')"><i class="ti ti-user-plus"></i> Add a Client Manually</button>
   </div>
-
   <div class="content" id="atab-client-detail" style="display:none;padding-bottom:80px">
     <button class="back-btn" onclick="closeClient()"><i class="ti ti-arrow-left"></i> Back to Clients</button>
     <div class="card" style="margin-bottom:14px">
@@ -416,13 +397,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       </div>
     </div>
   </div>
-
   <div class="content" id="atab-schedule" style="display:none;padding-bottom:80px">
     <button class="req-btn" style="font-size:17px;padding:14px;margin-bottom:16px" onclick="showToast('Visit scheduled! 📅')"><i class="ti ti-calendar-plus"></i> Schedule a Visit</button>
     <div class="sec-title">This Week</div>
     <div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📅</div><div style="font-size:18px;font-weight:600">No visits scheduled</div></div>
   </div>
-
   <div class="content" id="atab-team" style="display:none;padding-bottom:80px">
     <div class="stats-row">
       <div class="card admin-stat"><div class="admin-stat-num" id="stat-team">0</div><div class="admin-stat-label">Team Members</div></div>
@@ -433,7 +412,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div id="team-list"><div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">🪪</div><div style="font-size:18px;font-weight:600">No team members yet</div></div></div>
     <button class="big-btn btn-blue btn-sm" style="margin-top:8px" onclick="openModal('invite-employee')"><i class="ti ti-send" style="font-size:17px;vertical-align:-2px;margin-right:6px"></i> Invite a Team Member</button>
   </div>
-
   <div class="content" id="atab-invoices" style="display:none;padding-bottom:80px">
     <button class="add-btn" style="font-size:17px;padding:14px" onclick="openModal('invoice')"><i class="ti ti-receipt"></i> Create New Invoice</button>
     <div style="background:var(--blue-lt);border-radius:10px;padding:14px;margin-bottom:16px">
@@ -456,12 +434,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       </div>
     </div>
   </div>
-
   <div class="content" id="atab-messages" style="display:none;padding-bottom:80px">
     <div class="sec-title">All Conversations</div>
     <div id="admin-messages-list"><div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">💬</div><div style="font-size:18px;font-weight:600">No messages yet</div></div></div>
   </div>
-
   <div class="content" id="atab-admin-thread" style="display:none;padding-bottom:130px">
     <button class="back-btn" onclick="closeAdminThread()"><i class="ti ti-arrow-left"></i> Back to Messages</button>
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
@@ -474,7 +450,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <button class="msg-send" onclick="sendAdminMsg()"><i class="ti ti-send"></i></button>
     </div>
   </div>
-
   <div class="bottom-nav">
     <button class="nav-tab active" id="abtn-clients" onclick="switchAdminTab('clients')"><i class="ti ti-users"></i><span>Clients</span></button>
     <button class="nav-tab" id="abtn-schedule" onclick="switchAdminTab('schedule')" style="position:relative"><i class="ti ti-calendar"></i><span class="nbadge">1</span><span>Schedule</span></button>
@@ -483,8 +458,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <button class="nav-tab" id="abtn-messages" onclick="switchAdminTab('messages')" style="position:relative"><i class="ti ti-message-circle"></i><span class="nbadge">3</span><span>Messages</span></button>
   </div>
 </div>
-
-<!-- MODALS -->
 <div class="modal-bg" id="modal-task">
   <div class="modal">
     <div class="modal-title">What do you need help with?</div>
@@ -513,7 +486,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="modal-invoice">
   <div class="modal">
     <div class="modal-title">🧾 Create Invoice</div>
@@ -546,7 +518,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="modal-admin-note">
   <div class="modal">
     <div class="modal-title">🔒 Add Private Note</div>
@@ -565,7 +536,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="modal-archive">
   <div class="modal">
     <div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:48px;margin-bottom:8px">📦</div><div class="modal-title" style="text-align:center">Archive this client?</div></div>
@@ -579,7 +549,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="modal-invite-employee">
   <div class="modal">
     <div class="modal-title">🪪 Add Team Member</div>
@@ -597,7 +566,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="modal-add-client">
   <div class="modal">
     <div class="modal-title">👤 Add a Client</div>
@@ -621,7 +589,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="modal-upgrade">
   <div class="modal">
     <div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:48px;margin-bottom:8px">⭐</div><div class="modal-title" style="text-align:center">Upgrade to Member</div></div>
@@ -643,47 +610,37 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px">🔒 Secured by Stripe. Cancel anytime.</p>
   </div>
 </div>
-
 <script>
-const SUPABASE_URL = 'https://amhphshkfvqepvxlenps.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtaHBoc2hrZnZxZXB2eGxlbnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxODkzMDMsImV4cCI6MjA5Nzc2NTMwM30.v1w6n1O71uSooQb85_BHiHARSn_wLj-EtmOgOsFXoaI';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-const STRIPE_PK = 'pk_test_51TlaxlE3fogAtaxo0vVNvDE0LnNWrtcU9QSEqelzWZuPkDpQjcC5Sf9QAGSssWnGAaS9pewE6WJVDCvOhHeBJ1qf009usudPyv';
-const EDGE_URL = 'https://amhphshkfvqepvxlenps.supabase.co/functions/v1/stripe-handler';
-
-let currentUser=null, currentProfile=null;
-let urg='r', selRoomVal='general', selRoomChip=null;
-let showingArchived=false, archivedClients=[], activeClients=[], activeClientName='';
-let activeAdminHousehold=null, adminMsgSubscription=null, clientMsgSubscription=null;
-let stripeInstance=null, cardElement=null, cardExpiry=null, cardCvc=null;
-let role='client';
-
+const SUPABASE_URL='https://amhphshkfvqepvxlenps.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtaHBoc2hrZnZxZXB2eGxlbnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxODkzMDMsImV4cCI6MjA5Nzc2NTMwM30.v1w6n1O71uSooQb85_BHiHARSn_wLj-EtmOgOsFXoaI';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const STRIPE_PK='pk_test_51TlaxlE3fogAtaxo0vVNvDE0LnNWrtcU9QSEqelzWZuPkDpQjcC5Sf9QAGSssWnGAaS9pewE6WJVDCvOhHeBJ1qf009usudPyv';
+const EDGE_URL='https://amhphshkfvqepvxlenps.supabase.co/functions/v1/stripe-handler';
+let currentUser=null,currentProfile=null,urg='r',selRoomVal='general',selRoomChip=null;
+let showingArchived=false,archivedClients=[],activeClients=[],activeClientName='';
+let activeAdminHousehold=null,adminMsgSubscription=null,clientMsgSubscription=null;
+let stripeInstance=null,cardElement=null,cardExpiry=null,cardCvc=null,role='client';
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function showError(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
 function hideError(id){const el=document.getElementById(id);if(el)el.style.display='none';}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 function openModal(type){const el=document.getElementById('modal-'+type);if(el)el.classList.add('open');if(type==='upgrade')setTimeout(initStripe,100);}
 function closeModal(type){const el=document.getElementById('modal-'+type);if(el)el.classList.remove('open');}
-
 window.addEventListener('load',async()=>{
   if(window.location.hash.includes('type=recovery')){showScreen('screen-reset');return;}
   const{data:{session}}=await sb.auth.getSession();
   if(session){await loadProfileAndRoute(session.user);}else{showScreen('screen-login');}
 });
 sb.auth.onAuthStateChange(async(event)=>{if(event==='PASSWORD_RECOVERY')showScreen('screen-reset');});
-
 async function loadProfileAndRoute(user){
-  showScreen('screen-loading');
-  currentUser=user;
+  showScreen('screen-loading');currentUser=user;
   const isAdmin=user.email?.startsWith('5404217447@');
   const{data:profile,error}=await sb.from('profiles').select('*, households(*)').eq('id',user.id).single();
   if(error||!profile){if(isAdmin){showAdminScreen();return;}showScreen('screen-main');switchTab('tasks');return;}
-  currentProfile=profile;
-  populateClientProfile(profile);
+  currentProfile=profile;populateClientProfile(profile);
   if(profile.role==='admin'||isAdmin){showAdminScreen();}
   else{showScreen('screen-main');switchTab('tasks');loadTasks();loadMessages();}
 }
-
 function populateClientProfile(p){
   if(!p)return;
   const fn=(p.full_name||'').split(' ')[0];
@@ -704,8 +661,6 @@ function populateClientProfile(p){
     if(uw)uw.style.display='none';
   }else{if(uw)uw.style.display='block';}
 }
-
-// ══ SIGNUP — THE KEY FIX: only address + plan in household insert ══
 async function doSignup(){
   hideError('signup-error');
   const name=document.getElementById('signup-name').value.trim();
@@ -719,43 +674,23 @@ async function doSignup(){
   if(!password||password.length<6){showError('signup-error','Password must be at least 6 characters.');return;}
   if(password!==confirm){showError('signup-error','Passwords do not match.');return;}
   showScreen('screen-loading');
-  const digits=phone.replace(/\D/g,'');
-  const email=digits+'@homehelper.app';
-  // Step 1: create auth user
+  const digits=phone.replace(/\D/g,''),email=digits+'@homehelper.app';
   const{data:authData,error:authError}=await sb.auth.signUp({email,password});
-  if(authError){
-    showScreen('screen-signup');
-    showError('signup-error',authError.message.includes('already registered')?'That phone number already has an account. Try signing in.':'Could not create account: '+authError.message);
-    return;
-  }
+  if(authError){showScreen('screen-signup');showError('signup-error',authError.message.includes('already registered')?'That phone number already has an account. Try signing in.':'Could not create account: '+authError.message);return;}
   const userId=authData.user?.id;
   if(!userId){showScreen('screen-signup');showError('signup-error','Something went wrong. Please try again.');return;}
-  // Step 2: sign in immediately so RLS allows inserts
   const{data:signInData,error:signInError}=await sb.auth.signInWithPassword({email,password});
-  if(signInError){showScreen('screen-signup');showError('signup-error','Account created but could not sign in automatically. Please try logging in.');return;}
-  // Step 3: create household — FIXED: only address and plan (no city/state)
+  if(signInError){showScreen('screen-signup');showError('signup-error','Account created but could not sign in. Please try logging in.');return;}
+  // FIXED: only address and plan — no city or state
   const{data:household,error:hhError}=await sb.from('households').insert({address,plan:'basic'}).select().single();
-  if(hhError){
-    console.error('Household insert error:',hhError);
-    showScreen('screen-signup');
-    showError('signup-error','Could not finish setup: '+hhError.message);
-    return;
-  }
-  // Step 4: create profile
+  if(hhError){console.error('Household error:',hhError);showScreen('screen-signup');showError('signup-error','Could not finish setup: '+hhError.message);return;}
   const initials=name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
   const{error:profError}=await sb.from('profiles').insert({id:userId,full_name:name,phone:digits,role:'client',household_id:household.id,avatar_initials:initials,is_primary:true});
-  if(profError){
-    console.error('Profile insert error:',profError);
-    showScreen('screen-signup');
-    showError('signup-error','Setup failed: '+profError.message);
-    return;
-  }
-  // Step 5: clear form and launch app
+  if(profError){console.error('Profile error:',profError);showScreen('screen-signup');showError('signup-error','Setup failed: '+profError.message);return;}
   ['signup-name','signup-phone','signup-address','signup-password','signup-confirm'].forEach(id=>document.getElementById(id).value='');
   await loadProfileAndRoute(signInData.user);
   showToast('Welcome to Home Helper, '+name.split(' ')[0]+'! 🎉');
 }
-
 async function doLogin(){
   hideError('login-error');
   let id=document.getElementById('login-email').value.trim();
@@ -767,38 +702,29 @@ async function doLogin(){
   if(error){showScreen('screen-login');showError('login-error','Incorrect phone/email or password.');return;}
   await loadProfileAndRoute(data.user);
 }
-
 async function doForgotPassword(){
   const id=document.getElementById('login-email').value.trim();
   if(!id){showError('login-error','Enter your phone number or email above first.');return;}
   let email=id;
   if(/^[\d\s\(\)\-\+]+$/.test(id.replace(/\s/g,'')))email=id.replace(/\D/g,'')+'@homehelper.app';
   const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+window.location.pathname});
-  if(error){showError('login-error','Could not send reset link.');}
-  else{showToast('Password reset link sent! 📱');}
+  if(error){showError('login-error','Could not send reset link.');}else{showToast('Password reset link sent! 📱');}
 }
-
 async function doPasswordReset(){
-  const pw=document.getElementById('reset-password').value;
-  const cf=document.getElementById('reset-confirm').value;
+  const pw=document.getElementById('reset-password').value,cf=document.getElementById('reset-confirm').value;
   if(!pw||pw.length<6){showError('reset-error','Password must be at least 6 characters.');return;}
   if(pw!==cf){showError('reset-error','Passwords do not match.');return;}
   const{error}=await sb.auth.updateUser({password:pw});
-  if(error){showError('reset-error','Could not reset password.');}
-  else{showToast('Password updated! ✅');showScreen('screen-login');window.location.hash='';}
+  if(error){showError('reset-error','Could not reset password.');}else{showToast('Password updated! ✅');showScreen('screen-login');window.location.hash='';}
 }
-
 async function logout(){
   await sb.auth.signOut();currentUser=null;currentProfile=null;
   ['screen-main','screen-admin'].forEach(s=>document.getElementById(s).classList.remove('active'));
-  document.getElementById('admin-mode-banner').style.display='none';
-  showScreen('screen-login');
+  document.getElementById('admin-mode-banner').style.display='none';showScreen('screen-login');
 }
-
 function selectRole(r){role=r;['client','family'].forEach(x=>{const el=document.getElementById('role-'+x);if(el)el.classList.toggle('sel',x===r);});document.getElementById('admin-mode-banner').style.display='none';}
 function activateAdmin(){role='admin';['client','family'].forEach(x=>{const el=document.getElementById('role-'+x);if(el)el.classList.remove('sel');});document.getElementById('admin-mode-banner').style.display='block';document.getElementById('admin-mode-banner').innerHTML='🔐 Admin mode active';}
 function activateEmployee(){role='employee';['client','family'].forEach(x=>{const el=document.getElementById('role-'+x);if(el)el.classList.remove('sel');});document.getElementById('admin-mode-banner').style.display='block';document.getElementById('admin-mode-banner').innerHTML='🪪 Team Member mode active';}
-
 function switchTab(tab){
   ['tasks','appointments','messages','profile'].forEach(t=>{const el=document.getElementById('tab-'+t);if(el)el.style.display='none';const b=document.getElementById('btn-'+t);if(b)b.classList.remove('active');});
   document.getElementById('tab-'+tab).style.display='block';
@@ -807,7 +733,6 @@ function switchTab(tab){
   document.getElementById('nav-title').textContent=titles[tab]||'';
   if(tab==='messages')loadMessages();if(tab==='tasks')loadTasks();
 }
-
 function switchAdminTab(tab){
   ['clients','client-detail','schedule','invoices','team','messages','admin-thread'].forEach(t=>{const c=document.getElementById('atab-'+t);if(c)c.style.display='none';const b=document.getElementById('abtn-'+t);if(b)b.classList.remove('active');});
   document.getElementById('atab-'+tab).style.display='block';
@@ -816,24 +741,14 @@ function switchAdminTab(tab){
   document.getElementById('admin-nav-title').textContent=titles[tab]||'';
   if(tab==='messages')loadAdminInbox();
 }
-
 function showAdminScreen(){['screen-login','screen-loading'].forEach(s=>document.getElementById(s).classList.remove('active'));document.getElementById('screen-admin').classList.add('active');switchAdminTab('clients');loadAdminClients();}
-
 async function loadAdminClients(){
   const{data,error}=await sb.from('profiles').select('*, households(*)').eq('role','client').order('created_at',{ascending:false});
   if(error||!data)return;
   const colors=['av-blue','av-teal','av-amber'];
-  activeClients=data.map((p,i)=>({
-    id:p.id,name:p.full_name,phone:p.phone||'',address:p.households?.address||'No address',
-    plan:p.households?.plan||'basic',planWaived:p.households?.plan_waived||false,
-    planLabel:p.households?.plan_waived?'Member · Fee Waived':p.households?.plan==='member'?'Member · $19/mo':'Basic · Free',
-    initials:p.avatar_initials||p.full_name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2),
-    color:colors[i%colors.length],householdId:p.household_id
-  }));
-  const ce=document.getElementById('stat-clients');if(ce)ce.textContent=activeClients.length;
-  renderClientList();
+  activeClients=data.map((p,i)=>({id:p.id,name:p.full_name,phone:p.phone||'',address:p.households?.address||'No address',plan:p.households?.plan||'basic',planWaived:p.households?.plan_waived||false,planLabel:p.households?.plan_waived?'Member · Fee Waived':p.households?.plan==='member'?'Member · $19/mo':'Basic · Free',initials:p.avatar_initials||p.full_name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2),color:colors[i%colors.length],householdId:p.household_id}));
+  const ce=document.getElementById('stat-clients');if(ce)ce.textContent=activeClients.length;renderClientList();
 }
-
 function renderClientList(){
   const list=document.getElementById('admin-client-list');if(!list)return;list.innerHTML='';
   const src=showingArchived?archivedClients:activeClients;
@@ -841,25 +756,18 @@ function renderClientList(){
   src.forEach((c,i)=>{
     const row=document.createElement('div');row.className='admin-client-row';if(showingArchived)row.style.opacity='0.65';
     row.innerHTML=`<div class="avatar ${c.color}" style="width:48px;height:48px;font-size:15px">${c.initials}</div><div class="client-info"><div class="client-name">${c.name}</div><div class="client-addr">${c.address||'No address'}</div><div class="client-tasks">${c.planLabel}</div></div>${showingArchived?`<button onclick="restoreClient(${i})" style="background:var(--green);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;font-weight:600;flex-shrink:0">Restore</button>`:'<i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>'}`;
-    if(!showingArchived)row.onclick=()=>openClient(c.id||c.name);
-    list.appendChild(row);
+    if(!showingArchived)row.onclick=()=>openClient(c.id||c.name);list.appendChild(row);
   });
 }
-
 function openClient(id){
   const c=typeof id==='string'?activeClients.find(x=>x.name===id||x.id===id):activeClients[id];
   if(!c){showToast('Client not found');return;}
   document.getElementById('atab-clients').style.display='none';document.getElementById('atab-client-detail').style.display='block';
   const av=document.getElementById('detail-av');av.textContent=c.initials;av.className='avatar '+(c.color||'av-blue');av.style.cssText='width:54px;height:54px;font-size:18px';
-  document.getElementById('detail-name').textContent=c.name;
-  document.getElementById('detail-addr').textContent=c.address||'No address on file';
-  document.getElementById('detail-phone').textContent=c.phone||'No phone on file';
-  document.getElementById('detail-plan').textContent=c.planLabel||'Basic · Free';
-  document.getElementById('detail-plan').style.color='';
+  document.getElementById('detail-name').textContent=c.name;document.getElementById('detail-addr').textContent=c.address||'No address on file';
+  document.getElementById('detail-phone').textContent=c.phone||'No phone on file';document.getElementById('detail-plan').textContent=c.planLabel||'Basic · Free';document.getElementById('detail-plan').style.color='';
   const wt=document.getElementById('waive-toggle');if(wt)wt.checked=c.planWaived||false;
-  document.getElementById('note-tools').textContent='No notes yet';
-  document.getElementById('note-house').textContent='No notes yet';
-  document.getElementById('note-client').textContent='No notes yet';
+  document.getElementById('note-tools').textContent='No notes yet';document.getElementById('note-house').textContent='No notes yet';document.getElementById('note-client').textContent='No notes yet';
   document.getElementById('detail-task-list').innerHTML='<div style="text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:15px">No active tasks</div>';
 }
 function closeClient(){document.getElementById('atab-client-detail').style.display='none';document.getElementById('atab-clients').style.display='block';}
@@ -869,13 +777,8 @@ function confirmArchive(){const name=document.getElementById('detail-name').text
 function doArchive(){const i=activeClients.findIndex(c=>c.name===activeClientName);if(i>-1){archivedClients.push(activeClients[i]);activeClients.splice(i,1);}const ce=document.getElementById('stat-clients');if(ce)ce.textContent=activeClients.length;closeModal('archive');closeClient();renderClientList();showToast(activeClientName+' archived 📦');}
 function downgradeToBasic(){const name=document.getElementById('detail-name').textContent;document.getElementById('detail-plan').textContent='Basic · Free';closeClient();showToast(name+' downgraded to Basic ✓');}
 function toggleWaive(el){const note=document.getElementById('waive-note');const plan=document.getElementById('detail-plan');if(el.checked){note.style.display='block';plan.textContent='Monthly Plan · Waived';plan.style.color='var(--green)';showToast('Fee waived ✓');}else{note.style.display='none';plan.textContent='Monthly Plan · $19/mo';plan.style.color='';showToast('Fee reinstated');}}
-
 async function saveNewClient(){
-  const name=document.getElementById('ac-name').value.trim();
-  const phone=document.getElementById('ac-phone').value.trim();
-  const address=document.getElementById('ac-address').value.trim();
-  const plan=document.getElementById('ac-plan').value;
-  const password=document.getElementById('ac-pass').value.trim();
+  const name=document.getElementById('ac-name').value.trim(),phone=document.getElementById('ac-phone').value.trim(),address=document.getElementById('ac-address').value.trim(),plan=document.getElementById('ac-plan').value,password=document.getElementById('ac-pass').value.trim();
   if(!name||!phone){showToast('Please enter name and phone number');return;}
   if(!password||password.length<6){showToast('Password must be at least 6 characters');return;}
   showToast('Creating account…');
@@ -884,7 +787,7 @@ async function saveNewClient(){
   if(authError){showToast('Error: '+authError.message);return;}
   const userId=authData.user?.id;if(!userId){showToast('Could not create user');return;}
   const{data:hh,error:hhErr}=await sb.from('households').insert({address:address||'Unknown',plan:plan==='waived'?'member':plan,plan_waived:plan==='waived'}).select().single();
-  if(hhErr){showToast('Error creating household: '+hhErr.message);return;}
+  if(hhErr){showToast('Error: '+hhErr.message);return;}
   const initials=name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
   const{error:profErr}=await sb.from('profiles').insert({id:userId,full_name:name,phone:digits,role:'client',household_id:hh.id,avatar_initials:initials,is_primary:true});
   if(profErr){showToast('Error: '+profErr.message);return;}
@@ -893,10 +796,8 @@ async function saveNewClient(){
   renderClientList();['ac-name','ac-phone','ac-address','ac-pass'].forEach(id=>document.getElementById(id).value='');
   closeModal('add-client');const ce=document.getElementById('stat-clients');if(ce)ce.textContent=activeClients.length;showToast(name+' added! 🎉');
 }
-
 function saveTeamMember(){
-  const name=document.getElementById('tm-name-input').value.trim();
-  const phone=document.getElementById('tm-phone-input').value.trim();
+  const name=document.getElementById('tm-name-input').value.trim(),phone=document.getElementById('tm-phone-input').value.trim();
   if(!name||!phone){showToast('Please enter name and phone number');return;}
   const initials=name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
   const list=document.getElementById('team-list');const empty=list.querySelector('[style*="text-align:center"]');if(empty)empty.remove();
@@ -904,18 +805,15 @@ function saveTeamMember(){
   row.innerHTML=`<div class="avatar av-blue" style="width:48px;height:48px;font-size:15px">${initials}</div><div class="client-info"><div class="client-name">${name}</div><div class="client-addr">📞 ${phone}</div><div class="client-tasks" style="color:var(--muted)">No clients assigned yet</div></div>`;
   list.appendChild(row);['tm-name-input','tm-phone-input','tm-email-input','tm-pass-input'].forEach(id=>document.getElementById(id).value='');closeModal('invite-employee');showToast(name+' added to team! 🎉');
 }
-
 function saveAdminNote(){const text=document.getElementById('admin-note-text').value.trim();if(!text){showToast('Please write a note first');return;}closeModal('admin-note');document.getElementById('admin-note-text').value='';showToast('Private note saved 🔒');}
-
 function filterTasks(f,el){document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');document.querySelectorAll('#task-list .card').forEach(card=>{card.style.display=(f==='all'||f===card.dataset.status||f===card.dataset.room)?'block':'none';});}
 function selRoom(el,room){if(selRoomChip)selRoomChip.classList.remove('sel');el.classList.add('sel');selRoomChip=el;selRoomVal=room;}
 function selUrg(u){urg=u;document.getElementById('urg-r').className='urg-btn'+(u==='r'?' sel-r':'');document.getElementById('urg-u').className='urg-btn'+(u==='u'?' sel-u':'');}
-
 async function loadTasks(){
   if(!currentProfile?.household_id)return;
   const{data:tasks}=await sb.from('tasks').select('*').eq('household_id',currentProfile.household_id).order('created_at',{ascending:false});
   const list=document.getElementById('task-list');list.innerHTML='';
-  if(!tasks||tasks.length===0){list.innerHTML='<div id="task-empty" style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📋</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No tasks yet</div><div style="font-size:15px">Tap the button above to add your first task!</div></div>';return;}
+  if(!tasks||tasks.length===0){list.innerHTML='<div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📋</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No tasks yet</div><div style="font-size:15px">Tap the button above to add your first task!</div></div>';return;}
   const rooms={kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
   tasks.forEach(task=>{
     const card=document.createElement('div');card.className='card'+(task.status==='done'?' done-card':'');card.dataset.status=task.status;card.dataset.room=task.room||'general';
@@ -924,14 +822,12 @@ async function loadTasks(){
     list.appendChild(card);
   });
 }
-
 async function saveTask(){
-  const title=document.getElementById('new-title').value.trim();
-  const note=document.getElementById('new-note').value.trim();
+  const title=document.getElementById('new-title').value.trim(),note=document.getElementById('new-note').value.trim();
   if(!title){showToast('Please describe what you need help with');return;}
   if(currentProfile?.household_id){
     const{error}=await sb.from('tasks').insert({household_id:currentProfile.household_id,created_by:currentUser.id,title,notes:note||null,room:selRoomVal||'general',urgency:urg==='u'?'urgent':'routine',status:'active'});
-    if(error){showToast('Could not save task. Please try again.');return;}
+    if(error){showToast('Could not save task.');return;}
     closeModal('task');document.getElementById('new-title').value='';document.getElementById('new-note').value='';showToast('Task added! ✅');loadTasks();
   }else{
     const rooms={kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
@@ -941,66 +837,42 @@ async function saveTask(){
     document.getElementById('task-list').prepend(card);closeModal('task');document.getElementById('new-title').value='';document.getElementById('new-note').value='';showToast('Task added! ✅');
   }
 }
-
 async function loadMessages(){
   if(!currentProfile?.household_id)return;
   const{data:msgs}=await sb.from('messages').select('*').eq('household_id',currentProfile.household_id).order('created_at',{ascending:true});
   renderClientMessages(msgs||[]);
   if(clientMsgSubscription)clientMsgSubscription.unsubscribe();
-  clientMsgSubscription=sb.channel('client-msgs-'+currentProfile.household_id)
-    .on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:`household_id=eq.${currentProfile.household_id}`},async()=>{
-      const{data:nm}=await sb.from('messages').select('*').eq('household_id',currentProfile.household_id).order('created_at',{ascending:true});
-      renderClientMessages(nm||[]);
-    }).subscribe();
+  clientMsgSubscription=sb.channel('client-msgs-'+currentProfile.household_id).on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:`household_id=eq.${currentProfile.household_id}`},async()=>{const{data:nm}=await sb.from('messages').select('*').eq('household_id',currentProfile.household_id).order('created_at',{ascending:true});renderClientMessages(nm||[]);}).subscribe();
 }
-
 function renderClientMessages(msgs){
-  const thread=document.getElementById('msg-thread');const empty=document.getElementById('msg-empty');if(!thread)return;
+  const thread=document.getElementById('msg-thread'),empty=document.getElementById('msg-empty');if(!thread)return;
   if(msgs.length===0){if(empty)empty.style.display='block';return;}if(empty)empty.style.display='none';
   thread.innerHTML='';
-  msgs.forEach(m=>{
-    const isMe=m.sender_id===currentUser?.id;const wrap=document.createElement('div');wrap.className='msg-wrap'+(isMe?' mine':'');
-    const time=new Date(m.created_at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
-    wrap.innerHTML=!isMe?`<div><div class="msg-sender">${m.sender_name||'Home Helper'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`:`<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`;
-    thread.appendChild(wrap);
-  });thread.scrollTop=thread.scrollHeight;
+  msgs.forEach(m=>{const isMe=m.sender_id===currentUser?.id;const wrap=document.createElement('div');wrap.className='msg-wrap'+(isMe?' mine':'');const time=new Date(m.created_at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});wrap.innerHTML=!isMe?`<div><div class="msg-sender">${m.sender_name||'Home Helper'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`:`<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`;thread.appendChild(wrap);});
+  thread.scrollTop=thread.scrollHeight;
 }
-
 async function sendMsg(){
-  const input=document.getElementById('msg-input');const text=input.value.trim();if(!text)return;input.value='';
+  const input=document.getElementById('msg-input'),text=input.value.trim();if(!text)return;input.value='';
   if(currentProfile?.household_id){await sb.from('messages').insert({household_id:currentProfile.household_id,sender_id:currentUser.id,sender_name:currentProfile.full_name,body:text});loadMessages();}
 }
-
 async function loadAdminInbox(){
   const list=document.getElementById('admin-messages-list');
   list.innerHTML='<div style="text-align:center;padding:1.5rem;color:var(--muted)"><div class="spinner" style="margin:0 auto"></div></div>';
   const{data:messages,error}=await sb.from('messages').select('household_id, sender_name, body, created_at, households(address)').order('created_at',{ascending:false});
   if(error||!messages){list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted)">Could not load messages</div>';return;}
-  const seen=new Set(),threads=[];
-  messages.forEach(m=>{if(!seen.has(m.household_id)){seen.add(m.household_id);threads.push(m);}});
+  const seen=new Set(),threads=[];messages.forEach(m=>{if(!seen.has(m.household_id)){seen.add(m.household_id);threads.push(m);}});
   if(threads.length===0){list.innerHTML='<div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">💬</div><div style="font-size:18px;font-weight:600">No messages yet</div></div>';return;}
   list.innerHTML='';
-  threads.forEach(thread=>{
-    const address=thread.households?.address||'Unknown';
-    const preview=thread.body?.length>50?thread.body.substring(0,50)+'…':thread.body;
-    const time=new Date(thread.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'});
-    const initials=address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
-    const row=document.createElement('div');row.className='thread-row';
-    row.innerHTML=`<div class="avatar av-blue" style="width:48px;height:48px;font-size:15px;flex-shrink:0">${initials}</div><div class="thread-info"><div class="thread-name">${address}</div><div class="thread-preview">${thread.sender_name!=='Pete'?thread.sender_name+': ':'You: '}${preview}</div></div><div class="thread-right"><div class="thread-time">${time}</div></div>`;
-    row.onclick=()=>openAdminThread(thread.household_id,address);list.appendChild(row);
-  });
+  threads.forEach(thread=>{const address=thread.households?.address||'Unknown';const preview=thread.body?.length>50?thread.body.substring(0,50)+'…':thread.body;const time=new Date(thread.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'});const initials=address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();const row=document.createElement('div');row.className='thread-row';row.innerHTML=`<div class="avatar av-blue" style="width:48px;height:48px;font-size:15px;flex-shrink:0">${initials}</div><div class="thread-info"><div class="thread-name">${address}</div><div class="thread-preview">${thread.sender_name!=='Pete'?thread.sender_name+': ':'You: '}${preview}</div></div><div class="thread-right"><div class="thread-time">${time}</div></div>`;row.onclick=()=>openAdminThread(thread.household_id,address);list.appendChild(row);});
 }
-
 async function openAdminThread(householdId,address){
-  activeAdminHousehold=householdId;
-  document.getElementById('atab-messages').style.display='none';document.getElementById('atab-admin-thread').style.display='block';
+  activeAdminHousehold=householdId;document.getElementById('atab-messages').style.display='none';document.getElementById('atab-admin-thread').style.display='block';
   const initials=address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
   document.getElementById('admin-thread-av').textContent=initials;document.getElementById('admin-thread-name').textContent=address;document.getElementById('admin-thread-addr').textContent='Household conversation';
   await renderAdminThread(householdId);
   if(adminMsgSubscription)adminMsgSubscription.unsubscribe();
   adminMsgSubscription=sb.channel('admin-thread-'+householdId).on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:`household_id=eq.${householdId}`},()=>renderAdminThread(householdId)).subscribe();
 }
-
 async function renderAdminThread(householdId){
   const{data:msgs}=await sb.from('messages').select('*').eq('household_id',householdId).order('created_at',{ascending:true});
   const thread=document.getElementById('admin-msg-thread');
@@ -1009,26 +881,20 @@ async function renderAdminThread(householdId){
   msgs.forEach(m=>{const isMe=m.sender_name==='Pete';const wrap=document.createElement('div');wrap.className='msg-wrap'+(isMe?' mine':'');const time=new Date(m.created_at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});wrap.innerHTML=isMe?`<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`:`<div><div class="msg-sender">${m.sender_name||'Client'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`;thread.appendChild(wrap);});
   thread.scrollTop=thread.scrollHeight;
 }
-
 async function sendAdminMsg(){
-  const input=document.getElementById('admin-msg-input');const text=input.value.trim();if(!text||!activeAdminHousehold)return;input.value='';
-  await sb.from('messages').insert({household_id:activeAdminHousehold,sender_id:currentUser.id,sender_name:'Pete',body:text,read:false});
-  await renderAdminThread(activeAdminHousehold);
+  const input=document.getElementById('admin-msg-input'),text=input.value.trim();if(!text||!activeAdminHousehold)return;input.value='';
+  await sb.from('messages').insert({household_id:activeAdminHousehold,sender_id:currentUser.id,sender_name:'Pete',body:text,read:false});await renderAdminThread(activeAdminHousehold);
 }
-
 function closeAdminThread(){if(adminMsgSubscription){adminMsgSubscription.unsubscribe();adminMsgSubscription=null;}activeAdminHousehold=null;document.getElementById('atab-admin-thread').style.display='none';document.getElementById('atab-messages').style.display='block';loadAdminInbox();}
-
 function calcInvoice(){
-  const hours=parseFloat(document.getElementById('inv-hours').value)||1;
-  const materials=parseFloat(document.getElementById('inv-materials').value)||0;
-  const extraHrs=hours>1?hours-1:0;const extraCost=extraHrs*99;const total=124+extraCost+materials;
-  const er=document.getElementById('inv-extra-row');const mr=document.getElementById('inv-mat-row');
+  const hours=parseFloat(document.getElementById('inv-hours').value)||1,materials=parseFloat(document.getElementById('inv-materials').value)||0;
+  const extraHrs=hours>1?hours-1:0,extraCost=extraHrs*99,total=124+extraCost+materials;
+  const er=document.getElementById('inv-extra-row'),mr=document.getElementById('inv-mat-row');
   if(extraHrs>0){er.style.display='flex';document.getElementById('inv-extra-label').textContent=`Additional ${extraHrs} hr${extraHrs!==1?'s':''} @ $99/hr`;document.getElementById('inv-line2').textContent='$'+extraCost.toFixed(2);}else{er.style.display='none';}
   if(materials>0){mr.style.display='flex';document.getElementById('inv-line3').textContent='$'+materials.toFixed(2);}else{mr.style.display='none';}
   document.getElementById('inv-total').textContent='$'+total.toFixed(2);
 }
-function saveInvoice(){const c=document.getElementById('inv-client').value;const t=document.getElementById('inv-total').textContent;closeModal('invoice');showToast(`Invoice ${t} sent to ${c.split(' ')[0]}! 📧`);}
-
+function saveInvoice(){const c=document.getElementById('inv-client').value,t=document.getElementById('inv-total').textContent;closeModal('invoice');showToast(`Invoice ${t} sent to ${c.split(' ')[0]}! 📧`);}
 function initStripe(){
   if(stripeInstance)return;stripeInstance=Stripe(STRIPE_PK);const elements=stripeInstance.elements();
   const style={base:{fontSize:'18px',color:'#1a1a1a','::placeholder':{color:'#aaa'}}};
@@ -1036,7 +902,6 @@ function initStripe(){
   cardExpiry=elements.create('cardExpiry',{style});cardExpiry.mount('#card-expiry');
   cardCvc=elements.create('cardCvc',{style});cardCvc.mount('#card-cvc');
 }
-
 async function doSubscribe(){
   if(!currentProfile)return;hideError('stripe-error');
   const btn=document.getElementById('subscribe-btn');btn.textContent='Processing…';btn.disabled=true;
@@ -1050,7 +915,6 @@ async function doSubscribe(){
   }catch(err){showError('stripe-error',err.message||'Payment failed.');}
   btn.textContent='Subscribe — $19/mo';btn.disabled=false;
 }
-
 function uploadProfilePhoto(input){
   const file=input.files[0];if(!file)return;const reader=new FileReader();
   reader.onload=function(e){const av=document.getElementById('profile-av');if(av)av.innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;showToast('Profile photo updated! ✅');};
