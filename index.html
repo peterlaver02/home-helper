@@ -19,8 +19,6 @@
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); max-width: 480px; margin: 0 auto; min-height: 100vh; }
 .screen { display: none; flex-direction: column; min-height: 100vh; }
 .screen.active { display: flex; }
-
-/* ── LOGIN ── */
 .login-wrap { padding: 2rem 1.5rem; text-align: center; flex: 1; }
 .app-logo { font-size: 32px; font-weight: 700; color: var(--text); } .app-logo span { color: var(--blue); }
 .app-tagline { font-size: 17px; color: var(--muted); margin-bottom: 2rem; }
@@ -31,15 +29,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .big-btn { width: 100%; padding: 18px; font-size: 21px; font-weight: 600; border-radius: 12px; border: none; cursor: pointer; margin-bottom: 10px; }
 .btn-blue { background: var(--blue); color: #fff; }
 .btn-green { background: var(--green); color: #fff; }
-.btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text); }
 .btn-sm { padding: 12px; font-size: 17px; }
 .forgot { font-size: 16px; color: var(--blue); text-align: center; display: block; margin-top: 4px; cursor: pointer; }
 .roles { display: flex; gap: 10px; margin-bottom: 1rem; }
 .role-btn { flex: 1; padding: 14px 6px; font-size: 15px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--bg); cursor: pointer; color: var(--text); text-align: center; }
 .role-btn i { font-size: 26px; display: block; margin-bottom: 4px; }
 .role-btn.sel { border-color: var(--blue); background: var(--blue-lt); color: var(--blue); font-weight: 600; }
-
-/* ── SHELL ── */
 .top-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 20; }
 .nav-title { font-size: 21px; font-weight: 700; } .nav-sub { font-size: 13px; color: var(--muted); }
 .nav-logout { background: none; border: none; color: var(--blue); font-size: 22px; cursor: pointer; padding: 6px; }
@@ -50,8 +45,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .nav-tab span { font-size: 11px; display: block; margin-top: 2px; }
 .nav-tab.active { color: var(--blue); }
 .nbadge { background: #E24B4A; color: #fff; font-size: 10px; border-radius: 99px; padding: 1px 5px; position: absolute; top: 6px; left: 50%; transform: translateX(2px); }
-
-/* ── CARDS ── */
 .card { background: var(--card); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
 .sec-title { font-size: 19px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
 .chip { font-size: 12px; padding: 3px 10px; border-radius: 99px; font-weight: 600; display: inline-block; }
@@ -59,42 +52,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .chip-routine { background: var(--green-lt); color: var(--green); }
 .chip-scheduled { background: var(--blue-lt); color: var(--blue); }
 .chip-done { background: #e8e8e8; color: #555; }
-
-/* ── TASK FILTERS ── */
 .filter-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px; scrollbar-width: none; }
 .filter-row::-webkit-scrollbar { display: none; }
 .filter-chip { padding: 8px 16px; font-size: 15px; border-radius: 99px; border: 1.5px solid var(--border); background: var(--card); color: var(--muted); cursor: pointer; white-space: nowrap; flex-shrink: 0; }
 .filter-chip.active { border-color: var(--blue); background: var(--blue-lt); color: var(--blue); font-weight: 600; }
-
-/* ── ADD TASK BTN ── */
 .add-btn { width: 100%; padding: 18px; font-size: 20px; font-weight: 600; background: var(--blue); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px; }
 .add-btn i { font-size: 24px; }
-
-/* ── TASK CARD ── */
 .task-title { font-size: 19px; font-weight: 600; margin-bottom: 5px; }
 .task-note { font-size: 15px; color: var(--muted); margin-bottom: 10px; line-height: 1.4; }
 .task-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .task-date { font-size: 12px; color: var(--muted); }
 .task-room { font-size: 12px; color: var(--muted); background: var(--bg); padding: 3px 8px; border-radius: 99px; }
-.photo-thumb { width: 58px; height: 58px; background: var(--blue-lt); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 22px; border: 1px solid var(--border); margin-top: 10px; }
 .done-card { opacity: 0.55; }
 .done-card .task-title { text-decoration: line-through; }
-
-/* ── APPOINTMENTS ── */
 .req-btn { width: 100%; padding: 18px; font-size: 19px; font-weight: 600; background: var(--green); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px; }
-.appt-detail { font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-.appt-detail i { color: var(--blue); font-size: 18px; flex-shrink: 0; }
-.appt-confirmed { margin-top: 10px; padding: 10px 14px; background: var(--green-lt); border-radius: 8px; font-size: 15px; color: var(--green); }
-
-/* ── MESSAGES ── */
 .thread-row { display: flex; align-items: center; gap: 12px; padding: 14px; background: var(--card); border-radius: var(--radius); margin-bottom: 10px; cursor: pointer; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
-.thread-row:active { opacity: 0.7; }
 .thread-info { flex: 1; min-width: 0; }
 .thread-name { font-size: 17px; font-weight: 600; margin-bottom: 2px; }
 .thread-preview { font-size: 14px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .thread-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
 .thread-time { font-size: 12px; color: var(--muted); }
-.udot { width: 9px; height: 9px; background: var(--blue); border-radius: 50%; }
 .msg-wrap { margin-bottom: 14px; display: flex; }
 .msg-wrap.mine { justify-content: flex-end; }
 .msg-bubble { max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 17px; line-height: 1.5; }
@@ -106,9 +83,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .msg-bar { position: fixed; bottom: 58px; left: 0; right: 0; max-width: 480px; margin: 0 auto; background: var(--card); padding: 10px 12px; border-top: 1px solid var(--border); display: flex; gap: 8px; align-items: center; z-index: 15; }
 .msg-input { flex: 1; padding: 13px 15px; font-size: 17px; border: 1.5px solid var(--border); border-radius: 99px; background: var(--bg); color: var(--text); outline: none; }
 .msg-send { width: 48px; height: 48px; background: var(--blue); color: #fff; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.priv-label { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); margin-bottom: 16px; }
-
-/* ── PROFILE ── */
 .avatar { border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
 .av-blue { background: var(--blue-lt); color: #0C447C; }
 .av-teal { background: var(--green-lt); color: #085041; }
@@ -117,18 +91,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .prow { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 17px; }
 .prow:last-child { border-bottom: none; }
 .prow i { color: var(--blue); font-size: 20px; width: 26px; flex-shrink: 0; }
-.fam-row { display: flex; align-items: center; gap: 12px; padding: 13px; background: var(--bg); border-radius: 10px; margin-bottom: 8px; }
-.fam-name { font-size: 17px; font-weight: 600; }
-.fam-role { font-size: 13px; color: var(--muted); }
 .add-fam-btn { width: 100%; padding: 14px; font-size: 17px; border: 2px dashed var(--border); border-radius: 10px; background: transparent; cursor: pointer; color: var(--blue); display: flex; align-items: center; justify-content: center; gap: 8px; }
 .toggle { width: 48px; height: 26px; appearance: none; background: #ccc; border-radius: 99px; position: relative; cursor: pointer; transition: background 0.2s; margin-left: auto; flex-shrink: 0; }
 .toggle:checked { background: var(--blue); }
 .toggle::after { content: ''; position: absolute; width: 20px; height: 20px; background: white; border-radius: 50%; top: 3px; left: 3px; transition: left 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
 .toggle:checked::after { left: 25px; }
-
-/* ── ADMIN ── */
 .admin-client-row { display: flex; align-items: center; gap: 12px; padding: 14px; background: var(--card); border-radius: var(--radius); margin-bottom: 10px; cursor: pointer; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
-.admin-client-row:active { opacity: 0.7; }
 .client-info { flex: 1; }
 .client-name { font-size: 18px; font-weight: 600; }
 .client-addr { font-size: 13px; color: var(--muted); }
@@ -136,13 +104,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .note-card { background: var(--amber-lt); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
 .note-card-title { font-size: 14px; font-weight: 700; color: var(--amber); margin-bottom: 4px; }
 .note-card-text { font-size: 15px; color: var(--text); line-height: 1.5; }
-.admin-section { background: var(--card); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
 .admin-stat { text-align: center; }
 .admin-stat-num { font-size: 32px; font-weight: 700; color: var(--blue); }
 .admin-stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
 .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-
-/* ── MODAL ── */
 .modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; align-items: flex-end; justify-content: center; }
 .modal-bg.open { display: flex; }
 .modal { background: var(--card); border-radius: 20px 20px 0 0; padding: 22px 16px 36px; width: 100%; max-height: 92vh; overflow-y: auto; }
@@ -164,32 +129,22 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .modal-save { flex: 2; padding: 16px; font-size: 19px; font-weight: 600; background: var(--blue); color: #fff; border: none; border-radius: 10px; cursor: pointer; }
 .modal-cancel { flex: 1; padding: 16px; font-size: 19px; background: transparent; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; color: var(--text); }
 .select-input { width: 100%; padding: 14px; font-size: 17px; border: 1.5px solid var(--border); border-radius: 10px; margin-bottom: 12px; background: var(--bg); color: var(--text); outline: none; appearance: none; }
-
-/* ── TOAST ── */
 .toast { position: fixed; top: 76px; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; padding: 12px 22px; border-radius: 99px; font-size: 15px; z-index: 200; opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; }
 .toast.show { opacity: 1; }
-
-/* ── BACK BTN ── */
 .back-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--blue); font-size: 17px; cursor: pointer; margin-bottom: 14px; padding: 0; }
 .back-btn i { font-size: 20px; }
-
-/* ── AUTH SCREENS ── */
 .auth-loading { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; gap:16px; }
 .spinner { width:40px; height:40px; border:3px solid var(--border); border-top-color:var(--blue); border-radius:50%; animation:spin 0.8s linear infinite; }
 @keyframes spin { to { transform:rotate(360deg); } }
-.reset-link { font-size:16px; color:var(--blue); text-align:center; display:block; margin-top:8px; cursor:pointer; }
 .error-msg { background:var(--red-lt); color:var(--red); padding:12px; border-radius:8px; font-size:15px; margin-bottom:12px; display:none; }
 </style>
-
-<!-- SUPABASE SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<!-- STRIPE JS -->
 <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 <div class="toast" id="toast"></div>
 
-<!-- LOADING SCREEN -->
+<!-- LOADING -->
 <div class="screen active" id="screen-loading">
   <div class="auth-loading">
     <div style="font-size:48px">🏡</div>
@@ -198,7 +153,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
-<!-- PASSWORD RESET SCREEN -->
+<!-- PASSWORD RESET -->
 <div class="screen" id="screen-reset">
   <div class="login-wrap">
     <div style="font-size:60px;margin-bottom:8px">🔑</div>
@@ -215,9 +170,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SIGNUP SCREEN
-═══════════════════════════════════════ -->
+<!-- SIGNUP -->
 <div class="screen" id="screen-signup">
   <div class="login-wrap">
     <div style="font-size:60px;margin-bottom:8px">🏡</div>
@@ -225,36 +178,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="app-tagline">Create your account</div>
     <div class="login-card">
       <div class="error-msg" id="signup-error"></div>
-
       <label class="field-label">Your Full Name</label>
       <input class="big-input" type="text" placeholder="e.g. John Smith" id="signup-name"/>
-
       <label class="field-label">Phone Number</label>
       <input class="big-input" type="tel" placeholder="e.g. 5405550142" id="signup-phone"/>
-
       <label class="field-label">Home Address</label>
       <input class="big-input" type="text" placeholder="e.g. 123 Main St, Harrisonburg VA" id="signup-address"/>
-
       <label class="field-label">Create a Password</label>
       <input class="big-input" type="password" placeholder="At least 6 characters" id="signup-password"/>
-
       <label class="field-label">Confirm Password</label>
       <input class="big-input" type="password" placeholder="Same password again" id="signup-confirm"/>
-
       <button class="big-btn btn-blue" onclick="doSignup()">Create My Account</button>
-
       <div style="text-align:center;margin-top:14px">
         <span style="font-size:17px;color:var(--muted)">Already have an account? </span>
         <a onclick="showScreen('screen-login')" style="font-size:17px;color:var(--blue);cursor:pointer;font-weight:600">Sign In</a>
       </div>
     </div>
-    
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     LOGIN SCREEN
-═══════════════════════════════════════ -->
+<!-- LOGIN -->
 <div class="screen active" id="screen-login">
   <div class="login-wrap">
     <div style="font-size:60px;margin-bottom:8px">🏡</div>
@@ -263,16 +206,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="login-card">
       <p style="font-size:17px;color:var(--muted);margin-bottom:10px">I am logging in as:</p>
       <div class="roles">
-        <div class="role-btn sel" id="role-client" onclick="selectRole('client')">
-          <i class="ti ti-armchair"></i>Client
-        </div>
-        <div class="role-btn" id="role-family" onclick="selectRole('family')">
-          <i class="ti ti-heart"></i>Family
-        </div>
+        <div class="role-btn sel" id="role-client" onclick="selectRole('client')"><i class="ti ti-armchair"></i>Client</div>
+        <div class="role-btn" id="role-family" onclick="selectRole('family')"><i class="ti ti-heart"></i>Family</div>
       </div>
-      <div id="admin-mode-banner" style="display:none;background:var(--amber-lt);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:14px;color:var(--amber);font-weight:600;">
-        🔐 Admin mode active
-      </div>
+      <div id="admin-mode-banner" style="display:none;background:var(--amber-lt);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:14px;color:var(--amber);font-weight:600;">🔐 Admin mode active</div>
       <div class="error-msg" id="login-error"></div>
       <label class="field-label">Phone Number</label>
       <input class="big-input" type="tel" placeholder="e.g. 5405550142" id="login-email"/>
@@ -285,7 +222,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <a onclick="showScreen('screen-signup')" style="font-size:17px;color:var(--blue);cursor:pointer;font-weight:600">Create an account</a>
       </div>
     </div>
-    
     <div style="margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center">
       <div style="font-size:11px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">Staff Access</div>
       <div style="display:flex;justify-content:center;gap:12px">
@@ -293,13 +229,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <a onclick="activateAdmin()" style="font-size:13px;color:var(--muted);cursor:pointer;text-decoration:none;padding:7px 16px;border:1px solid var(--border);border-radius:99px;background:var(--card)">🔐 Admin</a>
       </div>
     </div>
-    </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     CLIENT / FAMILY APP
-═══════════════════════════════════════ -->
+<!-- CLIENT APP -->
 <div class="screen" id="screen-main">
   <div class="top-nav">
     <div>
@@ -308,22 +241,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
     <button class="nav-logout" onclick="logout()"><i class="ti ti-logout"></i></button>
   </div>
-
-  <!-- HELPER GREETING BANNER -->
   <div id="helper-banner" style="background:var(--blue-lt);padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)">
-    <img src="data:image/jpeg;base64,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" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--blue)" alt="Pete"/>
+    <div style="width:42px;height:42px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex-shrink:0">P</div>
     <div>
-      <div style="font-size:15px;font-weight:700;color:var(--blue)" id="banner-helper-name">Your helper is Pete</div>
+      <div style="font-size:15px;font-weight:700;color:var(--blue)">Your helper is Pete</div>
       <div style="font-size:13px;color:var(--muted)" id="banner-next-visit">No visit scheduled yet</div>
     </div>
   </div>
 
-  <!-- TASKS TAB -->
   <div class="content" id="tab-tasks">
-    <button class="add-btn" onclick="openModal('task')">
-      <i class="ti ti-plus-circle"></i> Add Something I Need Help With
-    </button>
-
+    <button class="add-btn" onclick="openModal('task')"><i class="ti ti-plus-circle"></i> Add Something I Need Help With</button>
     <div class="filter-row">
       <div class="filter-chip active" onclick="filterTasks('all',this)">📋 All</div>
       <div class="filter-chip" onclick="filterTasks('active',this)">🔧 Active</div>
@@ -333,9 +260,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="filter-chip" onclick="filterTasks('bathroom',this)">🚿 Bathroom</div>
       <div class="filter-chip" onclick="filterTasks('outside',this)">🌿 Outside</div>
     </div>
-
     <div id="task-list">
-      <!-- Tasks load from database for real users -->
       <div id="task-empty" style="text-align:center;padding:2rem 1rem;color:var(--muted)">
         <div style="font-size:48px;margin-bottom:12px">📋</div>
         <div style="font-size:18px;font-weight:600;margin-bottom:8px">No tasks yet</div>
@@ -344,31 +269,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 
-  <!-- APPOINTMENTS TAB -->
   <div class="content" id="tab-appointments" style="display:none">
-    <button class="req-btn" onclick="showToast('Visit request sent! You\'ll hear back within 24 hours ✅')">
-      <i class="ti ti-calendar-plus"></i> Request a Visit
-    </button>
+    <button class="req-btn" onclick="showToast('Visit request sent! You\'ll hear back within 24 hours ✅')"><i class="ti ti-calendar-plus"></i> Request a Visit</button>
     <div class="sec-title">Upcoming Visits</div>
-    <div id="visits-upcoming">
-      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
-        <div style="font-size:48px;margin-bottom:12px">📅</div>
-        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No visits scheduled yet</div>
-        <div style="font-size:15px">Tap "Request a Visit" above and Pete will be in touch!</div>
-      </div>
-    </div>
-    <div class="sec-title" style="margin-top:1.5rem">Past Visits</div>
-    <div id="visits-past">
-      <div style="text-align:center;padding:1.5rem 1rem;color:var(--muted)">
-        <div style="font-size:15px">No past visits yet</div>
-      </div>
-    </div>
+    <div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📅</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No visits scheduled yet</div></div>
   </div>
 
-  <!-- MESSAGES — single household thread -->
   <div class="content" id="tab-messages" style="display:none;padding-bottom:130px">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
-      <div style="width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--blue);background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--blue)" id="msg-pete-circle">P</div>
+      <div style="width:46px;height:46px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex-shrink:0">P</div>
       <div>
         <div style="font-size:18px;font-weight:700">Pete — Home Helper</div>
         <div style="font-size:13px;color:var(--muted)">Everyone in your household can see this conversation</div>
@@ -382,59 +291,42 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       </div>
     </div>
     <div class="msg-bar">
-      <input class="msg-input" type="text" placeholder="Type a message…" id="msg-input" />
+      <input class="msg-input" type="text" placeholder="Type a message…" id="msg-input"/>
       <button class="msg-send" onclick="sendMsg()"><i class="ti ti-send"></i></button>
     </div>
   </div>
 
-  <!-- PROFILE TAB -->
   <div class="content" id="tab-profile" style="display:none">
     <div class="card">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
-        <!-- Tappable profile photo -->
         <div style="position:relative;flex-shrink:0" onclick="document.getElementById('profile-photo-input').click()">
-          <div class="avatar av-blue" style="width:72px;height:72px;font-size:22px;overflow:hidden" id="profile-av">
-            <span id="profile-av-initials">?</span>
-          </div>
-          <div style="position:absolute;bottom:0;right:0;width:24px;height:24px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--card)">
-            <i class="ti ti-camera" style="font-size:12px;color:#fff"></i>
-          </div>
+          <div class="avatar av-blue" style="width:72px;height:72px;font-size:22px;overflow:hidden" id="profile-av"><span id="profile-av-initials">?</span></div>
+          <div style="position:absolute;bottom:0;right:0;width:24px;height:24px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--card)"><i class="ti ti-camera" style="font-size:12px;color:#fff"></i></div>
           <input type="file" id="profile-photo-input" accept="image/*" style="display:none" onchange="uploadProfilePhoto(this)"/>
         </div>
         <div>
           <div style="font-size:24px;font-weight:700" id="profile-name"></div>
           <div style="font-size:15px;color:var(--muted)" id="profile-role">Client account</div>
-          <div style="font-size:13px;color:var(--blue);margin-top:4px;cursor:pointer" onclick="document.getElementById('profile-photo-input').click()">
-            Tap photo to update
-          </div>
         </div>
       </div>
       <div class="prow"><i class="ti ti-phone"></i><span id="profile-phone">—</span></div>
       <div class="prow"><i class="ti ti-map-pin"></i><span id="profile-address">—</span></div>
       <div class="prow"><i class="ti ti-mail"></i><span id="profile-email">—</span></div>
     </div>
-
     <div class="sec-title">Family &amp; Loved Ones</div>
-    <p style="font-size:15px;color:var(--muted);margin-bottom:12px">Family members can log in to view and add tasks for your home.</p>
-    <div id="family-list">
-      <div style="text-align:center;padding:1rem;color:var(--muted);font-size:15px">No family members added yet</div>
-    </div>
+    <div id="family-list"><div style="text-align:center;padding:1rem;color:var(--muted);font-size:15px">No family members added yet</div></div>
     <button class="add-fam-btn" onclick="showToast('Contact Pete to add a family member ✉️')"><i class="ti ti-user-plus" style="font-size:20px"></i>Add a Family Member</button>
-
     <div class="sec-title" style="margin-top:1.5rem">Plan</div>
     <div class="card" id="profile-plan-card" style="background:var(--bg);border:1.5px solid var(--border)">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div style="font-size:18px;font-weight:700;" id="profile-plan-name">Basic</div>
-        <div style="font-size:22px;font-weight:700;" id="profile-plan-price">Free</div>
+        <div style="font-size:18px;font-weight:700" id="profile-plan-name">Basic</div>
+        <div style="font-size:22px;font-weight:700" id="profile-plan-price">Free</div>
       </div>
       <div style="font-size:14px;color:var(--muted)" id="profile-plan-perks">✓ Add tasks &nbsp;✓ Message Pete &nbsp;✓ View visit history</div>
       <div id="upgrade-btn-wrap" style="margin-top:12px;display:none">
-        <button onclick="openModal('upgrade')" style="width:100%;padding:14px;font-size:17px;font-weight:600;background:var(--blue);color:#fff;border:none;border-radius:10px;cursor:pointer">
-          ⭐ Upgrade to Member — $19/mo
-        </button>
+        <button onclick="openModal('upgrade')" style="width:100%;padding:14px;font-size:17px;font-weight:600;background:var(--blue);color:#fff;border:none;border-radius:10px;cursor:pointer">⭐ Upgrade to Member — $19/mo</button>
       </div>
     </div>
-
     <div class="sec-title" style="margin-top:1.5rem">Notifications</div>
     <div class="card">
       <div class="prow"><i class="ti ti-bell"></i>New message<input type="checkbox" class="toggle" checked/></div>
@@ -444,26 +336,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <button style="width:100%;padding:16px;font-size:17px;background:transparent;border:1.5px solid var(--red-lt);color:var(--red);border-radius:12px;cursor:pointer;margin-top:8px" onclick="logout()">Sign Out</button>
   </div>
 
-  <!-- BOTTOM NAV -->
   <div class="bottom-nav">
-    <button class="nav-tab active" id="btn-tasks" onclick="switchTab('tasks')">
-      <i class="ti ti-tool"></i><span>Tasks</span>
-    </button>
-    <button class="nav-tab" id="btn-appointments" onclick="switchTab('appointments')" style="position:relative">
-      <i class="ti ti-calendar"></i><span class="nbadge">1</span><span>Visits</span>
-    </button>
-    <button class="nav-tab" id="btn-messages" onclick="switchTab('messages')" style="position:relative">
-      <i class="ti ti-message-circle"></i><span class="nbadge">2</span><span>Messages</span>
-    </button>
-    <button class="nav-tab" id="btn-profile" onclick="switchTab('profile')">
-      <i class="ti ti-user"></i><span>Profile</span>
-    </button>
+    <button class="nav-tab active" id="btn-tasks" onclick="switchTab('tasks')"><i class="ti ti-tool"></i><span>Tasks</span></button>
+    <button class="nav-tab" id="btn-appointments" onclick="switchTab('appointments')" style="position:relative"><i class="ti ti-calendar"></i><span class="nbadge">1</span><span>Visits</span></button>
+    <button class="nav-tab" id="btn-messages" onclick="switchTab('messages')" style="position:relative"><i class="ti ti-message-circle"></i><span class="nbadge">2</span><span>Messages</span></button>
+    <button class="nav-tab" id="btn-profile" onclick="switchTab('profile')"><i class="ti ti-user"></i><span>Profile</span></button>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     ADMIN DASHBOARD
-═══════════════════════════════════════ -->
+<!-- ADMIN DASHBOARD -->
 <div class="screen" id="screen-admin">
   <div class="top-nav">
     <div>
@@ -471,21 +352,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="nav-sub">Admin Dashboard</div>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
-      <img src="data:image/jpeg;base64,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" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--blue)" alt="Pete"/>
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px">P</div>
       <button class="nav-logout" onclick="logout()"><i class="ti ti-logout"></i></button>
     </div>
   </div>
 
-  <!-- CLIENTS LIST -->
   <div class="content" id="atab-clients" style="padding-bottom:80px">
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding:14px;background:var(--card);border-radius:var(--radius);box-shadow:0 1px 6px rgba(0,0,0,0.06)">
-      <img src="data:image/jpeg;base64,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" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--blue);flex-shrink:0" alt="Pete"/>
-      <div>
-        <div style="font-size:19px;font-weight:700">Welcome back, Pete 👋</div>
-        <div style="font-size:13px;color:var(--muted)">Super Admin · Home Helper</div>
-      </div>
+      <div style="width:52px;height:52px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;flex-shrink:0">P</div>
+      <div><div style="font-size:19px;font-weight:700">Welcome back, Pete 👋</div><div style="font-size:13px;color:var(--muted)">Super Admin · Home Helper</div></div>
     </div>
-    <div class="stats-row" id="admin-stats">
+    <div class="stats-row">
       <div class="card admin-stat"><div class="admin-stat-num" id="stat-clients">0</div><div class="admin-stat-label">Active Clients</div></div>
       <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--red)" id="stat-urgent">0</div><div class="admin-stat-label">Urgent Tasks</div></div>
       <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--green)" id="stat-visits">0</div><div class="admin-stat-label">Visits This Week</div></div>
@@ -494,118 +371,58 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       Your Clients
       <button onclick="toggleArchived()" id="archived-toggle" style="font-size:13px;color:var(--muted);background:none;border:1px solid var(--border);border-radius:99px;padding:4px 12px;cursor:pointer">Show Archived</button>
     </div>
-    <div id="admin-client-list">
-      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
-        <div style="font-size:48px;margin-bottom:12px">👥</div>
-        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No clients yet</div>
-        <div style="font-size:15px">Clients will appear here once they sign up</div>
-      </div>
-    </div>
-    <button class="add-btn" style="font-size:17px;padding:14px;margin-top:8px" onclick="openModal('add-client')">
-      <i class="ti ti-user-plus"></i> Add a Client Manually
-    </button>
+    <div id="admin-client-list"><div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">👥</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No clients yet</div><div style="font-size:15px">Clients will appear here once they sign up</div></div></div>
+    <button class="add-btn" style="font-size:17px;padding:14px;margin-top:8px" onclick="openModal('add-client')"><i class="ti ti-user-plus"></i> Add a Client Manually</button>
   </div>
 
-  <!-- CLIENT DETAIL -->
   <div class="content" id="atab-client-detail" style="display:none;padding-bottom:80px">
     <button class="back-btn" onclick="closeClient()"><i class="ti ti-arrow-left"></i> Back to Clients</button>
-
     <div class="card" style="margin-bottom:14px">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
         <div class="avatar av-blue" style="width:54px;height:54px;font-size:18px" id="detail-av"></div>
-        <div>
-          <div style="font-size:21px;font-weight:700" id="detail-name"></div>
-          <div style="font-size:14px;color:var(--muted)" id="detail-addr"></div>
-        </div>
+        <div><div style="font-size:21px;font-weight:700" id="detail-name"></div><div style="font-size:14px;color:var(--muted)" id="detail-addr"></div></div>
       </div>
       <div class="prow"><i class="ti ti-phone"></i><span id="detail-phone">—</span></div>
-      <div class="prow"><i class="ti ti-credit-card"></i><span id="detail-plan">Monthly Plan · $19/mo</span>
+      <div class="prow"><i class="ti ti-credit-card"></i><span id="detail-plan">Basic · Free</span>
         <div style="margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0">
           <span style="font-size:12px;color:var(--muted)">Waive fee</span>
           <input type="checkbox" class="toggle" id="waive-toggle" onchange="toggleWaive(this)"/>
         </div>
       </div>
-      <div id="waive-note" style="display:none;font-size:13px;color:var(--green);padding:8px 0 4px;display:none">
-        ✓ Membership fee waived for this client
-      </div>
-
-    <!-- FAMILY CONTACTS -->
-    <div class="sec-title">Family & Loved Ones</div>
-    <div id="detail-family-list">
-      <p style="font-size:14px;color:var(--muted);padding:8px 0">No family members added yet</p>
+      <div id="waive-note" style="display:none;font-size:13px;color:var(--green);padding:8px 0 4px">✓ Membership fee waived for this client</div>
     </div>
-
-    <!-- PRIVATE ADMIN NOTES -->
+    <div class="sec-title">Family & Loved Ones</div>
+    <div id="detail-family-list"><p style="font-size:14px;color:var(--muted);padding:8px 0">No family members added yet</p></div>
     <div class="sec-title">🔒 My Private Notes</div>
     <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Only visible to you — clients and family cannot see these.</p>
-
-    <div class="note-card">
-      <div class="note-card-title">🔧 Tools & Materials</div>
-      <div class="note-card-text" id="note-tools">No notes yet</div>
-    </div>
-    <div class="note-card">
-      <div class="note-card-title">🏠 House Notes</div>
-      <div class="note-card-text" id="note-house">No notes yet</div>
-    </div>
-    <div class="note-card">
-      <div class="note-card-title">👤 Client Notes</div>
-      <div class="note-card-text" id="note-client">No notes yet</div>
-    </div>
-
-    <button class="big-btn btn-blue btn-sm" style="margin-top:4px" onclick="openModal('admin-note')">
-      <i class="ti ti-plus" style="font-size:18px;vertical-align:-2px;margin-right:6px"></i> Add a Note
-    </button>
-
-    <!-- CLIENT TASKS (admin view) -->
+    <div class="note-card"><div class="note-card-title">🔧 Tools & Materials</div><div class="note-card-text" id="note-tools">No notes yet</div></div>
+    <div class="note-card"><div class="note-card-title">🏠 House Notes</div><div class="note-card-text" id="note-house">No notes yet</div></div>
+    <div class="note-card"><div class="note-card-title">👤 Client Notes</div><div class="note-card-text" id="note-client">No notes yet</div></div>
+    <button class="big-btn btn-blue btn-sm" style="margin-top:4px" onclick="openModal('admin-note')"><i class="ti ti-plus" style="font-size:18px;vertical-align:-2px;margin-right:6px"></i> Add a Note</button>
     <div class="sec-title" style="margin-top:1.5rem">Active Tasks</div>
-    <div id="detail-task-list">
-      <div style="text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:15px">No active tasks</div>
-    </div>
-
-    <button class="req-btn" style="margin-top:8px" onclick="showToast('Visit scheduled! Client will be notified 📅')">
-      <i class="ti ti-calendar-plus"></i> Schedule a Visit
-    </button>
-
-    <!-- ARCHIVE SECTION -->
+    <div id="detail-task-list"><div style="text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:15px">No active tasks</div></div>
+    <button class="req-btn" style="margin-top:8px" onclick="showToast('Visit scheduled! Client will be notified 📅')"><i class="ti ti-calendar-plus"></i> Schedule a Visit</button>
     <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
       <div class="sec-title">Manage Account</div>
-
-      <!-- DOWNGRADE -->
       <div style="background:var(--amber-lt);border-radius:10px;padding:14px;margin-bottom:12px">
         <div style="font-size:14px;font-weight:700;color:var(--amber);margin-bottom:4px">⬇️ Downgrade to Basic (Free)</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:12px">They keep their account and can still log in, view tasks, and message you. They lose the ability to request visits and family member access until they resubscribe.</div>
-        <button onclick="downgradeToBasic()" style="width:100%;padding:12px;font-size:16px;font-weight:600;background:transparent;border:1.5px solid var(--amber);color:var(--amber);border-radius:8px;cursor:pointer">
-          Downgrade to Basic
-        </button>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:12px">They keep their account but lose visit requests and family access until they resubscribe.</div>
+        <button onclick="downgradeToBasic()" style="width:100%;padding:12px;font-size:16px;font-weight:600;background:transparent;border:1.5px solid var(--amber);color:var(--amber);border-radius:8px;cursor:pointer">Downgrade to Basic</button>
       </div>
-
-      <!-- ARCHIVE -->
       <div style="background:var(--red-lt);border-radius:10px;padding:14px;margin-bottom:12px">
         <div style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:4px">📦 Archive this client</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:12px">They will no longer be able to log in. All their data — tasks, messages, visits, invoices — is preserved and can be restored at any time.</div>
-        <button id="archive-btn" onclick="confirmArchive()" style="width:100%;padding:12px;font-size:16px;font-weight:600;background:transparent;border:1.5px solid var(--red);color:var(--red);border-radius:8px;cursor:pointer">
-          Archive Client
-        </button>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:12px">They will no longer be able to log in. All data is preserved and can be restored.</div>
+        <button onclick="confirmArchive()" style="width:100%;padding:12px;font-size:16px;font-weight:600;background:transparent;border:1.5px solid var(--red);color:var(--red);border-radius:8px;cursor:pointer">Archive Client</button>
       </div>
     </div>
   </div>
 
-    <!-- SCHEDULE TAB -->
   <div class="content" id="atab-schedule" style="display:none;padding-bottom:80px">
-    <button class="req-btn" style="font-size:17px;padding:14px;margin-bottom:16px" onclick="showToast('Visit scheduled! Client will be notified 📅')">
-      <i class="ti ti-calendar-plus"></i> Schedule a Visit
-    </button>
+    <button class="req-btn" style="font-size:17px;padding:14px;margin-bottom:16px" onclick="showToast('Visit scheduled! 📅')"><i class="ti ti-calendar-plus"></i> Schedule a Visit</button>
     <div class="sec-title">This Week</div>
-    <div id="schedule-list">
-      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
-        <div style="font-size:48px;margin-bottom:12px">📅</div>
-        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No visits scheduled</div>
-        <div style="font-size:15px">Schedule a visit above to get started</div>
-      </div>
-    </div>
+    <div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📅</div><div style="font-size:18px;font-weight:600">No visits scheduled</div></div>
   </div>
 
-  <!-- TEAM LIST TAB -->
   <div class="content" id="atab-team" style="display:none;padding-bottom:80px">
     <div class="stats-row">
       <div class="card admin-stat"><div class="admin-stat-num" id="stat-team">0</div><div class="admin-stat-label">Team Members</div></div>
@@ -613,89 +430,22 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="card admin-stat"><div class="admin-stat-num" style="color:var(--amber)" id="stat-unassigned">0</div><div class="admin-stat-label">Unassigned</div></div>
     </div>
     <div class="sec-title">Team Members</div>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:14px">Tap a team member to see their client load and reassign.</p>
-    <div id="team-list">
-      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
-        <div style="font-size:48px;margin-bottom:12px">🪪</div>
-        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No team members yet</div>
-        <div style="font-size:15px">Invite your first team member below</div>
-      </div>
-    </div>
-    <button class="big-btn btn-blue btn-sm" style="margin-top:8px" onclick="openModal('invite-employee')">
-      <i class="ti ti-send" style="font-size:17px;vertical-align:-2px;margin-right:6px"></i> Invite a Team Member
-    </button>
-    <div style="background:var(--blue-lt);border-radius:10px;padding:14px;margin-top:14px">
-      <div style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:4px">ℹ️ What team members can see</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.6">Team members only see their assigned clients — tasks, visits, and messages. They <strong>cannot</strong> see your private admin notes, other members' clients, billing, or super admin settings.</div>
-    </div>
+    <div id="team-list"><div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">🪪</div><div style="font-size:18px;font-weight:600">No team members yet</div></div></div>
+    <button class="big-btn btn-blue btn-sm" style="margin-top:8px" onclick="openModal('invite-employee')"><i class="ti ti-send" style="font-size:17px;vertical-align:-2px;margin-right:6px"></i> Invite a Team Member</button>
   </div>
 
-    <!-- TEAM MEMBER DETAIL VIEW -->
-  <div class="content" id="atab-team-detail" style="display:none;padding-bottom:80px">
-    <button class="back-btn" onclick="closeTeamMember()"><i class="ti ti-arrow-left"></i> Back to Team</button>
-
-    <div class="card" style="margin-bottom:14px">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-        <div class="avatar" id="tm-avatar" style="width:54px;height:54px;font-size:18px"></div>
-        <div>
-          <div style="font-size:21px;font-weight:700" id="tm-name"></div>
-          <div style="font-size:14px;color:var(--muted)" id="tm-contact"></div>
-        </div>
-      </div>
-      <div class="prow"><i class="ti ti-users"></i><span id="tm-client-count"></span></div>
-      <div class="prow"><i class="ti ti-calendar-check"></i><span id="tm-visits"></span></div>
-      <div class="prow"><i class="ti ti-list-check"></i><span id="tm-tasks"></span></div>
-    </div>
-
-    <div class="sec-title">Assigned Clients</div>
-    <div id="tm-client-list"></div>
-
-    <button class="add-btn" style="font-size:17px;padding:14px;margin-top:4px" onclick="openAssignModal()">
-      <i class="ti ti-user-plus"></i> Assign a Client to This Team Member
-    </button>
-
-    <!-- UNASSIGNED CLIENTS POOL -->
-    <div class="sec-title" style="margin-top:1.5rem">Unassigned Clients</div>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:12px">These clients have no team member yet.</p>
-    <div id="tm-unassigned-list">
-      <div class="card" style="display:flex;align-items:center;gap:12px">
-        <div class="avatar av-teal" style="width:40px;height:40px;font-size:13px">CW</div>
-        <div style="flex:1">
-          <div style="font-size:16px;font-weight:600">Chris Wade</div>
-          <div style="font-size:13px;color:var(--muted)">no clients yet — placeholder</div>
-        </div>
-        <button onclick="assignFromPool('Chris Wade')" style="background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:14px;cursor:pointer;font-weight:600">Assign</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- INVOICES TAB -->
   <div class="content" id="atab-invoices" style="display:none;padding-bottom:80px">
-
-    <button class="add-btn" style="font-size:17px;padding:14px" onclick="openModal('invoice')">
-      <i class="ti ti-receipt"></i> Create New Invoice
-    </button>
-
-    <!-- PRICING REFERENCE -->
+    <button class="add-btn" style="font-size:17px;padding:14px" onclick="openModal('invoice')"><i class="ti ti-receipt"></i> Create New Invoice</button>
     <div style="background:var(--blue-lt);border-radius:10px;padding:14px;margin-bottom:16px">
       <div style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:8px">💰 Your Pricing</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:14px;color:var(--text)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:14px">
         <div>First hour</div><div style="font-weight:700;text-align:right">$124</div>
         <div>Each additional hour</div><div style="font-weight:700;text-align:right">$99/hr</div>
-        <div>Materials</div><div style="font-weight:700;text-align:right">Cost + passthrough</div>
         <div>Membership</div><div style="font-weight:700;text-align:right">$19/mo</div>
       </div>
-      <div style="font-size:12px;color:var(--muted);margin-top:8px">First hour includes drive time & supply runs</div>
     </div>
-
     <div class="sec-title">Recent Invoices</div>
-    <div id="invoice-list">
-      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
-        <div style="font-size:48px;margin-bottom:12px">🧾</div>
-        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No invoices yet</div>
-        <div style="font-size:15px">Create your first invoice after completing a visit</div>
-      </div>
-    </div>
+    <div id="invoice-list"><div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">🧾</div><div style="font-size:18px;font-weight:600">No invoices yet</div></div></div>
     <div class="sec-title" style="margin-top:1rem">This Month</div>
     <div class="card">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
@@ -707,93 +457,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 
-  <!-- INVOICE DETAIL VIEW -->
-  <div class="content" id="atab-invoice-detail" style="display:none;padding-bottom:80px">
-    <button class="back-btn" onclick="closeInvoiceDetail()"><i class="ti ti-arrow-left"></i> Back to Invoices</button>
-
-    <div class="card" style="margin-bottom:14px">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
-        <div>
-          <div style="font-size:20px;font-weight:700">Invoice #1003</div>
-          <div style="font-size:14px;color:var(--muted)" id="invoice-detail-sub"></div>
-        </div>
-        <span class="chip chip-urgent">Unpaid</span>
-      </div>
-
-      <!-- LINE ITEMS -->
-      <div style="border-top:1px solid var(--border);padding-top:12px">
-        <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px">Line Items</div>
-
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:15px">
-          <div>First hour <span style="font-size:12px;color:var(--muted)">(drive + visit)</span></div>
-          <div style="font-weight:600">$124.00</div>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:15px">
-          <div>Additional 0.5 hr</div>
-          <div style="font-weight:600">$49.50</div>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:15px">
-          <div>Smoke detector battery (9V×2)</div>
-          <div style="font-weight:600">$8.00</div>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:15px">
-          <div>Kitchen lightbulb (60W)</div>
-          <div style="font-weight:600">$6.00</div>
-        </div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:15px">
-          <div>Toilet flapper kit</div>
-          <div style="font-weight:600">$12.00</div>
-        </div>
-
-        <div style="display:flex;justify-content:space-between;padding:12px 0 4px;font-size:19px;font-weight:700">
-          <div>Total</div>
-          <div>$199.50</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6">
-      📋 Tasks completed: Running toilet, kitchen lightbulb, smoke detector battery<br/>
-      🕐 Time on site: 1.5 hours<br/>
-      👤 Helper: Pete
-    </div>
-
-    <button class="add-btn" style="font-size:17px;padding:14px" onclick="sendAdminInvoice()">
-      <i class="ti ti-send"></i> Send to Client & Family
-    </button>
-    <button class="req-btn" style="margin-top:10px;font-size:16px;padding:14px" onclick="showToast('Payment marked as received ✅')">
-      <i class="ti ti-check"></i> Mark as Paid
-    </button>
-    <button style="width:100%;padding:14px;font-size:16px;background:transparent;border:1.5px solid var(--border);border-radius:var(--radius);cursor:pointer;color:var(--text);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px" onclick="showToast('Opening invoice editor…')">
-      <i class="ti ti-pencil" style="font-size:18px"></i> Edit Invoice
-    </button>
-  </div>
-
-  <!-- ADMIN MESSAGES -->
-  <!-- ADMIN MESSAGES INBOX -->
   <div class="content" id="atab-messages" style="display:none;padding-bottom:80px">
     <div class="sec-title">All Conversations</div>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:14px">One thread per household — tap to open and reply.</p>
-    <div id="admin-messages-list">
-      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
-        <div style="font-size:48px;margin-bottom:12px">💬</div>
-        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No messages yet</div>
-        <div style="font-size:15px">Messages from clients will appear here</div>
-      </div>
-    </div>
+    <div id="admin-messages-list"><div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">💬</div><div style="font-size:18px;font-weight:600">No messages yet</div></div></div>
   </div>
 
-  <!-- ADMIN MESSAGE THREAD VIEW -->
   <div class="content" id="atab-admin-thread" style="display:none;padding-bottom:130px">
-    <button class="back-btn" onclick="closeAdminThread()">
-      <i class="ti ti-arrow-left"></i> Back to Messages
-    </button>
+    <button class="back-btn" onclick="closeAdminThread()"><i class="ti ti-arrow-left"></i> Back to Messages</button>
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
       <div class="avatar av-blue" style="width:46px;height:46px;font-size:15px" id="admin-thread-av"></div>
-      <div>
-        <div style="font-size:19px;font-weight:700" id="admin-thread-name"></div>
-        <div style="font-size:13px;color:var(--muted)" id="admin-thread-addr"></div>
-      </div>
+      <div><div style="font-size:19px;font-weight:700" id="admin-thread-name"></div><div style="font-size:13px;color:var(--muted)" id="admin-thread-addr"></div></div>
     </div>
     <div id="admin-msg-thread"></div>
     <div class="msg-bar">
@@ -802,30 +475,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
   </div>
 
-  <!-- ADMIN BOTTOM NAV -->
   <div class="bottom-nav">
-    <button class="nav-tab active" id="abtn-clients" onclick="switchAdminTab('clients')">
-      <i class="ti ti-users"></i><span>Clients</span>
-    </button>
-    <button class="nav-tab" id="abtn-schedule" onclick="switchAdminTab('schedule')" style="position:relative">
-      <i class="ti ti-calendar"></i><span class="nbadge">1</span><span>Schedule</span>
-    </button>
-    <button class="nav-tab" id="abtn-invoices" onclick="switchAdminTab('invoices')" style="position:relative">
-      <i class="ti ti-receipt"></i><span class="nbadge">2</span><span>Invoices</span>
-    </button>
-    <button class="nav-tab" id="abtn-team" onclick="switchAdminTab('team')">
-      <i class="ti ti-id-badge"></i><span>Team</span>
-    </button>
-    <button class="nav-tab" id="abtn-messages" onclick="switchAdminTab('messages')" style="position:relative">
-      <i class="ti ti-message-circle"></i><span class="nbadge">3</span><span>Messages</span>
-    </button>
+    <button class="nav-tab active" id="abtn-clients" onclick="switchAdminTab('clients')"><i class="ti ti-users"></i><span>Clients</span></button>
+    <button class="nav-tab" id="abtn-schedule" onclick="switchAdminTab('schedule')" style="position:relative"><i class="ti ti-calendar"></i><span class="nbadge">1</span><span>Schedule</span></button>
+    <button class="nav-tab" id="abtn-invoices" onclick="switchAdminTab('invoices')" style="position:relative"><i class="ti ti-receipt"></i><span class="nbadge">2</span><span>Invoices</span></button>
+    <button class="nav-tab" id="abtn-team" onclick="switchAdminTab('team')"><i class="ti ti-id-badge"></i><span>Team</span></button>
+    <button class="nav-tab" id="abtn-messages" onclick="switchAdminTab('messages')" style="position:relative"><i class="ti ti-message-circle"></i><span class="nbadge">3</span><span>Messages</span></button>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     MODALS
-═══════════════════════════════════════ -->
-<!-- Add Task Modal -->
+<!-- MODALS -->
 <div class="modal-bg" id="modal-task">
   <div class="modal">
     <div class="modal-title">What do you need help with?</div>
@@ -847,9 +506,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="urg-btn" id="urg-u" onclick="selUrg('u')"><i class="ti ti-alert-circle"></i>Needs attention soon</div>
     </div>
     <label class="modal-label">Add a photo (optional)</label>
-    <div class="photo-area" onclick="showToast('Camera would open here 📷')">
-      <i class="ti ti-camera-plus"></i>Tap to take or choose a photo
-    </div>
+    <div class="photo-area" onclick="showToast('Camera would open here 📷')"><i class="ti ti-camera-plus"></i>Tap to take or choose a photo</div>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeModal('task')">Cancel</button>
       <button class="modal-save" onclick="saveTask()">Add to My List ✅</button>
@@ -857,28 +514,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
-<!-- Assign Client Modal -->
-<div class="modal-bg" id="modal-assign">
-  <div class="modal">
-    <div class="modal-title">Assign a Client</div>
-    <p style="font-size:15px;color:var(--muted);margin-bottom:16px">Choose a client to assign to <strong id="assign-to-name"></strong>.</p>
-    <div id="assign-client-options">
-      <div id="assign-client-options-list">
-        <div style="text-align:center;padding:1.5rem;color:var(--muted);font-size:15px">Loading clients…</div>
-      </div>
-    </div>
-    <button class="modal-cancel" style="width:100%;margin-top:8px" onclick="closeModal('assign')">Cancel</button>
-  </div>
-</div>
-
-<!-- Create Invoice Modal -->
 <div class="modal-bg" id="modal-invoice">
   <div class="modal">
     <div class="modal-title">🧾 Create Invoice</div>
     <label class="modal-label">Client</label>
-    <select class="select-input" id="inv-client">
-      <option>Select a client…</option>
-    </select>
+    <select class="select-input" id="inv-client"><option>Select a client…</option></select>
     <label class="modal-label">Visit date</label>
     <input class="modal-input" type="date" id="inv-date"/>
     <label class="modal-label">Hours on site</label>
@@ -893,24 +533,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     </div>
     <label class="modal-label">Material notes (optional)</label>
     <input class="modal-input" type="text" id="inv-mat-notes" placeholder="e.g. Toilet flapper $12, 9V battery $8"/>
-
-    <!-- LIVE TOTAL -->
     <div style="background:var(--bg);border-radius:10px;padding:14px;margin-bottom:16px">
       <div style="font-size:13px;color:var(--muted);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em">Invoice Total</div>
-      <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px">
-        <span>First hour (incl. drive time)</span><span id="inv-line1">$124.00</span>
-      </div>
-      <div id="inv-extra-row" style="display:none;justify-content:space-between;font-size:14px;margin-bottom:4px">
-        <span id="inv-extra-label">Additional time</span><span id="inv-line2">$0.00</span>
-      </div>
-      <div id="inv-mat-row" style="display:none;justify-content:space-between;font-size:14px;margin-bottom:4px">
-        <span>Materials</span><span id="inv-line3">$0.00</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:20px;font-weight:700;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
-        <span>Total</span><span id="inv-total">$124.00</span>
-      </div>
+      <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px"><span>First hour (incl. drive time)</span><span id="inv-line1">$124.00</span></div>
+      <div id="inv-extra-row" style="display:none;justify-content:space-between;font-size:14px;margin-bottom:4px"><span id="inv-extra-label">Additional time</span><span id="inv-line2">$0.00</span></div>
+      <div id="inv-mat-row" style="display:none;justify-content:space-between;font-size:14px;margin-bottom:4px"><span>Materials</span><span id="inv-line3">$0.00</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:20px;font-weight:700;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)"><span>Total</span><span id="inv-total">$124.00</span></div>
     </div>
-
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeModal('invoice')">Cancel</button>
       <button class="modal-save" onclick="saveInvoice()">Create & Send 📧</button>
@@ -918,7 +547,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
-<!-- Add Admin Note Modal -->
 <div class="modal-bg" id="modal-admin-note">
   <div class="modal">
     <div class="modal-title">🔒 Add Private Note</div>
@@ -938,24 +566,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
-<!-- Archive Client Modal -->
 <div class="modal-bg" id="modal-archive">
   <div class="modal">
-    <div style="text-align:center;padding:1rem 0 0.5rem">
-      <div style="font-size:48px;margin-bottom:8px">📦</div>
-      <div class="modal-title" style="text-align:center">Archive this client?</div>
-    </div>
+    <div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:48px;margin-bottom:8px">📦</div><div class="modal-title" style="text-align:center">Archive this client?</div></div>
     <div style="background:var(--bg);border-radius:10px;padding:14px;margin-bottom:20px">
-      <div style="font-size:15px;color:var(--text);line-height:1.6;margin-bottom:10px">
-        <strong id="archive-client-name"></strong> will be archived. Here's what happens:
-      </div>
-      <div style="font-size:14px;color:var(--muted);line-height:1.8">
-        ✅ All their data is kept forever<br/>
-        ✅ Tasks, messages, visits, invoices preserved<br/>
-        ✅ You can restore them any time<br/>
-        🚫 They won't be able to log in<br/>
-        🚫 They won't receive notifications
-      </div>
+      <div style="font-size:15px;margin-bottom:10px"><strong id="archive-client-name"></strong> will be archived.</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8">✅ All data kept forever<br/>✅ Restorable any time<br/>🚫 They won't be able to log in</div>
     </div>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeModal('archive')">Cancel</button>
@@ -964,26 +580,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
-<!-- Invite Team Member Modal -->
 <div class="modal-bg" id="modal-invite-employee">
   <div class="modal">
     <div class="modal-title">🪪 Add Team Member</div>
-
-    <!-- Photo Upload -->
-    <label class="modal-label">Profile Photo</label>
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
-      <div id="tm-photo-preview" style="width:72px;height:72px;border-radius:50%;background:var(--blue-lt);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;overflow:hidden">
-        👤
-      </div>
-      <div style="flex:1">
-        <input type="file" id="tm-photo-input" accept="image/*" style="display:none" onchange="previewTMPhoto(this)"/>
-        <button onclick="document.getElementById('tm-photo-input').click()" style="width:100%;padding:10px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;color:var(--blue)">
-          <i class="ti ti-camera" style="font-size:18px;vertical-align:-2px;margin-right:6px"></i> Upload Photo
-        </button>
-        <div style="font-size:12px;color:var(--muted);margin-top:6px">Square photo works best for the avatar</div>
-      </div>
-    </div>
-
     <label class="modal-label">Full Name</label>
     <input class="modal-input" type="text" placeholder="e.g. Jake Reynolds" id="tm-name-input"/>
     <label class="modal-label">Phone Number</label>
@@ -999,7 +598,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
-<!-- Add Client Modal -->
 <div class="modal-bg" id="modal-add-client">
   <div class="modal">
     <div class="modal-title">👤 Add a Client</div>
@@ -1024,33 +622,19 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </div>
 
-<!-- Upgrade to Member Modal -->
 <div class="modal-bg" id="modal-upgrade">
   <div class="modal">
-    <div style="text-align:center;padding:1rem 0 0.5rem">
-      <div style="font-size:48px;margin-bottom:8px">⭐</div>
-      <div class="modal-title" style="text-align:center">Upgrade to Member</div>
-    </div>
+    <div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:48px;margin-bottom:8px">⭐</div><div class="modal-title" style="text-align:center">Upgrade to Member</div></div>
     <div style="background:var(--blue-lt);border-radius:10px;padding:14px;margin-bottom:16px">
       <div style="font-size:22px;font-weight:700;color:var(--blue);text-align:center;margin-bottom:8px">$19 / month</div>
-      <div style="font-size:14px;color:var(--muted);line-height:1.8;text-align:center">
-        ✓ Request visits &nbsp;✓ Priority scheduling<br/>
-        ✓ Up to 2 family logins &nbsp;✓ Visit history<br/>
-        ✓ Cancel anytime
-      </div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8;text-align:center">✓ Request visits &nbsp;✓ Priority scheduling<br/>✓ Up to 2 family logins &nbsp;✓ Cancel anytime</div>
     </div>
     <div class="error-msg" id="stripe-error"></div>
     <label class="modal-label">Card Number</label>
-    <div id="card-element" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;margin-bottom:12px;background:var(--bg);font-size:18px"></div>
+    <div id="card-element" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;margin-bottom:12px;background:var(--bg)"></div>
     <div style="display:flex;gap:10px;margin-bottom:12px">
-      <div style="flex:1">
-        <label class="modal-label">Expiry</label>
-        <div id="card-expiry" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg)"></div>
-      </div>
-      <div style="flex:1">
-        <label class="modal-label">CVC</label>
-        <div id="card-cvc" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg)"></div>
-      </div>
+      <div style="flex:1"><label class="modal-label">Expiry</label><div id="card-expiry" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg)"></div></div>
+      <div style="flex:1"><label class="modal-label">CVC</label><div id="card-cvc" style="padding:16px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg)"></div></div>
     </div>
     <div class="modal-btns">
       <button class="modal-cancel" onclick="closeModal('upgrade')">Cancel</button>
@@ -1061,1559 +645,416 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 </div>
 
 <script>
-// ═══════════════════════════════════════
-// ADMIN MESSAGES
-// ═══════════════════════════════════════
-let activeAdminHousehold = null;
-let adminMsgSubscription = null;
-
-async function loadAdminInbox() {
-  const list = document.getElementById('admin-messages-list');
-  list.innerHTML = '<div style="text-align:center;padding:1.5rem;color:var(--muted)"><div class="spinner" style="margin:0 auto"></div></div>';
-
-  // Get all households that have messages
-  const { data: messages, error } = await sb
-    .from('messages')
-    .select('household_id, sender_name, body, created_at, read, households(address), profiles!messages_household_id_fkey(full_name)')
-    .order('created_at', { ascending: false });
-
-  if (error || !messages) {
-    list.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted)">Could not load messages</div>';
-    return;
-  }
-
-  // Group by household — latest message per household
-  const seen = new Set();
-  const threads = [];
-  messages.forEach(m => {
-    if (!seen.has(m.household_id)) {
-      seen.add(m.household_id);
-      threads.push(m);
-    }
-  });
-
-  if (threads.length === 0) {
-    list.innerHTML = `
-      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
-        <div style="font-size:48px;margin-bottom:12px">💬</div>
-        <div style="font-size:18px;font-weight:600;margin-bottom:8px">No messages yet</div>
-        <div style="font-size:15px">Messages from clients will appear here</div>
-      </div>`;
-    return;
-  }
-
-  // Also get unread counts
-  const { data: unread } = await sb
-    .from('messages')
-    .select('household_id')
-    .eq('read', false)
-    .neq('sender_name', 'Pete');
-
-  const unreadCounts = {};
-  (unread || []).forEach(m => {
-    unreadCounts[m.household_id] = (unreadCounts[m.household_id] || 0) + 1;
-  });
-
-  list.innerHTML = '';
-  threads.forEach(thread => {
-    const householdId = thread.household_id;
-    const address = thread.households?.address || 'Unknown address';
-    const unreadCount = unreadCounts[householdId] || 0;
-    const preview = thread.body?.length > 50 ? thread.body.substring(0, 50) + '…' : thread.body;
-    const time = new Date(thread.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    const initials = address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
-
-    const row = document.createElement('div');
-    row.className = 'thread-row';
-    row.style.cursor = 'pointer';
-    row.innerHTML = `
-      <div class="avatar av-blue" style="width:48px;height:48px;font-size:15px;flex-shrink:0">${initials}</div>
-      <div class="thread-info">
-        <div class="thread-name" style="${unreadCount > 0 ? 'font-weight:700' : ''}">${address}</div>
-        <div class="thread-preview" style="${unreadCount > 0 ? 'color:var(--text);font-weight:600' : ''}">${thread.sender_name !== 'Pete' ? thread.sender_name + ': ' : 'You: '}${preview}</div>
-      </div>
-      <div class="thread-right">
-        <div class="thread-time">${time}</div>
-        ${unreadCount > 0 ? `<div style="background:var(--blue);color:#fff;border-radius:99px;font-size:12px;padding:2px 8px;font-weight:700">${unreadCount}</div>` : ''}
-      </div>`;
-    row.onclick = () => openAdminThread(householdId, address);
-    list.appendChild(row);
-  });
-
-  // Update badge count
-  const totalUnread = Object.values(unreadCounts).reduce((a,b) => a+b, 0);
-  const badge = document.querySelector('#abtn-messages .nbadge');
-  if (badge) badge.textContent = totalUnread > 0 ? totalUnread : '';
-  if (badge) badge.style.display = totalUnread > 0 ? 'block' : 'none';
-}
-
-async function openAdminThread(householdId, address) {
-  activeAdminHousehold = householdId;
-
-  // Show thread view
-  document.getElementById('atab-messages').style.display = 'none';
-  document.getElementById('atab-admin-thread').style.display = 'block';
-
-  // Set header
-  const initials = address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
-  document.getElementById('admin-thread-av').textContent = initials;
-  document.getElementById('admin-thread-name').textContent = address;
-  document.getElementById('admin-thread-addr').textContent = 'Household conversation';
-
-  // Load messages
-  await renderAdminThread(householdId);
-
-  // Mark as read
-  await sb.from('messages')
-    .update({ read: true })
-    .eq('household_id', householdId)
-    .neq('sender_name', 'Pete');
-
-  // Subscribe to real-time new messages
-  if (adminMsgSubscription) adminMsgSubscription.unsubscribe();
-  adminMsgSubscription = sb
-    .channel('admin-thread-' + householdId)
-    .on('postgres_changes', {
-      event: 'INSERT',
-      schema: 'public',
-      table: 'messages',
-      filter: `household_id=eq.${householdId}`
-    }, () => renderAdminThread(householdId))
-    .subscribe();
-}
-
-async function renderAdminThread(householdId) {
-  const { data: msgs, error } = await sb
-    .from('messages')
-    .select('*')
-    .eq('household_id', householdId)
-    .order('created_at', { ascending: true });
-
-  const thread = document.getElementById('admin-msg-thread');
-  if (error || !msgs) {
-    thread.innerHTML = '<div style="text-align:center;padding:1rem;color:var(--muted)">Could not load messages</div>';
-    return;
-  }
-
-  if (msgs.length === 0) {
-    thread.innerHTML = `
-      <div style="text-align:center;padding:2rem 1rem;color:var(--muted)">
-        <div style="font-size:40px;margin-bottom:8px">💬</div>
-        <div style="font-size:16px">No messages yet — send the first one!</div>
-      </div>`;
-    return;
-  }
-
-  thread.innerHTML = '';
-  msgs.forEach(m => {
-    const isMe = m.sender_name === 'Pete';
-    const wrap = document.createElement('div');
-    wrap.className = 'msg-wrap' + (isMe ? ' mine' : '');
-    const time = new Date(m.created_at).toLocaleString('en-US', {
-      month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
-    });
-    wrap.innerHTML = isMe
-      ? `<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`
-      : `<div><div class="msg-sender">${m.sender_name || 'Client'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`;
-    thread.appendChild(wrap);
-  });
-  thread.scrollTop = thread.scrollHeight;
-}
-
-async function sendAdminMsg() {
-  const input = document.getElementById('admin-msg-input');
-  const text = input.value.trim();
-  if (!text || !activeAdminHousehold) return;
-  input.value = '';
-
-  const { error } = await sb.from('messages').insert({
-    household_id: activeAdminHousehold,
-    sender_id: currentUser.id,
-    sender_name: 'Pete',
-    body: text,
-    read: false
-  });
-
-  if (error) { showToast('Could not send message'); input.value = text; return; }
-  await renderAdminThread(activeAdminHousehold);
-}
-
-function closeAdminThread() {
-  if (adminMsgSubscription) { adminMsgSubscription.unsubscribe(); adminMsgSubscription = null; }
-  activeAdminHousehold = null;
-  document.getElementById('atab-admin-thread').style.display = 'none';
-  document.getElementById('atab-messages').style.display = 'block';
-  loadAdminInbox(); // refresh unread counts
-}
-
-// ═══════════════════════════════════════
-// STRIPE PAYMENTS
-// ═══════════════════════════════════════
-const STRIPE_PK = 'pk_test_51TlaxlE3fogAtaxo0vVNvDE0LnNWrtcU9QSEqelzWZuPkDpQjcC5Sf9QAGSssWnGAaS9pewE6WJVDCvOhHeBJ1qf009usudPyv';
-const EDGE_URL = 'https://amhphshkfvqepvxlenps.supabase.co/functions/v1/stripe-handler';
-let stripeInstance = null;
-let cardElement = null;
-let cardExpiry = null;
-let cardCvc = null;
-
-function initStripe() {
-  if (stripeInstance) return;
-  stripeInstance = Stripe(STRIPE_PK);
-  const elements = stripeInstance.elements();
-  const style = {
-    base: { fontSize: '18px', color: '#1a1a1a', '::placeholder': { color: '#aaa' } }
-  };
-  cardElement = elements.create('cardNumber', { style });
-  cardExpiry = elements.create('cardExpiry', { style });
-  cardCvc = elements.create('cardCvc', { style });
-  cardElement.mount('#card-element');
-  cardExpiry.mount('#card-expiry');
-  cardCvc.mount('#card-cvc');
-}
-
-// Show upgrade button for basic plan clients
-function showUpgradeIfBasic(plan, waived) {
-  const wrap = document.getElementById('upgrade-btn-wrap');
-  if (wrap) wrap.style.display = (!plan || plan === 'basic') && !waived ? 'block' : 'none';
-}
-
-async function doSubscribe() {
-  if (!currentProfile) return;
-  hideError('stripe-error');
-  const btn = document.getElementById('subscribe-btn');
-  btn.textContent = 'Processing…';
-  btn.disabled = true;
-
-  try {
-    // Create payment method
-    const { paymentMethod, error } = await stripeInstance.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-      billing_details: { name: currentProfile.full_name }
-    });
-
-    if (error) {
-      showError('stripe-error', error.message);
-      btn.textContent = 'Subscribe — $19/mo';
-      btn.disabled = false;
-      return;
-    }
-
-    // Call edge function
-    const res = await fetch(EDGE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        action: 'create_subscription',
-        customer_name: currentProfile.full_name,
-        customer_phone: currentProfile.phone,
-        payment_method_id: paymentMethod.id
-      })
-    });
-
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
-
-    // Update household plan in Supabase
-    await sb.from('households')
-      .update({ plan: 'member' })
-      .eq('id', currentProfile.household_id);
-
-    // Update UI
-    closeModal('upgrade');
-    showToast('Welcome to Member! ⭐');
-    const planCard = document.getElementById('profile-plan-card');
-    const planName = document.getElementById('profile-plan-name');
-    const planPrice = document.getElementById('profile-plan-price');
-    const planPerks = document.getElementById('profile-plan-perks');
-    if (planCard) { planCard.style.background = 'var(--blue-lt)'; planCard.style.borderColor = 'var(--blue)'; }
-    if (planName) { planName.textContent = '⭐ Member Plan'; planName.style.color = 'var(--blue)'; }
-    if (planPrice) { planPrice.innerHTML = '$19<span style="font-size:14px;font-weight:400">/mo</span>'; planPrice.style.color = 'var(--blue)'; }
-    if (planPerks) planPerks.textContent = '✓ Priority scheduling  ✓ Request visits  ✓ Family access';
-    document.getElementById('upgrade-btn-wrap').style.display = 'none';
-
-  } catch (err) {
-    showError('stripe-error', err.message || 'Payment failed. Please try again.');
-  }
-
-  btn.textContent = 'Subscribe — $19/mo';
-  btn.disabled = false;
-}
-
-// Open upgrade modal and init Stripe elements
-const _origOpenModal = openModal;
-function openModal(type) {
-  _origOpenModal(type);
-  if (type === 'upgrade') {
-    setTimeout(initStripe, 100);
-  }
-}
-
-// Send invoice via Stripe from admin
-async function sendStripeInvoice(clientName, clientPhone, lineItems) {
-  try {
-    const res = await fetch(EDGE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        action: 'create_invoice_payment',
-        customer_name: clientName,
-        customer_phone: clientPhone,
-        line_items: lineItems
-      })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
-    return data;
-  } catch (err) {
-    showToast('Invoice error: ' + err.message);
-    return null;
-  }
-}
-
-// ── STATE ──
-let tmPhotoBase64 = null;
-let showingArchived = false;
-let archivedClients = [];
-let activeClients = [];
-let activeClientName = '';
-
-function renderClientList() {
-  const list = document.getElementById('admin-client-list');
-  if (!list) return;
-  list.innerHTML = '';
-  const source = showingArchived ? archivedClients : activeClients;
-  if (source.length === 0) {
-    list.innerHTML = showingArchived
-      ? '<div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📦</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No archived clients</div></div>'
-      : '<div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">👥</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No clients yet</div><div style="font-size:15px">Clients will appear here once they sign up</div></div>';
-    return;
-  }
-  source.forEach((c, i) => {
-    const row = document.createElement('div');
-    row.className = 'admin-client-row';
-    if (showingArchived) row.style.opacity = '0.65';
-    row.innerHTML = `
-      <div class="avatar ${c.color}" style="width:48px;height:48px;font-size:15px">${c.initials}</div>
-      <div class="client-info">
-        <div class="client-name">${c.name}</div>
-        <div class="client-addr">${c.address || 'No address yet'}</div>
-        <div class="client-tasks">${c.planLabel} · No tasks yet</div>
-      </div>
-      ${showingArchived
-        ? `<button onclick="restoreClient(${i})" style="background:var(--green);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;font-weight:600;flex-shrink:0">Restore</button>`
-        : `<i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>`}`;
-    if (!showingArchived) row.onclick = () => openClient(c.id || c.name);
-    list.appendChild(row);
-  });
-}
-
-function downgradeToBasic() {
-  const name = document.getElementById('detail-name').textContent;
-  const plan = document.getElementById('detail-plan');
-  plan.textContent = 'Basic · Free';
-  plan.style.color = 'var(--muted)';
-  const client = activeClients.find(c => c.name === name);
-  if (client) { client.plan = 'basic'; client.planLabel = 'Basic · Free'; }
-  closeClient();
-  showToast(`${name} downgraded to Basic ✓`);
-}
-
-async function sendAdminInvoice() {
-  const client = activeClients.find(c => c.name === document.getElementById('detail-name').textContent);
-  if (!client) { showToast('No client selected'); return; }
-
-  showToast('Sending invoice via Stripe…');
-
-  const hours = parseFloat(document.getElementById('inv-hours')?.value) || 1;
-  const materials = parseFloat(document.getElementById('inv-materials')?.value) || 0;
-  const matNotes = document.getElementById('inv-mat-notes')?.value || '';
-
-  const firstHour = 124;
-  const extraCost = hours > 1 ? (hours - 1) * 99 : 0;
-  const labor = firstHour + extraCost;
-
-  const lineItems = [
-    { description: hours <= 1 ? 'First hour (incl. drive time & supply run)' : `Labor — ${hours} hrs (first hr $124 + ${hours-1} additional @ $99/hr)`, amount: labor }
-  ];
-  if (materials > 0) {
-    lineItems.push({ description: matNotes || 'Materials & supplies', amount: materials });
-  }
-
-  const result = await sendStripeInvoice(client.name, client.phone, lineItems);
-  if (result) {
-    showToast('Invoice sent to ' + client.name + '! 📧');
-    if (result.invoiceUrl) window.open(result.invoiceUrl, '_blank');
-  }
-}
-
-// ── ARCHIVE CLIENT ──
-function confirmArchive() {
-  const name = document.getElementById('detail-name').textContent;
-  activeClientName = name;
-  document.getElementById('archive-client-name').textContent = name;
-  openModal('archive');
-}
-
-function doArchive() {
-  const idx = activeClients.findIndex(c => c.name === activeClientName);
-  if (idx > -1) {
-    archivedClients.push(activeClients[idx]);
-    activeClients.splice(idx, 1);
-  }
-  const countEl = document.getElementById('stat-clients');
-  if (countEl) countEl.textContent = activeClients.length;
-  closeModal('archive');
-  closeClient();
-  renderClientList();
-  showToast(`${activeClientName} archived. Data preserved. 📦`);
-}
-
-function toggleArchived() {
-  showingArchived = !showingArchived;
-  const btn = document.getElementById('archived-toggle');
-  if (showingArchived) {
-    btn.textContent = 'Show Active';
-    btn.style.color = 'var(--blue)';
-    btn.style.borderColor = 'var(--blue)';
-  } else {
-    btn.textContent = 'Show Archived';
-    btn.style.color = 'var(--muted)';
-    btn.style.borderColor = 'var(--border)';
-  }
-  renderClientList();
-}
-
-function restoreClient(idx) {
-  const client = archivedClients[idx];
-  archivedClients.splice(idx, 1);
-  activeClients.push(client);
-  const countEl = document.getElementById('stat-clients');
-  if (countEl) countEl.textContent = activeClients.length;
-  renderClientList();
-  showToast(`${client.name} restored! ✅`);
-}
-
-// ── CLIENT PROFILE PHOTO ──
-let clientPhotoBase64 = null;
-
-function uploadProfilePhoto(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    clientPhotoBase64 = e.target.result;
-    const av = document.getElementById('profile-av');
-    if (av) av.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
-    showToast('Profile photo updated! ✅');
-  };
-  reader.readAsDataURL(file);
-}
-
-function populateClientProfile(profile) {
-  if (!profile) return;
-
-  const firstName = (profile.full_name || '').split(' ')[0];
-
-  // Welcome greeting in nav
-  const navUser = document.getElementById('nav-user');
-  if (navUser) navUser.textContent = 'Welcome, ' + firstName + '! 👋';
-
-  // Profile tab name + initials
-  const nameEl = document.getElementById('profile-name');
-  if (nameEl) nameEl.textContent = profile.full_name || '';
-  const initialsEl = document.getElementById('profile-av-initials');
-  if (initialsEl) initialsEl.textContent = (profile.full_name || '?').split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
-
-  // Contact info — auto-populated from signup
-  const phoneEl = document.getElementById('profile-phone');
-  if (phoneEl) phoneEl.textContent = profile.phone ? profile.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3') : '—';
-  const emailEl = document.getElementById('profile-email');
-  if (emailEl) emailEl.textContent = profile.email || '—';
-  const addrEl = document.getElementById('profile-address');
-  if (addrEl) addrEl.textContent = profile.households?.address || '—';
-
-  // Role label
-  const roleEl = document.getElementById('profile-role');
-  if (roleEl) {
-    const labels = { client:'Client account', spouse:'Spouse account', family:'Family access', team:'Team member', admin:'Super Admin' };
-    roleEl.textContent = labels[profile.role] || 'Account';
-  }
-
-  // Plan card
-  const plan = profile.households?.plan || 'basic';
-  const waived = profile.households?.plan_waived || false;
-  const planCard = document.getElementById('profile-plan-card');
-  const planName = document.getElementById('profile-plan-name');
-  const planPrice = document.getElementById('profile-plan-price');
-  const planPerks = document.getElementById('profile-plan-perks');
-  const upgradeWrap = document.getElementById('upgrade-btn-wrap');
-
-  if (plan === 'member' || waived) {
-    if (planCard) { planCard.style.background = 'var(--blue-lt)'; planCard.style.borderColor = 'var(--blue)'; }
-    if (planName) { planName.textContent = '⭐ Member Plan'; planName.style.color = 'var(--blue)'; }
-    if (planPrice) { planPrice.innerHTML = waived ? '<span style="font-size:16px;color:var(--green)">Fee Waived ✓</span>' : '$19<span style="font-size:14px;font-weight:400">/mo</span>'; planPrice.style.color = 'var(--blue)'; }
-    if (planPerks) planPerks.textContent = '✓ Priority scheduling  ✓ Request visits  ✓ Family access  ✓ Photo uploads';
-    if (upgradeWrap) upgradeWrap.style.display = 'none';
-  } else {
-    if (planCard) { planCard.style.background = 'var(--bg)'; planCard.style.borderColor = 'var(--border)'; }
-    if (planName) { planName.textContent = 'Basic Plan'; planName.style.color = 'var(--text)'; }
-    if (planPrice) { planPrice.textContent = 'Free'; planPrice.style.color = 'var(--text)'; }
-    if (planPerks) planPerks.textContent = '✓ Add tasks  ✓ Message Pete  ✓ View visit history';
-    if (upgradeWrap) upgradeWrap.style.display = 'block';
-  }
-
-  // Clear hardcoded next visit
-  const bannerVisit = document.getElementById('banner-next-visit');
-  if (bannerVisit) bannerVisit.textContent = 'No visit scheduled yet';
-}
-
-function previewTMPhoto(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    tmPhotoBase64 = e.target.result;
-    const preview = document.getElementById('tm-photo-preview');
-    preview.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;
-  };
-  reader.readAsDataURL(file);
-}
-
-function saveTeamMember() {
-  const name = document.getElementById('tm-name-input').value.trim();
-  const phone = document.getElementById('tm-phone-input').value.trim();
-  if (!name || !phone) { showToast('Please enter name and phone number'); return; }
-
-  // Add to team list UI
-  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2);
-  const colors = ['av-blue','av-teal','av-amber','av-red'];
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  const list = document.getElementById('team-list');
-
-  // Remove empty state if present
-  const empty = list.querySelector('[style*="text-align:center"]');
-  if (empty) empty.remove();
-
-  const row = document.createElement('div');
-  row.className = 'admin-client-row';
-  row.innerHTML = `
-    ${tmPhotoBase64
-      ? `<img src="${tmPhotoBase64}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0"/>`
-      : `<div class="avatar ${color}" style="width:48px;height:48px;font-size:15px">${initials}</div>`}
-    <div class="client-info">
-      <div class="client-name">${name}</div>
-      <div class="client-addr">📞 ${phone}</div>
-      <div class="client-tasks" style="color:var(--muted)">No clients assigned yet</div>
-    </div>
-    <i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>`;
-  list.appendChild(row);
-
-  // Reset form
-  document.getElementById('tm-name-input').value = '';
-  document.getElementById('tm-phone-input').value = '';
-  document.getElementById('tm-email-input').value = '';
-  document.getElementById('tm-pass-input').value = '';
-  document.getElementById('tm-photo-preview').innerHTML = '👤';
-  tmPhotoBase64 = null;
-  closeModal('invite-employee');
-  showToast(`${name} added to your team! 🎉`);
-}
-
-async function saveNewClient() {
-  const name = document.getElementById('ac-name').value.trim();
-  const phone = document.getElementById('ac-phone').value.trim();
-  const address = document.getElementById('ac-address').value.trim();
-  const plan = document.getElementById('ac-plan').value;
-  const password = document.getElementById('ac-pass').value.trim();
-  if (!name || !phone) { showToast('Please enter name and phone number'); return; }
-  if (!password || password.length < 6) { showToast('Password must be at least 6 characters'); return; }
-
-  showToast('Creating account…');
-
-  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2);
-  const colors = ['av-blue','av-teal','av-amber'];
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  const planLabel = plan === 'basic' ? 'Basic · Free' : plan === 'waived' ? 'Member · Fee Waived' : 'Member · $19/mo';
-  const planWaived = plan === 'waived';
-  const email = phone.replace(/\D/g,'') + '@homehelper.app';
-
-  // Step 1 — create auth user in Supabase
-  const { data: authData, error: authError } = await sb.auth.admin
-    ? await sb.auth.signUp({ email, password })
-    : await sb.auth.signUp({ email, password });
-
-  if (authError) {
-    showToast('Error creating account: ' + authError.message);
-    return;
-  }
-
-  const userId = authData.user?.id;
-  if (!userId) { showToast('Could not create user — try again'); return; }
-
-  // Step 2 — create household
-  const { data: household, error: hhError } = await sb
-    .from('households')
-    .insert({ address: address || 'Unknown', plan: plan === 'waived' ? 'member' : plan, plan_waived: planWaived })
-    .select()
-    .single();
-
-  if (hhError) { showToast('Error creating household: ' + hhError.message); return; }
-
-  // Step 3 — create profile
-  const { error: profError } = await sb.from('profiles').insert({
-    id: userId,
-    full_name: name,
-    phone: phone.replace(/\D/g,''),
-    role: 'client',
-    household_id: household.id,
-    avatar_initials: initials,
-    is_primary: true
-  });
-
-  if (profError) { showToast('Error creating profile: ' + profError.message); return; }
-
-  // Step 4 — add to local list and re-render
-  activeClients.push({ id: userId, name, phone, address, plan, planLabel, planWaived, initials, color, householdId: household.id });
-  renderClientList();
-
-  document.getElementById('ac-name').value = '';
-  document.getElementById('ac-phone').value = '';
-  document.getElementById('ac-address').value = '';
-  document.getElementById('ac-pass').value = '';
-  closeModal('add-client');
-
-  const countEl = document.getElementById('stat-clients');
-  if (countEl) countEl.textContent = activeClients.length;
-
-  showToast(`${name} added and account created! 🎉`);
-}
-let role = 'client', urg = 'r', selRoomVal = 'general', activeThread = null;
-
-// Threads loaded from Supabase — no demo data
-const threads = {};
-
-
-// ── LOGIN ──
-function selectRole(r) {
-  role = r;
-  ['client','family'].forEach(x => {
-    const el = document.getElementById('role-'+x);
-    if(el) el.classList.toggle('sel', x===r);
-  });
-  document.getElementById('admin-mode-banner').style.display = 'none';
-}
-
-function activateAdmin() {
-  role = 'admin';
-  ['client','family'].forEach(x => {
-    const el = document.getElementById('role-'+x);
-    if(el) el.classList.remove('sel');
-  });
-  document.getElementById('admin-mode-banner').style.display = 'block';
-  document.getElementById('admin-mode-banner').innerHTML = '🔐 Admin mode active';
-}
-
-function activateEmployee() {
-  role = 'employee';
-  ['client','family'].forEach(x => {
-    const el = document.getElementById('role-'+x);
-    if(el) el.classList.remove('sel');
-  });
-  document.getElementById('admin-mode-banner').style.display = 'block';
-  document.getElementById('admin-mode-banner').innerHTML = '🪪 Team Member mode active';
-}
-
-
-function showAdminScreen() {
-  document.getElementById('screen-login').classList.remove('active');
-  document.getElementById('screen-loading').classList.remove('active');
-  document.getElementById('screen-admin').classList.add('active');
-  switchAdminTab('clients');
-  loadAdminClients();
-}
-
-async function loadAdminClients() {
-  const { data, error } = await sb
-    .from('profiles')
-    .select('*, households(*)')
-    .eq('role', 'client')
-    .order('created_at', { ascending: false });
-
-  if (error || !data) return;
-
-  const colors = ['av-blue','av-teal','av-amber'];
-  activeClients = data.map((p, i) => ({
-    id: p.id,
-    name: p.full_name,
-    phone: p.phone || '',
-    address: p.households?.address || 'No address',
-    plan: p.households?.plan || 'basic',
-    planWaived: p.households?.plan_waived || false,
-    planLabel: p.households?.plan_waived ? 'Member · Fee Waived' : p.households?.plan === 'member' ? 'Member · $19/mo' : 'Basic · Free',
-    initials: p.avatar_initials || p.full_name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2),
-    color: colors[i % colors.length],
-    householdId: p.household_id
-  }));
-
-  const countEl = document.getElementById('stat-clients');
-  if (countEl) countEl.textContent = activeClients.length;
-
-  renderClientList();
-}
-
-// ── TEAM MEMBER DETAIL ──
-const teamData = {};
-let activeTeamMember = null;
-
-function openTeamMember(id) {
-  activeTeamMember = id;
-  const d = teamData[id];
-  document.getElementById('atab-team').style.display = 'none';
-  document.getElementById('atab-team-detail').style.display = 'block';
-  const av = document.getElementById('tm-avatar');
-  av.textContent = d.av;
-  av.className = 'avatar ' + d.avClass;
-  av.style.cssText = 'width:54px;height:54px;font-size:18px';
-  document.getElementById('tm-name').textContent = d.name;
-  document.getElementById('tm-contact').textContent = d.contact;
-  document.getElementById('tm-client-count').textContent = d.clientCount;
-  document.getElementById('tm-visits').textContent = d.visits;
-  document.getElementById('tm-tasks').textContent = d.tasks;
-  document.getElementById('assign-to-name').textContent = d.name;
-  renderTMClients(id);
-}
-
-function renderTMClients(id) {
-  const d = teamData[id];
-  const list = document.getElementById('tm-client-list');
-  list.innerHTML = '';
-  if (d.clients.length === 0) {
-    list.innerHTML = '<p style="font-size:15px;color:var(--muted);padding:12px 0">No clients assigned yet.</p>';
-    return;
-  }
-  d.clients.forEach((c, i) => {
-    const row = document.createElement('div');
-    row.className = 'card';
-    row.style.marginBottom = '10px';
-    row.innerHTML = `
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="avatar ${c.avClass}" style="width:42px;height:42px;font-size:13px">${c.av}</div>
-        <div style="flex:1">
-          <div style="font-size:16px;font-weight:700">${c.name}</div>
-          <div style="font-size:13px;color:var(--muted)">${c.detail}</div>
-        </div>
-        <button onclick="unassignClient('${id}',${i})" style="background:none;border:1.5px solid var(--red-lt);color:var(--red);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;font-weight:600;flex-shrink:0">Remove</button>
-      </div>`;
-    list.appendChild(row);
-  });
-}
-
-function unassignClient(tmId, idx) {
-  const client = teamData[tmId].clients[idx];
-  teamData[tmId].clients.splice(idx, 1);
-  const count = teamData[tmId].clients.length;
-  teamData[tmId].clientCount = count + ' client' + (count !== 1 ? 's' : '') + ' assigned';
-  document.getElementById('tm-client-count').textContent = teamData[tmId].clientCount;
-  renderTMClients(tmId);
-  showToast(client.name + ' unassigned ✓');
-}
-
-function closeTeamMember() {
-  document.getElementById('atab-team-detail').style.display = 'none';
-  document.getElementById('atab-team').style.display = 'block';
-  activeTeamMember = null;
-}
-
-function openAssignModal() { openModal('assign'); }
-
-function doAssign(name, av, avClass) {
-  if (!activeTeamMember) return;
-  const already = teamData[activeTeamMember].clients.find(c => c.name === name);
-  if (already) { showToast(name + ' is already assigned here'); closeModal('assign'); return; }
-  teamData[activeTeamMember].clients.push({ name, av, avClass, detail: 'Newly assigned' });
-  const count = teamData[activeTeamMember].clients.length;
-  teamData[activeTeamMember].clientCount = count + ' client' + (count !== 1 ? 's' : '') + ' assigned';
-  document.getElementById('tm-client-count').textContent = teamData[activeTeamMember].clientCount;
-  renderTMClients(activeTeamMember);
-  closeModal('assign');
-  showToast(name + ' assigned to ' + teamData[activeTeamMember].name + ' ✅');
-}
-
-function assignFromPool(clientName) {
-  if (!activeTeamMember) return;
-  showToast(clientName + ' assigned to ' + teamData[activeTeamMember].name + ' ✅');
-}
-
-function showEmployeeScreen() {
-  document.getElementById('screen-login').classList.remove('active');
-  document.getElementById('screen-main').classList.add('active');
-  switchTab('tasks');
-}
-
-
-// ── CLIENT TABS ──
-function switchTab(tab) {
-  ['tasks','appointments','messages','profile'].forEach(t => {
-    const el = document.getElementById('tab-'+t);
-    if(el) el.style.display = 'none';
-    const b = document.getElementById('btn-'+t);
-    if(b) b.classList.remove('active');
-  });
-  document.getElementById('tab-'+tab).style.display = 'block';
-  const b = document.getElementById('btn-'+tab);
-  if(b) b.classList.add('active');
-  const titles = {tasks:'My Tasks',appointments:'Visits',messages:'Messages',profile:'My Profile'};
-  document.getElementById('nav-title').textContent = titles[tab]||'Messages';
-  if(tab === 'messages') loadMessages();
-  if(tab === 'tasks') loadTasks();
-}
-
-// ── ADMIN TABS ──
-function switchAdminTab(tab) {
-  ['clients','client-detail','schedule','invoices','invoice-detail','team','team-detail','messages','admin-thread'].forEach(t => {
-    const c = document.getElementById('atab-'+t);
-    if(c) c.style.display = 'none';
-    const b = document.getElementById('abtn-'+t);
-    if(b) b.classList.remove('active');
-  });
-  document.getElementById('atab-'+tab).style.display = 'block';
-  const b = document.getElementById('abtn-'+tab);
-  if(b) b.classList.add('active');
-  const titles = {clients:'My Clients', schedule:'Schedule', invoices:'Invoices', team:'Team', messages:'Messages'};
-  document.getElementById('admin-nav-title').textContent = titles[tab]||'';
-  if(tab === 'messages') loadAdminInbox();
-}
-
-// ── CLIENT DETAIL ──
-function openClient(identifier) {
-  // Find client from our activeClients array by name or index
-  const client = typeof identifier === 'string'
-    ? activeClients.find(c => c.name === identifier || c.id === identifier)
-    : activeClients[identifier];
-
-  if (!client) { showToast('Client not found'); return; }
-
-  document.getElementById('atab-clients').style.display = 'none';
-  document.getElementById('atab-client-detail').style.display = 'block';
-
-  // Avatar
-  const av = document.getElementById('detail-av');
-  av.textContent = client.initials || client.name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
-  av.className = 'avatar ' + (client.color || 'av-blue');
-  av.style.cssText = 'width:54px;height:54px;font-size:18px';
-
-  // Details
-  document.getElementById('detail-name').textContent = client.name;
-  document.getElementById('detail-addr').textContent = client.address || 'No address on file';
-  document.getElementById('detail-phone').textContent = client.phone || 'No phone on file';
-  document.getElementById('detail-plan').textContent = client.planLabel || 'Basic · Free';
-  document.getElementById('detail-plan').style.color = '';
-
-  // Clear family list for now — will load from DB when connected
-  const famList = document.getElementById('detail-family-list');
-  if (famList) famList.innerHTML = '<p style="font-size:14px;color:var(--muted);padding:8px 0">No family members added yet</p>';
-
-  // Clear notes to blank for new clients
-  const noteTools = document.getElementById('note-tools');
-  const noteHouse = document.getElementById('note-house');
-  const noteClient = document.getElementById('note-client');
-  if (noteTools) noteTools.textContent = 'No notes yet';
-  if (noteHouse) noteHouse.textContent = 'No notes yet';
-  if (noteClient) noteClient.textContent = 'No notes yet';
-
-  // Clear task list
-  const taskList = document.getElementById('detail-task-list');
-  if (taskList) taskList.innerHTML = '<div style="text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:15px">No active tasks</div>';
-
-  // Reset waive toggle
-  const waive = document.getElementById('waive-toggle');
-  if (waive) waive.checked = client.planWaived || false;
-}
-function closeClient() {
-  document.getElementById('atab-client-detail').style.display = 'none';
-  document.getElementById('atab-clients').style.display = 'block';
-}
-
-// ── MESSAGES ──
-function openThread(id) {
-  activeThread = id;
-  const t = threads[id];
-  document.getElementById('tab-messages').style.display = 'none';
-  document.getElementById('tab-thread').style.display = 'block';
-  document.getElementById('btn-messages').classList.add('active');
-  document.getElementById('thread-hdr').textContent = t.name;
-  const av = document.getElementById('thread-av');
-  av.textContent = t.av; av.className = 'avatar '+t.avClass;
-  av.style.cssText = 'width:50px;height:50px;font-size:17px';
-  renderThread();
-}
-function openAdminThread(id) {
-  activeThread = id;
-  const t = threads[id];
-  document.getElementById('atab-messages').style.display = 'none';
-  // reuse thread UI from client side — simplified for prototype
-  showToast('Opening thread with ' + t.name);
-}
-function closeThread() {
-  document.getElementById('tab-thread').style.display = 'none';
-  document.getElementById('tab-messages').style.display = 'block';
-  activeThread = null;
-}
-function renderThread() {
-  const t = threads[activeThread];
-  const el = document.getElementById('msg-thread');
-  el.innerHTML = '';
-  t.msgs.forEach(m => {
-    const w = document.createElement('div');
-    w.className = 'msg-wrap'+(m.from==='me'?' mine':'');
-    w.innerHTML = m.from==='helper'
-      ? `<div><div class="msg-sender">Home Helper</div><div class="msg-bubble bubble-them">${m.text}</div><div class="msg-time">${m.time}</div></div>`
-      : `<div><div class="msg-bubble bubble-mine">${m.text}</div><div class="msg-time">${m.time}</div></div>`;
-    el.appendChild(w);
-  });
-  el.scrollTop = el.scrollHeight;
-}
-function sendMsg() {
-  const input = document.getElementById('msg-input');
-  const text = input.value.trim();
-  if(!text||!activeThread) return;
-  threads[activeThread].msgs.push({from:'me',text,time:'Just now'});
-  input.value = '';
-  renderThread();
-  setTimeout(() => {
-    threads[activeThread].msgs.push({from:'helper',text:'Thanks! I\'ll get back to you shortly. 😊',time:'Just now'});
-    renderThread();
-  }, 1200);
-}
-
-// ── TASK FILTER ──
-function filterTasks(filter, el) {
-  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-  el.classList.add('active');
-  document.querySelectorAll('#task-list .card').forEach(card => {
-    const status = card.dataset.status, room = card.dataset.room;
-    const show = filter==='all' || filter===status || filter===room;
-    card.style.display = show ? 'block' : 'none';
-  });
-}
-
-// ── ADD TASK ──
-let selRoomChip = null;
-function selRoom(el, room) {
-  if(selRoomChip) selRoomChip.classList.remove('sel');
-  el.classList.add('sel'); selRoomChip = el; selRoomVal = room;
-}
-function selUrg(u) {
-  urg = u;
-  document.getElementById('urg-r').className = 'urg-btn'+(u==='r'?' sel-r':'');
-  document.getElementById('urg-u').className = 'urg-btn'+(u==='u'?' sel-u':'');
-}
-function saveTask() {
-  const title = document.getElementById('new-title').value.trim();
-  const note = document.getElementById('new-note').value.trim();
-  if(!title){ showToast('Please describe what you need help with'); return; }
-  const rooms = {kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
-  const card = document.createElement('div');
-  card.className = 'card'; card.dataset.status = 'active'; card.dataset.room = selRoomVal;
-  const badge = urg==='u' ? '<span class="chip chip-urgent">Needs attention</span>' : '<span class="chip chip-routine">Routine</span>';
-  card.innerHTML = `<div class="task-title">📝 ${title}</div>${note?`<div class="task-note">${note}</div>`:''}<div class="task-meta">${badge}<span class="task-room">${rooms[selRoomVal]||'🏠 General'}</span><span class="task-date">Just added</span></div>`;
-  document.getElementById('task-list').prepend(card);
-  closeModal('task');
-  document.getElementById('new-title').value = '';
-  document.getElementById('new-note').value = '';
-  showToast('Task added! ✅');
-}
-
-// ── ADMIN NOTE ──
-function saveAdminNote() {
-  const text = document.getElementById('admin-note-text').value.trim();
-  if(!text){ showToast('Please write a note first'); return; }
-  const cat = document.getElementById('note-category').value;
-  const nc = document.createElement('div');
-  nc.className = 'note-card';
-  nc.innerHTML = `<div class="note-card-title">${cat}</div><div class="note-card-text">${text}</div>`;
-  document.getElementById('modal-admin-note').classList.remove('open');
-  document.querySelector('#atab-client-detail .back-btn').after(nc);
-  document.getElementById('admin-note-text').value = '';
-  showToast('Private note saved 🔒');
-}
-
-// ── MODALS ──
-function openModal(type) { 
-  const el = document.getElementById('modal-'+type);
-  if(el) el.classList.add('open');
-}
-function closeModal(type) { 
-  const el = document.getElementById('modal-'+type);
-  if(el) el.classList.remove('open');
-}
-
-// ── INVOICES ──
-function calcInvoice() {
-  const hours = parseFloat(document.getElementById('inv-hours').value) || 1;
-  const materials = parseFloat(document.getElementById('inv-materials').value) || 0;
-
-  const firstHour = 124;
-  let extraCost = 0;
-  let extraHrs = 0;
-
-  if (hours > 1) {
-    extraHrs = hours - 1;
-    extraCost = extraHrs * 99;
-  }
-
-  const total = firstHour + extraCost + materials;
-
-  const extraRow = document.getElementById('inv-extra-row');
-  const matRow = document.getElementById('inv-mat-row');
-
-  if (extraHrs > 0) {
-    extraRow.style.display = 'flex';
-    document.getElementById('inv-extra-label').textContent = `Additional ${extraHrs} hr${extraHrs !== 1 ? 's' : ''} @ $99/hr`;
-    document.getElementById('inv-line2').textContent = '$' + extraCost.toFixed(2);
-  } else {
-    extraRow.style.display = 'none';
-  }
-
-  if (materials > 0) {
-    matRow.style.display = 'flex';
-    document.getElementById('inv-line3').textContent = '$' + materials.toFixed(2);
-  } else {
-    matRow.style.display = 'none';
-  }
-
-  document.getElementById('inv-total').textContent = '$' + total.toFixed(2);
-}
-
-function saveInvoice() {
-  const client = document.getElementById('inv-client').value;
-  const total = document.getElementById('inv-total').textContent;
-  closeModal('invoice');
-  showToast(`Invoice ${total} sent to ${client.split(' ')[0]}! 📧`);
-}
-
-function openInvoiceDetail(id) {
-  document.getElementById('atab-invoices').style.display = 'none';
-  document.getElementById('atab-invoice-detail').style.display = 'block';
-}
-
-function closeInvoiceDetail() {
-  document.getElementById('atab-invoice-detail').style.display = 'none';
-  document.getElementById('atab-invoices').style.display = 'block';
-}
-
-function toggleWaive(el) {
-  const note = document.getElementById('waive-note');
-  const plan = document.getElementById('detail-plan');
-  if (el.checked) {
-    note.style.display = 'block';
-    plan.textContent = 'Monthly Plan · Waived';
-    plan.style.color = 'var(--green)';
-    showToast('Membership fee waived ✓');
-  } else {
-    note.style.display = 'none';
-    plan.textContent = 'Monthly Plan · $19/mo';
-    plan.style.color = '';
-    showToast('Membership fee reinstated');
-  }
-}
-
-// ── TOAST ──
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 3000);
-}
-
-// ═══════════════════════════════════════
-// SUPABASE AUTH & DATABASE
-// ═══════════════════════════════════════
-
 const SUPABASE_URL = 'https://amhphshkfvqepvxlenps.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtaHBoc2hrZnZxZXB2eGxlbnBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxODkzMDMsImV4cCI6MjA5Nzc2NTMwM30.v1w6n1O71uSooQb85_BHiHARSn_wLj-EtmOgOsFXoaI';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const STRIPE_PK = 'pk_test_51TlaxlE3fogAtaxo0vVNvDE0LnNWrtcU9QSEqelzWZuPkDpQjcC5Sf9QAGSssWnGAaS9pewE6WJVDCvOhHeBJ1qf009usudPyv';
+const EDGE_URL = 'https://amhphshkfvqepvxlenps.supabase.co/functions/v1/stripe-handler';
 
-let currentUser = null;
-let currentProfile = null;
+let currentUser=null, currentProfile=null;
+let urg='r', selRoomVal='general', selRoomChip=null;
+let showingArchived=false, archivedClients=[], activeClients=[], activeClientName='';
+let activeAdminHousehold=null, adminMsgSubscription=null, clientMsgSubscription=null;
+let stripeInstance=null, cardElement=null, cardExpiry=null, cardCvc=null;
+let role='client';
 
-// ── SHOW / HIDE SCREENS ──
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function showError(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
+function hideError(id){const el=document.getElementById(id);if(el)el.style.display='none';}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+function openModal(type){const el=document.getElementById('modal-'+type);if(el)el.classList.add('open');if(type==='upgrade')setTimeout(initStripe,100);}
+function closeModal(type){const el=document.getElementById('modal-'+type);if(el)el.classList.remove('open');}
 
-function showError(elId, msg) {
-  const el = document.getElementById(elId);
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-
-function hideError(elId) {
-  const el = document.getElementById(elId);
-  if(el) el.style.display = 'none';
-}
-
-// ── BOOT: CHECK SESSION ON LOAD ──
-window.addEventListener('load', async () => {
-  // Inject Pete's photo into message circle from helper banner
-  setTimeout(() => {
-    const bannerImg = document.querySelector('#helper-banner img');
-    const msgCircle = document.getElementById('msg-pete-circle');
-    if (bannerImg && msgCircle) {
-      msgCircle.innerHTML = `<img src="${bannerImg.src}" style="width:100%;height:100%;object-fit:cover"/>`;
-    }
-  }, 100);
-  // Check if this is a password reset redirect
-  const hash = window.location.hash;
-  if (hash.includes('type=recovery')) {
-    showScreen('screen-reset');
-    return;
-  }
-
-  const { data: { session } } = await sb.auth.getSession();
-  if (session) {
-    await loadProfileAndRoute(session.user);
-  } else {
-    showScreen('screen-login');
-  }
+window.addEventListener('load',async()=>{
+  if(window.location.hash.includes('type=recovery')){showScreen('screen-reset');return;}
+  const{data:{session}}=await sb.auth.getSession();
+  if(session){await loadProfileAndRoute(session.user);}else{showScreen('screen-login');}
 });
+sb.auth.onAuthStateChange(async(event)=>{if(event==='PASSWORD_RECOVERY')showScreen('screen-reset');});
 
-// ── AUTH STATE LISTENER ──
-sb.auth.onAuthStateChange(async (event, session) => {
-  if (event === 'PASSWORD_RECOVERY') {
-    showScreen('screen-reset');
-  }
-});
-
-// ── LOAD PROFILE & ROUTE TO RIGHT SCREEN ──
-async function loadProfileAndRoute(user) {
+async function loadProfileAndRoute(user){
   showScreen('screen-loading');
-  currentUser = user;
-
-  const userEmail = user.email || '';
-  const isAdminPhone = userEmail.startsWith('5404217447@');
-
-  // Load profile with household data
-  const { data: profile, error } = await sb
-    .from('profiles')
-    .select('*, households(*)')
-    .eq('id', user.id)
-    .single();
-
-  if (error) {
-    console.log('Profile load error:', error.message);
-    // If Pete can't load profile due to RLS, go to admin anyway
-    if (isAdminPhone) { showAdminScreen(); return; }
-    // For other users show basic client screen
-    showScreen('screen-main');
-    const navUser = document.getElementById('nav-user');
-    if (navUser) navUser.textContent = 'Welcome! 👋';
-    switchTab('tasks');
-    return;
-  }
-
-  if (!profile) {
-    if (isAdminPhone) { showAdminScreen(); return; }
-    showScreen('screen-main');
-    switchTab('tasks');
-    return;
-  }
-
-  currentProfile = profile;
-  console.log('Profile loaded:', profile.full_name, 'role:', profile.role, 'household:', profile.households?.address);
-
-  // Always populate UI with real profile data
+  currentUser=user;
+  const isAdmin=user.email?.startsWith('5404217447@');
+  const{data:profile,error}=await sb.from('profiles').select('*, households(*)').eq('id',user.id).single();
+  if(error||!profile){if(isAdmin){showAdminScreen();return;}showScreen('screen-main');switchTab('tasks');return;}
+  currentProfile=profile;
   populateClientProfile(profile);
-
-  // Route based on role
-  if (profile.role === 'admin' || isAdminPhone) {
-    showAdminScreen();
-  } else if (profile.role === 'team') {
-    showScreen('screen-main');
-    document.getElementById('nav-user').textContent = 'Welcome, ' + profile.full_name.split(' ')[0] + '! 👋';
-    switchTab('tasks');
-  } else {
-    showScreen('screen-main');
-    switchTab('tasks');
-    loadTasks();
-    loadMessages();
-  }
+  if(profile.role==='admin'||isAdmin){showAdminScreen();}
+  else{showScreen('screen-main');switchTab('tasks');loadTasks();loadMessages();}
 }
 
-// ── SIGN UP ──
-async function doSignup() {
+function populateClientProfile(p){
+  if(!p)return;
+  const fn=(p.full_name||'').split(' ')[0];
+  const nu=document.getElementById('nav-user');if(nu)nu.textContent='Welcome, '+fn+'! 👋';
+  const ne=document.getElementById('profile-name');if(ne)ne.textContent=p.full_name||'';
+  const ie=document.getElementById('profile-av-initials');if(ie)ie.textContent=(p.full_name||'?').split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+  const pe=document.getElementById('profile-phone');if(pe)pe.textContent=p.phone?p.phone.replace(/(\d{3})(\d{3})(\d{4})/,'($1) $2-$3'):'—';
+  const ee=document.getElementById('profile-email');if(ee)ee.textContent=p.email||'—';
+  const ae=document.getElementById('profile-address');if(ae)ae.textContent=p.households?.address||'—';
+  const re=document.getElementById('profile-role');if(re){const l={client:'Client account',spouse:'Spouse account',family:'Family access',team:'Team member',admin:'Super Admin'};re.textContent=l[p.role]||'Account';}
+  const plan=p.households?.plan||'basic',waived=p.households?.plan_waived||false;
+  const uw=document.getElementById('upgrade-btn-wrap');
+  if(plan==='member'||waived){
+    const pc=document.getElementById('profile-plan-card');if(pc){pc.style.background='var(--blue-lt)';pc.style.borderColor='var(--blue)';}
+    const pn=document.getElementById('profile-plan-name');if(pn){pn.textContent='⭐ Member Plan';pn.style.color='var(--blue)';}
+    const pp=document.getElementById('profile-plan-price');if(pp)pp.innerHTML=waived?'<span style="font-size:16px;color:var(--green)">Fee Waived ✓</span>':'$19<span style="font-size:14px;font-weight:400">/mo</span>';
+    const pk=document.getElementById('profile-plan-perks');if(pk)pk.textContent='✓ Priority scheduling  ✓ Request visits  ✓ Family access';
+    if(uw)uw.style.display='none';
+  }else{if(uw)uw.style.display='block';}
+}
+
+// ══ SIGNUP — THE KEY FIX: only address + plan in household insert ══
+async function doSignup(){
   hideError('signup-error');
-
-  const name     = document.getElementById('signup-name').value.trim();
-  const phone    = document.getElementById('signup-phone').value.trim();
-  const address  = document.getElementById('signup-address').value.trim();
-  const password = document.getElementById('signup-password').value;
-  const confirm  = document.getElementById('signup-confirm').value;
-
-  if (!name)     { showError('signup-error', 'Please enter your full name.'); return; }
-  if (!phone || phone.replace(/\D/g,'').length < 10) { showError('signup-error', 'Please enter a valid 10-digit phone number.'); return; }
-  if (!address)  { showError('signup-error', 'Please enter your home address.'); return; }
-  if (!password || password.length < 6) { showError('signup-error', 'Password must be at least 6 characters.'); return; }
-  if (password !== confirm) { showError('signup-error', 'Passwords do not match.'); return; }
-
+  const name=document.getElementById('signup-name').value.trim();
+  const phone=document.getElementById('signup-phone').value.trim();
+  const address=document.getElementById('signup-address').value.trim();
+  const password=document.getElementById('signup-password').value;
+  const confirm=document.getElementById('signup-confirm').value;
+  if(!name){showError('signup-error','Please enter your full name.');return;}
+  if(!phone||phone.replace(/\D/g,'').length<10){showError('signup-error','Please enter a valid 10-digit phone number.');return;}
+  if(!address){showError('signup-error','Please enter your home address.');return;}
+  if(!password||password.length<6){showError('signup-error','Password must be at least 6 characters.');return;}
+  if(password!==confirm){showError('signup-error','Passwords do not match.');return;}
   showScreen('screen-loading');
-
-  const digits = phone.replace(/\D/g,'');
-  const email = digits + '@homehelper.app';
-
-  // Step 1 — create auth account
-  const { data: authData, error: authError } = await sb.auth.signUp({ email, password });
-  if (authError) {
+  const digits=phone.replace(/\D/g,'');
+  const email=digits+'@homehelper.app';
+  // Step 1: create auth user
+  const{data:authData,error:authError}=await sb.auth.signUp({email,password});
+  if(authError){
     showScreen('screen-signup');
-    showError('signup-error', authError.message.includes('already registered')
-      ? 'That phone number already has an account. Try signing in.'
-      : 'Could not create account: ' + authError.message);
+    showError('signup-error',authError.message.includes('already registered')?'That phone number already has an account. Try signing in.':'Could not create account: '+authError.message);
     return;
   }
-
-  const userId = authData.user?.id;
-  if (!userId) {
+  const userId=authData.user?.id;
+  if(!userId){showScreen('screen-signup');showError('signup-error','Something went wrong. Please try again.');return;}
+  // Step 2: sign in immediately so RLS allows inserts
+  const{data:signInData,error:signInError}=await sb.auth.signInWithPassword({email,password});
+  if(signInError){showScreen('screen-signup');showError('signup-error','Account created but could not sign in automatically. Please try logging in.');return;}
+  // Step 3: create household — FIXED: only address and plan (no city/state)
+  const{data:household,error:hhError}=await sb.from('households').insert({address,plan:'basic'}).select().single();
+  if(hhError){
+    console.error('Household insert error:',hhError);
     showScreen('screen-signup');
-    showError('signup-error', 'Something went wrong. Please try again.');
+    showError('signup-error','Could not finish setup: '+hhError.message);
     return;
   }
-
-  // Step 2 — sign in immediately to get active session for RLS
-  const { data: signInData, error: signInError } = await sb.auth.signInWithPassword({ email, password });
-  if (signInError) {
+  // Step 4: create profile
+  const initials=name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+  const{error:profError}=await sb.from('profiles').insert({id:userId,full_name:name,phone:digits,role:'client',household_id:household.id,avatar_initials:initials,is_primary:true});
+  if(profError){
+    console.error('Profile insert error:',profError);
     showScreen('screen-signup');
-    showError('signup-error', 'Account created but could not sign in. Please try logging in.');
+    showError('signup-error','Setup failed: '+profError.message);
     return;
   }
-
-  // Step 3 — create household (now authenticated)
-  const { data: household, error: hhError } = await sb
-    .from('households')
-    .insert({ address, city: 'Harrisonburg', state: 'VA', plan: 'basic' })
-    .select()
-    .single();
-
-  if (hhError) {
-    console.log('Household error:', hhError.message);
-    showScreen('screen-signup');
-    showError('signup-error', 'Could not finish setup: ' + hhError.message);
-    return;
-  }
-
-  // Step 4 — create profile (now authenticated)
-  const initials = name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
-  const { error: profError } = await sb.from('profiles').insert({
-    id: userId,
-    full_name: name,
-    phone: digits,
-    role: 'client',
-    household_id: household.id,
-    avatar_initials: initials,
-    is_primary: true
-  });
-
-  if (profError) {
-    console.log('Profile error:', profError.message);
-    showScreen('screen-signup');
-    showError('signup-error', 'Setup failed: ' + profError.message);
-    return;
-  }
-
-  // Step 5 — clear form and go to app
-  document.getElementById('signup-name').value = '';
-  document.getElementById('signup-phone').value = '';
-  document.getElementById('signup-address').value = '';
-  document.getElementById('signup-password').value = '';
-  document.getElementById('signup-confirm').value = '';
-
-  // Load profile and route to app
+  // Step 5: clear form and launch app
+  ['signup-name','signup-phone','signup-address','signup-password','signup-confirm'].forEach(id=>document.getElementById(id).value='');
   await loadProfileAndRoute(signInData.user);
-  showToast('Welcome to Home Helper, ' + name.split(' ')[0] + '! 🎉');
+  showToast('Welcome to Home Helper, '+name.split(' ')[0]+'! 🎉');
 }
 
-// ── REAL LOGIN ──
-async function doLogin() {
+async function doLogin(){
   hideError('login-error');
-  let identifier = document.getElementById('login-email').value.trim();
-  const password = document.getElementById('login-password').value;
-
-  if (!identifier || !password) {
-    showError('login-error', 'Please enter your phone/email and password.');
-    return;
-  }
-
-  // If phone number entered, format as email for Supabase
-  // We store phone logins as phone@homehelper.app
-  if (/^[\d\s\(\)\-\+]+$/.test(identifier.replace(/\s/g,''))) {
-    const digits = identifier.replace(/\D/g,'');
-    identifier = digits + '@homehelper.app';
-  }
-
+  let id=document.getElementById('login-email').value.trim();
+  const pw=document.getElementById('login-password').value;
+  if(!id||!pw){showError('login-error','Please enter your phone/email and password.');return;}
+  if(/^[\d\s\(\)\-\+]+$/.test(id.replace(/\s/g,'')))id=id.replace(/\D/g,'')+'@homehelper.app';
   showScreen('screen-loading');
-
-  const { data, error } = await sb.auth.signInWithPassword({
-    email: identifier,
-    password: password
-  });
-
-  if (error) {
-    showScreen('screen-login');
-    showError('login-error', 'Incorrect phone/email or password. Please try again.');
-    return;
-  }
-
+  const{data,error}=await sb.auth.signInWithPassword({email:id,password:pw});
+  if(error){showScreen('screen-login');showError('login-error','Incorrect phone/email or password.');return;}
   await loadProfileAndRoute(data.user);
 }
 
-// ── GUEST PREVIEW ──
-function doGuestLogin() {
-  showScreen('screen-main');
-  switchTab('tasks');
-  showToast('Previewing as guest — data is not saved');
+async function doForgotPassword(){
+  const id=document.getElementById('login-email').value.trim();
+  if(!id){showError('login-error','Enter your phone number or email above first.');return;}
+  let email=id;
+  if(/^[\d\s\(\)\-\+]+$/.test(id.replace(/\s/g,'')))email=id.replace(/\D/g,'')+'@homehelper.app';
+  const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+window.location.pathname});
+  if(error){showError('login-error','Could not send reset link.');}
+  else{showToast('Password reset link sent! 📱');}
 }
 
-// ── FORGOT PASSWORD ──
-async function doForgotPassword() {
-  const identifier = document.getElementById('login-email').value.trim();
-  if (!identifier) {
-    showError('login-error', 'Enter your phone number or email above first.');
-    return;
-  }
+async function doPasswordReset(){
+  const pw=document.getElementById('reset-password').value;
+  const cf=document.getElementById('reset-confirm').value;
+  if(!pw||pw.length<6){showError('reset-error','Password must be at least 6 characters.');return;}
+  if(pw!==cf){showError('reset-error','Passwords do not match.');return;}
+  const{error}=await sb.auth.updateUser({password:pw});
+  if(error){showError('reset-error','Could not reset password.');}
+  else{showToast('Password updated! ✅');showScreen('screen-login');window.location.hash='';}
+}
 
-  let email = identifier;
-  if (/^[\d\s\(\)\-\+]+$/.test(identifier.replace(/\s/g,''))) {
-    const digits = identifier.replace(/\D/g,'');
-    email = digits + '@homehelper.app';
-  }
+async function logout(){
+  await sb.auth.signOut();currentUser=null;currentProfile=null;
+  ['screen-main','screen-admin'].forEach(s=>document.getElementById(s).classList.remove('active'));
+  document.getElementById('admin-mode-banner').style.display='none';
+  showScreen('screen-login');
+}
 
-  const { error } = await sb.auth.resetPasswordForEmail(email, {
-    redirectTo: window.location.origin + window.location.pathname
+function selectRole(r){role=r;['client','family'].forEach(x=>{const el=document.getElementById('role-'+x);if(el)el.classList.toggle('sel',x===r);});document.getElementById('admin-mode-banner').style.display='none';}
+function activateAdmin(){role='admin';['client','family'].forEach(x=>{const el=document.getElementById('role-'+x);if(el)el.classList.remove('sel');});document.getElementById('admin-mode-banner').style.display='block';document.getElementById('admin-mode-banner').innerHTML='🔐 Admin mode active';}
+function activateEmployee(){role='employee';['client','family'].forEach(x=>{const el=document.getElementById('role-'+x);if(el)el.classList.remove('sel');});document.getElementById('admin-mode-banner').style.display='block';document.getElementById('admin-mode-banner').innerHTML='🪪 Team Member mode active';}
+
+function switchTab(tab){
+  ['tasks','appointments','messages','profile'].forEach(t=>{const el=document.getElementById('tab-'+t);if(el)el.style.display='none';const b=document.getElementById('btn-'+t);if(b)b.classList.remove('active');});
+  document.getElementById('tab-'+tab).style.display='block';
+  const b=document.getElementById('btn-'+tab);if(b)b.classList.add('active');
+  const titles={tasks:'My Tasks',appointments:'Visits',messages:'Messages',profile:'My Profile'};
+  document.getElementById('nav-title').textContent=titles[tab]||'';
+  if(tab==='messages')loadMessages();if(tab==='tasks')loadTasks();
+}
+
+function switchAdminTab(tab){
+  ['clients','client-detail','schedule','invoices','team','messages','admin-thread'].forEach(t=>{const c=document.getElementById('atab-'+t);if(c)c.style.display='none';const b=document.getElementById('abtn-'+t);if(b)b.classList.remove('active');});
+  document.getElementById('atab-'+tab).style.display='block';
+  const b=document.getElementById('abtn-'+tab);if(b)b.classList.add('active');
+  const titles={clients:'My Clients',schedule:'Schedule',invoices:'Invoices',team:'Team',messages:'Messages'};
+  document.getElementById('admin-nav-title').textContent=titles[tab]||'';
+  if(tab==='messages')loadAdminInbox();
+}
+
+function showAdminScreen(){['screen-login','screen-loading'].forEach(s=>document.getElementById(s).classList.remove('active'));document.getElementById('screen-admin').classList.add('active');switchAdminTab('clients');loadAdminClients();}
+
+async function loadAdminClients(){
+  const{data,error}=await sb.from('profiles').select('*, households(*)').eq('role','client').order('created_at',{ascending:false});
+  if(error||!data)return;
+  const colors=['av-blue','av-teal','av-amber'];
+  activeClients=data.map((p,i)=>({
+    id:p.id,name:p.full_name,phone:p.phone||'',address:p.households?.address||'No address',
+    plan:p.households?.plan||'basic',planWaived:p.households?.plan_waived||false,
+    planLabel:p.households?.plan_waived?'Member · Fee Waived':p.households?.plan==='member'?'Member · $19/mo':'Basic · Free',
+    initials:p.avatar_initials||p.full_name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2),
+    color:colors[i%colors.length],householdId:p.household_id
+  }));
+  const ce=document.getElementById('stat-clients');if(ce)ce.textContent=activeClients.length;
+  renderClientList();
+}
+
+function renderClientList(){
+  const list=document.getElementById('admin-client-list');if(!list)return;list.innerHTML='';
+  const src=showingArchived?archivedClients:activeClients;
+  if(src.length===0){list.innerHTML=showingArchived?'<div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📦</div><div style="font-size:18px;font-weight:600">No archived clients</div></div>':'<div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">👥</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No clients yet</div><div style="font-size:15px">Clients will appear here once they sign up</div></div>';return;}
+  src.forEach((c,i)=>{
+    const row=document.createElement('div');row.className='admin-client-row';if(showingArchived)row.style.opacity='0.65';
+    row.innerHTML=`<div class="avatar ${c.color}" style="width:48px;height:48px;font-size:15px">${c.initials}</div><div class="client-info"><div class="client-name">${c.name}</div><div class="client-addr">${c.address||'No address'}</div><div class="client-tasks">${c.planLabel}</div></div>${showingArchived?`<button onclick="restoreClient(${i})" style="background:var(--green);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;font-weight:600;flex-shrink:0">Restore</button>`:'<i class="ti ti-chevron-right" style="color:var(--muted);font-size:20px"></i>'}`;
+    if(!showingArchived)row.onclick=()=>openClient(c.id||c.name);
+    list.appendChild(row);
   });
-
-  if (error) {
-    showError('login-error', 'Could not send reset link. Please check your info.');
-  } else {
-    showToast('Password reset link sent! Check your phone or email 📱');
-  }
 }
 
-// ── PASSWORD RESET ──
-async function doPasswordReset() {
-  const password = document.getElementById('reset-password').value;
-  const confirm = document.getElementById('reset-confirm').value;
+function openClient(id){
+  const c=typeof id==='string'?activeClients.find(x=>x.name===id||x.id===id):activeClients[id];
+  if(!c){showToast('Client not found');return;}
+  document.getElementById('atab-clients').style.display='none';document.getElementById('atab-client-detail').style.display='block';
+  const av=document.getElementById('detail-av');av.textContent=c.initials;av.className='avatar '+(c.color||'av-blue');av.style.cssText='width:54px;height:54px;font-size:18px';
+  document.getElementById('detail-name').textContent=c.name;
+  document.getElementById('detail-addr').textContent=c.address||'No address on file';
+  document.getElementById('detail-phone').textContent=c.phone||'No phone on file';
+  document.getElementById('detail-plan').textContent=c.planLabel||'Basic · Free';
+  document.getElementById('detail-plan').style.color='';
+  const wt=document.getElementById('waive-toggle');if(wt)wt.checked=c.planWaived||false;
+  document.getElementById('note-tools').textContent='No notes yet';
+  document.getElementById('note-house').textContent='No notes yet';
+  document.getElementById('note-client').textContent='No notes yet';
+  document.getElementById('detail-task-list').innerHTML='<div style="text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:15px">No active tasks</div>';
+}
+function closeClient(){document.getElementById('atab-client-detail').style.display='none';document.getElementById('atab-clients').style.display='block';}
+function toggleArchived(){showingArchived=!showingArchived;const btn=document.getElementById('archived-toggle');btn.textContent=showingArchived?'Show Active':'Show Archived';btn.style.color=showingArchived?'var(--blue)':'var(--muted)';renderClientList();}
+function restoreClient(i){const c=archivedClients[i];archivedClients.splice(i,1);activeClients.push(c);const ce=document.getElementById('stat-clients');if(ce)ce.textContent=activeClients.length;renderClientList();showToast(c.name+' restored! ✅');}
+function confirmArchive(){const name=document.getElementById('detail-name').textContent;activeClientName=name;document.getElementById('archive-client-name').textContent=name;openModal('archive');}
+function doArchive(){const i=activeClients.findIndex(c=>c.name===activeClientName);if(i>-1){archivedClients.push(activeClients[i]);activeClients.splice(i,1);}const ce=document.getElementById('stat-clients');if(ce)ce.textContent=activeClients.length;closeModal('archive');closeClient();renderClientList();showToast(activeClientName+' archived 📦');}
+function downgradeToBasic(){const name=document.getElementById('detail-name').textContent;document.getElementById('detail-plan').textContent='Basic · Free';closeClient();showToast(name+' downgraded to Basic ✓');}
+function toggleWaive(el){const note=document.getElementById('waive-note');const plan=document.getElementById('detail-plan');if(el.checked){note.style.display='block';plan.textContent='Monthly Plan · Waived';plan.style.color='var(--green)';showToast('Fee waived ✓');}else{note.style.display='none';plan.textContent='Monthly Plan · $19/mo';plan.style.color='';showToast('Fee reinstated');}}
 
-  if (!password || password.length < 6) {
-    showError('reset-error', 'Password must be at least 6 characters.');
-    return;
-  }
-  if (password !== confirm) {
-    showError('reset-error', 'Passwords do not match.');
-    return;
-  }
-
-  const { error } = await sb.auth.updateUser({ password });
-  if (error) {
-    showError('reset-error', 'Could not reset password. Please try again.');
-  } else {
-    showToast('Password updated! Please sign in. ✅');
-    showScreen('screen-login');
-    window.location.hash = '';
-  }
+async function saveNewClient(){
+  const name=document.getElementById('ac-name').value.trim();
+  const phone=document.getElementById('ac-phone').value.trim();
+  const address=document.getElementById('ac-address').value.trim();
+  const plan=document.getElementById('ac-plan').value;
+  const password=document.getElementById('ac-pass').value.trim();
+  if(!name||!phone){showToast('Please enter name and phone number');return;}
+  if(!password||password.length<6){showToast('Password must be at least 6 characters');return;}
+  showToast('Creating account…');
+  const digits=phone.replace(/\D/g,''),email=digits+'@homehelper.app';
+  const{data:authData,error:authError}=await sb.auth.signUp({email,password});
+  if(authError){showToast('Error: '+authError.message);return;}
+  const userId=authData.user?.id;if(!userId){showToast('Could not create user');return;}
+  const{data:hh,error:hhErr}=await sb.from('households').insert({address:address||'Unknown',plan:plan==='waived'?'member':plan,plan_waived:plan==='waived'}).select().single();
+  if(hhErr){showToast('Error creating household: '+hhErr.message);return;}
+  const initials=name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+  const{error:profErr}=await sb.from('profiles').insert({id:userId,full_name:name,phone:digits,role:'client',household_id:hh.id,avatar_initials:initials,is_primary:true});
+  if(profErr){showToast('Error: '+profErr.message);return;}
+  const colors=['av-blue','av-teal','av-amber'];
+  activeClients.push({id:userId,name,phone:digits,address,plan,planLabel:plan==='basic'?'Basic · Free':plan==='waived'?'Member · Fee Waived':'Member · $19/mo',planWaived:plan==='waived',initials,color:colors[activeClients.length%colors.length],householdId:hh.id});
+  renderClientList();['ac-name','ac-phone','ac-address','ac-pass'].forEach(id=>document.getElementById(id).value='');
+  closeModal('add-client');const ce=document.getElementById('stat-clients');if(ce)ce.textContent=activeClients.length;showToast(name+' added! 🎉');
 }
 
-// ── REAL LOGOUT ──
-async function logout() {
-  await sb.auth.signOut();
-  currentUser = null;
-  currentProfile = null;
-  ['screen-main','screen-admin'].forEach(s => document.getElementById(s).classList.remove('active'));
-  document.getElementById('admin-mode-banner').style.display = 'none';
-  document.getElementById('screen-login').classList.add('active');
-  document.getElementById('nav-user').textContent = 'Loading…';
-  document.getElementById('profile-name').textContent = '';
-  role = 'client';
-  document.getElementById('role-client').classList.add('sel');
-  document.getElementById('role-family').classList.remove('sel');
+function saveTeamMember(){
+  const name=document.getElementById('tm-name-input').value.trim();
+  const phone=document.getElementById('tm-phone-input').value.trim();
+  if(!name||!phone){showToast('Please enter name and phone number');return;}
+  const initials=name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
+  const list=document.getElementById('team-list');const empty=list.querySelector('[style*="text-align:center"]');if(empty)empty.remove();
+  const row=document.createElement('div');row.className='admin-client-row';
+  row.innerHTML=`<div class="avatar av-blue" style="width:48px;height:48px;font-size:15px">${initials}</div><div class="client-info"><div class="client-name">${name}</div><div class="client-addr">📞 ${phone}</div><div class="client-tasks" style="color:var(--muted)">No clients assigned yet</div></div>`;
+  list.appendChild(row);['tm-name-input','tm-phone-input','tm-email-input','tm-pass-input'].forEach(id=>document.getElementById(id).value='');closeModal('invite-employee');showToast(name+' added to team! 🎉');
 }
 
-// ── LOAD TASKS FROM DATABASE ──
-async function loadTasks() {
-  if (!currentProfile?.household_id) return;
+function saveAdminNote(){const text=document.getElementById('admin-note-text').value.trim();if(!text){showToast('Please write a note first');return;}closeModal('admin-note');document.getElementById('admin-note-text').value='';showToast('Private note saved 🔒');}
 
-  const { data: tasks, error } = await sb
-    .from('tasks')
-    .select('*')
-    .eq('household_id', currentProfile.household_id)
-    .order('created_at', { ascending: false });
+function filterTasks(f,el){document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');document.querySelectorAll('#task-list .card').forEach(card=>{card.style.display=(f==='all'||f===card.dataset.status||f===card.dataset.room)?'block':'none';});}
+function selRoom(el,room){if(selRoomChip)selRoomChip.classList.remove('sel');el.classList.add('sel');selRoomChip=el;selRoomVal=room;}
+function selUrg(u){urg=u;document.getElementById('urg-r').className='urg-btn'+(u==='r'?' sel-r':'');document.getElementById('urg-u').className='urg-btn'+(u==='u'?' sel-u':'');}
 
-  if (error || !tasks) return;
-
-  const list = document.getElementById('task-list');
-  list.innerHTML = '';
-
-  tasks.forEach(task => {
-    const card = document.createElement('div');
-    card.className = 'card' + (task.status === 'done' ? ' done-card' : '');
-    card.dataset.status = task.status;
-    card.dataset.room = task.room || 'general';
-
-    const rooms = {kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
-    const chip = task.status === 'done'
-      ? `<span class="chip chip-done">✓ Completed</span>`
-      : task.urgency === 'urgent'
-        ? `<span class="chip chip-urgent">Needs attention</span>`
-        : task.status === 'scheduled'
-          ? `<span class="chip chip-scheduled">📅 Scheduled</span>`
-          : `<span class="chip chip-routine">Routine</span>`;
-
-    card.innerHTML = `
-      <div class="task-title">${task.title}</div>
-      ${task.notes ? `<div class="task-note">${task.notes}</div>` : ''}
-      <div class="task-meta">${chip}<span class="task-room">${rooms[task.room]||'🏠 General'}</span><span class="task-date">${new Date(task.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</span></div>`;
+async function loadTasks(){
+  if(!currentProfile?.household_id)return;
+  const{data:tasks}=await sb.from('tasks').select('*').eq('household_id',currentProfile.household_id).order('created_at',{ascending:false});
+  const list=document.getElementById('task-list');list.innerHTML='';
+  if(!tasks||tasks.length===0){list.innerHTML='<div id="task-empty" style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📋</div><div style="font-size:18px;font-weight:600;margin-bottom:8px">No tasks yet</div><div style="font-size:15px">Tap the button above to add your first task!</div></div>';return;}
+  const rooms={kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
+  tasks.forEach(task=>{
+    const card=document.createElement('div');card.className='card'+(task.status==='done'?' done-card':'');card.dataset.status=task.status;card.dataset.room=task.room||'general';
+    const chip=task.status==='done'?'<span class="chip chip-done">✓ Completed</span>':task.urgency==='urgent'?'<span class="chip chip-urgent">Needs attention</span>':task.status==='scheduled'?'<span class="chip chip-scheduled">📅 Scheduled</span>':'<span class="chip chip-routine">Routine</span>';
+    card.innerHTML=`<div class="task-title">${task.title}</div>${task.notes?`<div class="task-note">${task.notes}</div>`:''}<div class="task-meta">${chip}<span class="task-room">${rooms[task.room]||'🏠 General'}</span><span class="task-date">${new Date(task.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</span></div>`;
     list.appendChild(card);
   });
 }
 
-// ── SAVE TASK TO DATABASE ──
-const _origSaveTask = saveTask;
-async function saveTask() {
-  const title = document.getElementById('new-title').value.trim();
-  const note = document.getElementById('new-note').value.trim();
-  if(!title){ showToast('Please describe what you need help with'); return; }
-
-  // If real user, save to database
-  if (currentProfile?.household_id) {
-    const { error } = await sb.from('tasks').insert({
-      household_id: currentProfile.household_id,
-      created_by: currentUser.id,
-      title,
-      notes: note || null,
-      room: selRoomVal || 'general',
-      urgency: urg === 'u' ? 'urgent' : 'routine',
-      status: 'active'
-    });
-
-    if (error) {
-      showToast('Could not save task. Please try again.');
-      return;
-    }
-    closeModal('task');
-    document.getElementById('new-title').value = '';
-    document.getElementById('new-note').value = '';
-    showToast('Task added! ✅');
-    loadTasks(); // reload from DB
-  } else {
-    // Guest mode — just add to UI
-    const rooms = {kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
-    const card = document.createElement('div');
-    card.className = 'card'; card.dataset.status = 'active'; card.dataset.room = selRoomVal;
-    const badge = urg==='u' ? '<span class="chip chip-urgent">Needs attention</span>' : '<span class="chip chip-routine">Routine</span>';
-    card.innerHTML = `<div class="task-title">📝 ${title}</div>${note?`<div class="task-note">${note}</div>`:''}<div class="task-meta">${badge}<span class="task-room">${rooms[selRoomVal]||'🏠 General'}</span><span class="task-date">Just added</span></div>`;
-    document.getElementById('task-list').prepend(card);
-    closeModal('task');
-    document.getElementById('new-title').value = '';
-    document.getElementById('new-note').value = '';
-    showToast('Task added! ✅');
+async function saveTask(){
+  const title=document.getElementById('new-title').value.trim();
+  const note=document.getElementById('new-note').value.trim();
+  if(!title){showToast('Please describe what you need help with');return;}
+  if(currentProfile?.household_id){
+    const{error}=await sb.from('tasks').insert({household_id:currentProfile.household_id,created_by:currentUser.id,title,notes:note||null,room:selRoomVal||'general',urgency:urg==='u'?'urgent':'routine',status:'active'});
+    if(error){showToast('Could not save task. Please try again.');return;}
+    closeModal('task');document.getElementById('new-title').value='';document.getElementById('new-note').value='';showToast('Task added! ✅');loadTasks();
+  }else{
+    const rooms={kitchen:'🍳 Kitchen',bathroom:'🚿 Bathroom',outside:'🌿 Outside',general:'🏠 General',bedroom:'🛏 Bedroom'};
+    const card=document.createElement('div');card.className='card';card.dataset.status='active';card.dataset.room=selRoomVal;
+    const badge=urg==='u'?'<span class="chip chip-urgent">Needs attention</span>':'<span class="chip chip-routine">Routine</span>';
+    card.innerHTML=`<div class="task-title">📝 ${title}</div>${note?`<div class="task-note">${note}</div>`:''}<div class="task-meta">${badge}<span class="task-room">${rooms[selRoomVal]||'🏠 General'}</span><span class="task-date">Just added</span></div>`;
+    document.getElementById('task-list').prepend(card);closeModal('task');document.getElementById('new-title').value='';document.getElementById('new-note').value='';showToast('Task added! ✅');
   }
 }
 
-// ── LOAD MESSAGES FROM DATABASE ──
-let clientMsgSubscription = null;
-
-async function loadMessages() {
-  if (!currentProfile?.household_id) return;
-
-  const { data: msgs } = await sb
-    .from('messages')
-    .select('*')
-    .eq('household_id', currentProfile.household_id)
-    .order('created_at', { ascending: true });
-
-  renderClientMessages(msgs || []);
-
-  // Subscribe to real-time updates
-  if (clientMsgSubscription) clientMsgSubscription.unsubscribe();
-  clientMsgSubscription = sb
-    .channel('client-msgs-' + currentProfile.household_id)
-    .on('postgres_changes', {
-      event: 'INSERT',
-      schema: 'public',
-      table: 'messages',
-      filter: `household_id=eq.${currentProfile.household_id}`
-    }, async () => {
-      const { data: newMsgs } = await sb
-        .from('messages')
-        .select('*')
-        .eq('household_id', currentProfile.household_id)
-        .order('created_at', { ascending: true });
-      renderClientMessages(newMsgs || []);
-    })
-    .subscribe();
+async function loadMessages(){
+  if(!currentProfile?.household_id)return;
+  const{data:msgs}=await sb.from('messages').select('*').eq('household_id',currentProfile.household_id).order('created_at',{ascending:true});
+  renderClientMessages(msgs||[]);
+  if(clientMsgSubscription)clientMsgSubscription.unsubscribe();
+  clientMsgSubscription=sb.channel('client-msgs-'+currentProfile.household_id)
+    .on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:`household_id=eq.${currentProfile.household_id}`},async()=>{
+      const{data:nm}=await sb.from('messages').select('*').eq('household_id',currentProfile.household_id).order('created_at',{ascending:true});
+      renderClientMessages(nm||[]);
+    }).subscribe();
 }
 
-function renderClientMessages(msgs) {
-  const thread = document.getElementById('msg-thread');
-  const empty = document.getElementById('msg-empty');
-  if (!thread) return;
-
-  if (msgs.length === 0) {
-    if (empty) empty.style.display = 'block';
-    return;
-  }
-  if (empty) empty.style.display = 'none';
-
-  // Only re-render if content changed
-  thread.innerHTML = '';
-  msgs.forEach(m => {
-    const isMe = m.sender_id === currentUser?.id;
-    const isPete = m.sender_name === 'Pete';
-    const wrap = document.createElement('div');
-    wrap.className = 'msg-wrap' + (isMe ? ' mine' : '');
-    const time = new Date(m.created_at).toLocaleString('en-US', {
-      month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
-    });
-    wrap.innerHTML = (!isMe)
-      ? `<div><div class="msg-sender">${m.sender_name || 'Home Helper'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`
-      : `<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`;
+function renderClientMessages(msgs){
+  const thread=document.getElementById('msg-thread');const empty=document.getElementById('msg-empty');if(!thread)return;
+  if(msgs.length===0){if(empty)empty.style.display='block';return;}if(empty)empty.style.display='none';
+  thread.innerHTML='';
+  msgs.forEach(m=>{
+    const isMe=m.sender_id===currentUser?.id;const wrap=document.createElement('div');wrap.className='msg-wrap'+(isMe?' mine':'');
+    const time=new Date(m.created_at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+    wrap.innerHTML=!isMe?`<div><div class="msg-sender">${m.sender_name||'Home Helper'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`:`<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`;
     thread.appendChild(wrap);
+  });thread.scrollTop=thread.scrollHeight;
+}
+
+async function sendMsg(){
+  const input=document.getElementById('msg-input');const text=input.value.trim();if(!text)return;input.value='';
+  if(currentProfile?.household_id){await sb.from('messages').insert({household_id:currentProfile.household_id,sender_id:currentUser.id,sender_name:currentProfile.full_name,body:text});loadMessages();}
+}
+
+async function loadAdminInbox(){
+  const list=document.getElementById('admin-messages-list');
+  list.innerHTML='<div style="text-align:center;padding:1.5rem;color:var(--muted)"><div class="spinner" style="margin:0 auto"></div></div>';
+  const{data:messages,error}=await sb.from('messages').select('household_id, sender_name, body, created_at, households(address)').order('created_at',{ascending:false});
+  if(error||!messages){list.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted)">Could not load messages</div>';return;}
+  const seen=new Set(),threads=[];
+  messages.forEach(m=>{if(!seen.has(m.household_id)){seen.add(m.household_id);threads.push(m);}});
+  if(threads.length===0){list.innerHTML='<div style="text-align:center;padding:2rem 1rem;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">💬</div><div style="font-size:18px;font-weight:600">No messages yet</div></div>';return;}
+  list.innerHTML='';
+  threads.forEach(thread=>{
+    const address=thread.households?.address||'Unknown';
+    const preview=thread.body?.length>50?thread.body.substring(0,50)+'…':thread.body;
+    const time=new Date(thread.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    const initials=address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+    const row=document.createElement('div');row.className='thread-row';
+    row.innerHTML=`<div class="avatar av-blue" style="width:48px;height:48px;font-size:15px;flex-shrink:0">${initials}</div><div class="thread-info"><div class="thread-name">${address}</div><div class="thread-preview">${thread.sender_name!=='Pete'?thread.sender_name+': ':'You: '}${preview}</div></div><div class="thread-right"><div class="thread-time">${time}</div></div>`;
+    row.onclick=()=>openAdminThread(thread.household_id,address);list.appendChild(row);
   });
-  thread.scrollTop = thread.scrollHeight;
 }
 
-// ── SEND MESSAGE TO DATABASE ──
-const _origSendMsg = sendMsg;
-async function sendMsg() {
-  const input = document.getElementById('msg-input');
-  const text = input.value.trim();
-  if (!text) return;
+async function openAdminThread(householdId,address){
+  activeAdminHousehold=householdId;
+  document.getElementById('atab-messages').style.display='none';document.getElementById('atab-admin-thread').style.display='block';
+  const initials=address.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  document.getElementById('admin-thread-av').textContent=initials;document.getElementById('admin-thread-name').textContent=address;document.getElementById('admin-thread-addr').textContent='Household conversation';
+  await renderAdminThread(householdId);
+  if(adminMsgSubscription)adminMsgSubscription.unsubscribe();
+  adminMsgSubscription=sb.channel('admin-thread-'+householdId).on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:`household_id=eq.${householdId}`},()=>renderAdminThread(householdId)).subscribe();
+}
 
-  if (currentProfile?.household_id) {
-    const { error } = await sb.from('messages').insert({
-      household_id: currentProfile.household_id,
-      sender_id: currentUser.id,
-      sender_name: currentProfile.full_name,
-      body: text
-    });
-    input.value = '';
-    if (!error) loadMessages();
-  } else {
-    // Guest mode
-    const thread = document.getElementById('msg-thread');
-    const wrap = document.createElement('div');
-    wrap.className = 'msg-wrap mine';
-    wrap.innerHTML = `<div><div class="msg-bubble bubble-mine">${text}</div><div class="msg-time">Just now</div></div>`;
-    thread.appendChild(wrap);
-    input.value = '';
-    thread.scrollTop = thread.scrollHeight;
-    setTimeout(() => {
-      const r = document.createElement('div');
-      r.className = 'msg-wrap';
-      r.innerHTML = `<div><div class="msg-sender">Home Helper</div><div class="msg-bubble bubble-them">Thanks! I'll get back to you shortly. 😊</div><div class="msg-time">Just now</div></div>`;
-      thread.appendChild(r);
-      thread.scrollTop = thread.scrollHeight;
-    }, 1200);
-  }
+async function renderAdminThread(householdId){
+  const{data:msgs}=await sb.from('messages').select('*').eq('household_id',householdId).order('created_at',{ascending:true});
+  const thread=document.getElementById('admin-msg-thread');
+  if(!msgs||msgs.length===0){thread.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted)">No messages yet</div>';return;}
+  thread.innerHTML='';
+  msgs.forEach(m=>{const isMe=m.sender_name==='Pete';const wrap=document.createElement('div');wrap.className='msg-wrap'+(isMe?' mine':'');const time=new Date(m.created_at).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});wrap.innerHTML=isMe?`<div><div class="msg-bubble bubble-mine">${m.body}</div><div class="msg-time">${time}</div></div>`:`<div><div class="msg-sender">${m.sender_name||'Client'}</div><div class="msg-bubble bubble-them">${m.body}</div><div class="msg-time">${time}</div></div>`;thread.appendChild(wrap);});
+  thread.scrollTop=thread.scrollHeight;
+}
+
+async function sendAdminMsg(){
+  const input=document.getElementById('admin-msg-input');const text=input.value.trim();if(!text||!activeAdminHousehold)return;input.value='';
+  await sb.from('messages').insert({household_id:activeAdminHousehold,sender_id:currentUser.id,sender_name:'Pete',body:text,read:false});
+  await renderAdminThread(activeAdminHousehold);
+}
+
+function closeAdminThread(){if(adminMsgSubscription){adminMsgSubscription.unsubscribe();adminMsgSubscription=null;}activeAdminHousehold=null;document.getElementById('atab-admin-thread').style.display='none';document.getElementById('atab-messages').style.display='block';loadAdminInbox();}
+
+function calcInvoice(){
+  const hours=parseFloat(document.getElementById('inv-hours').value)||1;
+  const materials=parseFloat(document.getElementById('inv-materials').value)||0;
+  const extraHrs=hours>1?hours-1:0;const extraCost=extraHrs*99;const total=124+extraCost+materials;
+  const er=document.getElementById('inv-extra-row');const mr=document.getElementById('inv-mat-row');
+  if(extraHrs>0){er.style.display='flex';document.getElementById('inv-extra-label').textContent=`Additional ${extraHrs} hr${extraHrs!==1?'s':''} @ $99/hr`;document.getElementById('inv-line2').textContent='$'+extraCost.toFixed(2);}else{er.style.display='none';}
+  if(materials>0){mr.style.display='flex';document.getElementById('inv-line3').textContent='$'+materials.toFixed(2);}else{mr.style.display='none';}
+  document.getElementById('inv-total').textContent='$'+total.toFixed(2);
+}
+function saveInvoice(){const c=document.getElementById('inv-client').value;const t=document.getElementById('inv-total').textContent;closeModal('invoice');showToast(`Invoice ${t} sent to ${c.split(' ')[0]}! 📧`);}
+
+function initStripe(){
+  if(stripeInstance)return;stripeInstance=Stripe(STRIPE_PK);const elements=stripeInstance.elements();
+  const style={base:{fontSize:'18px',color:'#1a1a1a','::placeholder':{color:'#aaa'}}};
+  cardElement=elements.create('cardNumber',{style});cardElement.mount('#card-element');
+  cardExpiry=elements.create('cardExpiry',{style});cardExpiry.mount('#card-expiry');
+  cardCvc=elements.create('cardCvc',{style});cardCvc.mount('#card-cvc');
+}
+
+async function doSubscribe(){
+  if(!currentProfile)return;hideError('stripe-error');
+  const btn=document.getElementById('subscribe-btn');btn.textContent='Processing…';btn.disabled=true;
+  try{
+    const{paymentMethod,error}=await stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{name:currentProfile.full_name}});
+    if(error){showError('stripe-error',error.message);btn.textContent='Subscribe — $19/mo';btn.disabled=false;return;}
+    const res=await fetch(EDGE_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'create_subscription',customer_name:currentProfile.full_name,customer_phone:currentProfile.phone,payment_method_id:paymentMethod.id})});
+    const data=await res.json();if(data.error)throw new Error(data.error);
+    await sb.from('households').update({plan:'member'}).eq('id',currentProfile.household_id);
+    closeModal('upgrade');showToast('Welcome to Member! ⭐');document.getElementById('upgrade-btn-wrap').style.display='none';
+  }catch(err){showError('stripe-error',err.message||'Payment failed.');}
+  btn.textContent='Subscribe — $19/mo';btn.disabled=false;
+}
+
+function uploadProfilePhoto(input){
+  const file=input.files[0];if(!file)return;const reader=new FileReader();
+  reader.onload=function(e){const av=document.getElementById('profile-av');if(av)av.innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`;showToast('Profile photo updated! ✅');};
+  reader.readAsDataURL(file);
 }
 </script>
 </body>
